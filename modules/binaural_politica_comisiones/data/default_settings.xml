@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+         <record id="config_default_commissions_product" model="ir.config_parameter">
+            <field name="key">commission_product_id</field>
+            <field name="value" ref="binaural_politica_comisiones.product_product_sellers_payment" />
+        </record>
+        <record id="config_default_commissions_journal" model="ir.config_parameter">
+            <field name="key">commission_journal_id</field>
+            <field name="value" ref="binaural_politica_comisiones.account_journal_sellers_payment"/>
+        </record>
+    </data>
+</odoo>

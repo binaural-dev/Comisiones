@@ -1,0 +1,82 @@
+<odoo>
+    <data>
+        <!-- Regla Provisión Mensual Utilidades -->
+        <record id="monthly_provision_profit_sharing_rule" model="hr.salary.rule">
+            <field name="name">Provisión mensual utilidades</field>
+            <field name="category_id" search="[('code','=','PROV')]"/>
+            <field name="code">PROVUTILS</field>
+            <field name="struct_id" ref="structure_payroll_provisions"/>
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">190</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+moves = employee.get_all_payroll_moves()
+result = (dias_utilidades_config / 12) * (moves[-1]['total_accrued'] / 30) if moves else 0
+            </field>
+    	</record>
+
+        <!-- Regla Provisión Mensual Vacaciones -->
+        <record id="monthly_provision_vacation_rule" model="hr.salary.rule">
+            <field name="name">Provisión mensual vacaciones</field>
+            <field name="category_id" search="[('code','=','PROV')]"/>
+            <field name="code">PROVVAC</field>
+            <field name="struct_id" ref="structure_payroll_provisions"/>
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">195</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+moves = employee.get_all_payroll_moves()
+result = (dias_vacaciones_config / 12) * moves[-1]['total_accrued'] if moves else 0
+            </field>
+    	</record>
+
+        <!-- Regla Provisión Mensual Bono Vacacional -->
+        <record id="monthly_provision_vacation_bonus_rule" model="hr.salary.rule">
+            <field name="name">Provisión mensual bono vacacional</field>
+            <field name="category_id" search="[('code','=','PROV')]"/>
+            <field name="code">PROVBONUSVAC</field>
+            <field name="struct_id" ref="structure_payroll_provisions"/>
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">200</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+moves = employee.get_all_payroll_moves()
+result = ((dias_vacaciones_config + 1) / 12) * moves[-1]['total_accrued'] if moves else 0
+            </field>
+    	</record>
+
+        <!-- Regla Provisión Mensual Prestaciones -->
+        <record id="monthly_provision_benefits_rule" model="hr.salary.rule">
+            <field name="name">Provisión mensual prestaciones</field>
+            <field name="category_id" search="[('code','=','PROV')]"/>
+            <field name="code">PROVPRESTA</field>
+            <field name="struct_id" ref="structure_payroll_provisions"/>
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">205</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+integral_wage = contract.get_integral_daily_wage()
+result = dias_prestaciones_mes_config * integral_wage if integral_wage else 0
+            </field>
+    	</record>
+
+	<!-- Regla Provisión Mensual Neto -->
+        <record id="monthly_provision_net_rule" model="hr.salary.rule">
+            <field name="name">Neto</field>
+            <field name="category_id" search="[('code','=','NET')]"/>
+            <field name="code">NET</field>
+            <field name="struct_id" ref="structure_payroll_provisions"/>
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">210</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = categories.PROV
+            </field>
+    	</record>
+    </data>
+</odoo>

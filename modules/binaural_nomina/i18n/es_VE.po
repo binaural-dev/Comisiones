@@ -1,0 +1,184 @@
+#. module: binaural_nomina
+#: model:ir.model.fields,help:binaural_nomina.field_hr_payslip_line__slip_state
+msgid ""
+"* When the payslip is created the status is 'Draft'\n"
+"                \n"
+"* If the payslip is under verification, the status is 'Waiting'.\n"
+"                \n"
+"* If the payslip is confirmed then status is set to 'Done'.\n"
+"                \n"
+"* When user cancel payslip the status is 'Rejected'."
+msgstr ""
+"* Cuando la nómina se crea el estado es 'Borrador'\n"
+"                \n"
+"* Si la nómina está en verificación, el estado es 'Esperando'.\n"
+"                \n"
+"* Si la nómina está confirmada, el estado se establece a 'Hecho'.\n"
+"                \n"
+"* Cuando el usuario cancela la nómina, el estado es 'Rechazado'."
+
+#. module: binaural_nomina
+#: model:ir.model.fields,field_description:binaural_nomina.field_hr_payroll_move__message_needaction
+#: model:ir.model.fields,field_description:binaural_nomina.field_hr_salary_rule__message_needaction
+#: model:ir.model.fields,field_description:binaural_nomina.field_hr_salary_tab__message_needaction
+msgid "Action Needed"
+msgstr "Acción requerida"
+
+#. module: binaural_nomina
+#: model:ir.model.fields.selection,name:binaural_nomina.selection__hr_payroll_benefits_accumulated_detail__type__annual
+msgid "Annual"
+msgstr "Anual"
+
+#. module: binaural_nomina
+#: model:ir.model.fields,field_description:binaural_nomina.field_hr_salary_rule__appears_on_payslip
+msgid "Appears on Payslip"
+msgstr "Aparece en el recibo de nómina"
+
+#. module: binaural_nomina
+#: model:ir.model.fields,help:binaural_nomina.field_hr_salary_rule__condition_python
+msgid ""
+"Applied this rule for calculation if condition is true. You can specify "
+"condition like basic > 1000."
+msgstr ""
+"Se utiliza esta regla para el cálculo si la condición es verdadera. Puedes "
+"especificar una condición como: 'basic > 1000'."
+
+#. module: binaural_nomina
+#: model:ir.model,name:binaural_nomina.model_res_config_settings
+msgid "Config Settings"
+msgstr "Opciones de configuración"
+
+#. module: binaural_nomina
+#: model:ir.model.fields,field_description:binaural_nomina.field_hr_payroll_benefits_accumulated_detail__date
+msgid "Date"
+msgstr "Fecha"
+
+#. module: binaural_nomina
+#: model:ir.model.fields,field_description:binaural_nomina.field_resource_calendar_attendance__day_period
+msgid "Day Period"
+msgstr "Periodo el día"
+
+#. module: binaural_nomina
+#: model:ir.model.fields,field_description:binaural_nomina.field_hr_payroll_structure_type__default_schedule_pay
+msgid "Default Scheduled Pay"
+msgstr "Pago programado predeterminado"
+
+#. module: binaural_nomina
+#: model:ir.model.fields,help:binaural_nomina.field_hr_payroll_structure__schedule_pay
+#: model:ir.model.fields,help:binaural_nomina.field_hr_payroll_structure_type__default_schedule_pay
+msgid "Defines the frequency of the wage payment."
+msgstr "Define la frecuencia del pago de salario."
+
+#. module: binaural_nomina
+#: model:ir.model,name:binaural_nomina.model_hr_department
+msgid "Department"
+msgstr "Departamento"
+
+#. module: binaural_nomina
+#: model:ir.model,name:binaural_nomina.model_hr_employee
+#: model:ir.model.fields,field_description:binaural_nomina.field_hr_payroll_benefits_accumulated_detail__employee_id
+msgid "Employee"
+msgstr "Empleado"
+
+#. module: binaural_nomina
+#: model:ir.model.fields,field_description:binaural_nomina.field_hr_payroll_benefits_accumulated__employee_name
+msgid "Employee Name"
+msgstr "Nombre del empleado"
+
+#. module: binaural_nomina
+#: model:ir.model,name:binaural_nomina.model_hr_payslip_employees
+msgid "Generate payslips for all selected employees"
+msgstr "Generar los recibos de nómina para todos los empleados seleccionados"
+
+#. module: binaural_nomina
+#: model_terms:ir.ui.view,arch_db:binaural_nomina.hr_payslip_allowance_line_search
+msgid "Group By"
+msgstr "Agrupar"
+
+#. module: binaural_nomina
+#: model:ir.model,name:binaural_nomina.model_hr_work_entry
+msgid "HR Work Entry"
+msgstr "Entrada de trabajo de RRHH"
+
+#. module: binaural_nomina
+#: model:ir.model,name:binaural_nomina.model_account_journal
+msgid "Journal"
+msgstr "Diario"
+
+#. module: binaural_nomina
+#: model:ir.model.fields,field_description:binaural_nomina.field_hr_employee__lastname
+msgid "Lastname"
+msgstr "Apellido"
+
+#. module: binaural_nomina
+#: model:ir.model.fields.selection,name:binaural_nomina.selection__hr_payroll_benefits_accumulated_detail__type__monthly
+msgid "Monthly"
+msgstr "Mensual"
+
+#. module: binaural_nomina
+#: model_terms:ir.ui.view,arch_db:binaural_nomina.employee_inherit_binaural_nomina_form
+#: model_terms:ir.ui.view,arch_db:binaural_nomina.report_payslip_binaural
+msgid "Name"
+msgstr "Nombre"
+
+#. module: binaural_nomina
+#: model:ir.model.fields,field_description:binaural_nomina.field_hr_employee__country_id
+msgid "Nationality (Country)"
+msgstr "Nacionalidad (País)"
+
+#. module: binaural_nomina
+#: model:ir.model,name:binaural_nomina.model_hr_payslip
+msgid "Pay Slip"
+msgstr "Recibo de nómina"
+
+#. module: binaural_nomina
+#: model:ir.model,name:binaural_nomina.model_hr_payslip_payment_methods
+msgid "Payment Methods"
+msgstr "Métodos de pago"
+
+#. module: binaural_nomina
+#: model:ir.model,name:binaural_nomina.model_hr_payslip_line
+msgid "Payslip Line"
+msgstr "Línea de recibo de nómina"
+
+#. module: binaural_nomina
+#: model:ir.model.fields.selection,name:binaural_nomina.selection__hr_payroll_benefits_accumulated_detail__type__quarterly
+msgid "Quarterly"
+msgstr "Trimestral"
+
+#. module: binaural_nomina
+#: model:ir.model.fields,field_description:binaural_nomina.field_hr_employee__second_lastname
+msgid "Second Lastname"
+msgstr "Segundo Apellido"
+
+#. module: binaural_nomina
+#: model:ir.model.fields,field_description:binaural_nomina.field_hr_employee__second_name
+msgid "Second Name"
+msgstr "Segundo Nombre"
+
+#. module: binaural_nomina
+#: code:addons/binaural_nomina/models/hr_leave_inherit.py:0
+#, python-format
+msgid ""
+"Vacation leave type must have a holiday and a break day work entry type."
+msgstr ""
+"Las ausencias de vacaciones necesitan tener el tipo de entrada de trabajo "
+"para feriados y el tipo de entrada de trabajo para días de descanso."
+
+#. module: binaural_nomina
+#: code:addons/binaural_nomina/models/hr_leave_allocation.py:0
+#, python-format
+msgid "Vacation Allocation"
+msgstr "Asignación de vacaciones"
+
+#. module: binaural_nomina
+#: model:ir.model.fields,field_description:binaural_nomina.field_hr_payroll_move__date_from_vacation
+#: model:ir.model.fields,field_description:binaural_nomina.field_hr_payslip__date_from_vacation
+msgid "Date From Vacation"
+msgstr "Inicio de período vacacional"
+
+#. module: binaural_nomina
+#: model:ir.model.fields,field_description:binaural_nomina.field_hr_payroll_move__date_to_vacation
+#: model:ir.model.fields,field_description:binaural_nomina.field_hr_payslip__date_to_vacation
+msgid "Date To Vacation"
+msgstr "Fin del período vacacional"

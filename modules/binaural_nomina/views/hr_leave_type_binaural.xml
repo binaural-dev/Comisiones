@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="leave_type_inherit_binaural_nomina" model="ir.ui.view">
+        <field name="name">hr.leave.type.binaural.view.form.inherit</field>
+        <field name="model">hr.leave.type</field>
+        <field name="inherit_id" ref="hr_holidays.edit_holiday_status_form"/>
+        <field name="arch" type="xml">
+	    <field name="work_entry_type_id" position="after">
+		<field name="holiday_work_entry_type_id"/>
+		<field name="break_day_work_entry_type_id"/>
+	    </field>
+        </field>
+    </record>
+
+</odoo>

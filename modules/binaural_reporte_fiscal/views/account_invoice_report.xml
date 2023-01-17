@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="account_invoice_report_graph_view_inherit_binaural_reporte_fiscal" model="ir.ui.view">
+            <field name="name">account.invoice.report.graph.view.inherit.binaural.reporte.fiscal</field>
+            <field name="model">account.invoice.report</field>
+            <field name="inherit_id" ref="account.view_account_invoice_report_graph"/>
+            <field name="arch" type="xml">
+		<graph position="inside">
+		    <field name="foreign_amount_untaxed"/>
+		    <field name="foreign_amount_tax"/>
+		    <field name="foreign_amount_total"/>
+		</graph>
+            </field>
+        </record>
+
+        <record id="account_invoice_report_pivot_view_inherit_binaural_reporte_fiscal" model="ir.ui.view">
+            <field name="name">account.invoice.report.pivot.view.inherit.binaural.reporte.fiscal</field>
+            <field name="model">account.invoice.report</field>
+            <field name="inherit_id" ref="account.view_account_invoice_report_pivot"/>
+            <field name="arch" type="xml">
+		<pivot position="inside">
+		    <field name="foreign_amount_untaxed"/>
+		    <field name="foreign_amount_tax"/>
+		    <field name="foreign_amount_total"/>
+		</pivot>
+            </field>
+        </record>
+
+    </data>
+</odoo>

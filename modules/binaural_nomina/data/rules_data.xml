@@ -1,0 +1,1204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <!-- regla salario base nómina básica -->
+        <record id="basic_rule" model="hr.salary.rule">
+            <field name="name">Salario Básico</field>
+            <field name="category_id" search="[('code','=','BASIC')]"/>
+            <field name="code">BASIC</field>
+            <field name="struct_id" ref="structure_payroll_basic" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">4</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+if contract.structure_type_id.wage_type == 'monthly':
+    flap02nt = worked_days.FLAP02NT.number_of_days if worked_days.FLAP02NT else 0
+    flap02 = worked_days.FLAP02.number_of_days if worked_days.FLAP02 else 0
+    fsap01 = worked_days.FSAP01.number_of_days if worked_days.FSAP01 else 0
+    dlab = worked_days.DLAB.number_of_days if worked_days.DLAB else 0
+    diadesc = worked_days.DIADESC.number_of_days if worked_days.DIADESC else 0
+    result = (flap02nt + flap02 + fsap01 + dlab + diadesc) * (contract.wage/30)
+else:
+    HDVTL_value = worked_days.HDVTL.number_of_hours if worked_days.HDVTL else 0
+    HORALAB_value = worked_days.HORALAB.number_of_hours if worked_days.HORALAB else 0
+    result = (HORALAB_value + HDVTL_value) * (contract.hourly_wage)
+            </field>
+        </record>
+
+	<record id="cestaticket_rule" model="hr.salary.rule">
+	    <field name="name">Cestaticket</field>
+	    <field name="category_id" search="[('code','=','COMPS')]"/>
+	    <field name="code">CEST</field>
+	    <field name="struct_id" ref="structure_payroll_ticket" />
+	    <field name="appears_on_payslip" eval="True" />
+	    <field name="sequence">4</field>
+	    <field name="condition_select">none</field>
+	    <field name="amount_select">code</field>
+	    <field name="amount_python_compute">
+result = allowances.CEST
+	    </field>
+	</record>
+
+        <!-- regla calculo salario por hora -->
+        <record id="hourly_wage_rule" model="hr.salary.rule">
+            <field name="name">Salario por hora</field>
+            <field name="category_id" search="[('code','=','OC')]"/>
+            <field name="code">SPH</field>
+            <field name="struct_id" ref="structure_payroll_basic" />
+            <field name="appears_on_payslip" eval="False" />
+            <field name="sequence">9</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+if contract.structure_type_id.wage_type == 'monthly':
+    result = contract.wage/30/employee.contract_id.resource_calendar_id.hours_per_day
+else: 
+    result = contract.hourly_wage
+            </field>
+        </record>
+
+        <record id="total_hours_virtual_distance" model="hr.salary.rule">
+            <field name="name">Total Horas Distancia Virtual</field>
+            <field name="category_id" search="[('code','=','OC')]"/>
+            <field name="code">SPHV</field>
+            <field name="struct_id" ref="structure_payroll_basic" />
+            <field name="appears_on_payslip" eval="False" />
+            <field name="sequence">9</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">
+result = worked_days.HDVTL
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = worked_days.HDVTL.number_of_hours
+            </field>
+        </record>
+
+        <record id="total_hours_of_absence" model="hr.salary.rule">
+            <field name="name">Total Horas Inasistencia</field>
+            <field name="category_id" search="[('code','=','OC')]"/>
+            <field name="code">TOTALINAS</field>
+            <field name="struct_id" ref="structure_payroll_basic" />
+            <field name="appears_on_payslip" eval="False" />
+            <field name="sequence">9</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">
+result = worked_days.INAS
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = worked_days.INAS.number_of_hours
+            </field>
+        </record>
+
+        <record id="accumulated_deduction_for_hours_of_absence" model="hr.salary.rule">
+            <field name="name">Deducción Acumulado x Horas inasistencias</field>
+            <field name="category_id" search="[('code','=','DED')]"/>
+            <field name="code">BASICDES</field>
+            <field name="struct_id" ref="structure_payroll_basic" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">30</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">
+result = worked_days.INAS
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = -(worked_days.INAS.number_of_hours) * contract.hourly_wage
+            </field>
+        </record>
+
+
+        <record id="total_hours_worked_pay_period" model="hr.salary.rule">
+            <field name="name">Total Horas Trabajadas Periodo Pago</field>
+            <field name="category_id" search="[('code','=','OC')]"/>
+            <field name="code">SPH2</field>
+            <field name="struct_id" ref="structure_payroll_basic" />
+            <field name="appears_on_payslip" eval="False" />
+            <field name="sequence">4</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">
+result = worked_days.HORALAB
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+HDVTL_value = worked_days.HDVTL.number_of_hours if worked_days.HDVTL else 0
+HORALAB_value = worked_days.HORALAB.number_of_hours if worked_days.HORALAB else 0
+result = HORALAB_value + HDVTL_value
+            </field>
+        </record>
+
+        <!-- regla costo bono nocturno por hora-->
+        <record id="hourly_night_salary_rule" model="hr.salary.rule">
+            <field name="name">Costo BN por Hora</field>
+            <field name="category_id" search="[('code','=','OC')]"/>
+            <field name="code">CBNH</field>
+            <field name="struct_id" ref="structure_payroll_basic" />
+            <field name="appears_on_payslip" eval="False" />
+            <field name="sequence">10</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">
+result = contract.structure_type_id.wage_type == 'monthly'           
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = (result_rules.SPH['total'] * 1.5 * (porcentaje_recargo_nocturno / 100)) + (result_rules.SPH['total'] * 1.5)
+            </field>
+        </record>
+
+        <!-- regla calculo horas extra diurnas -->
+        <record id="extra_hours_rule" model="hr.salary.rule">
+            <field name="name">Pago de Horas Extras Diurnas Trabajadas Mensual</field>
+            <field name="category_id" search="[('code','=','ASIG')]"/>
+            <field name="code">PHETM</field>
+            <field name="struct_id" ref="structure_payroll_basic" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">12</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">
+#debe existir tipo de entrada HED01
+result = worked_days.HED01            
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = worked_days.HED01.number_of_hours * 1.5 * result_rules.SPH['total']
+            </field>
+        </record>
+
+        <!-- regla calculo horas extra diurnas -->
+        <record id="extra_hours_day_rule" model="hr.salary.rule">
+            <field name="name">Pago de Horas Extras Trabajadas</field>
+            <field name="category_id" search="[('code','=','ASIG')]"/>
+            <field name="code">PHE</field>
+            <field name="struct_id" ref="structure_payroll_basic" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">12</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">
+#debe existir tipo de entrada HE01
+result = worked_days.HE01            
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = worked_days.HE01.number_of_hours * 1.5 * result_rules.SPH['total']
+            </field>
+        </record>
+
+        <!-- regla calculo horas extra nocturnas -->
+        <record id="extra_hours_night_rule" model="hr.salary.rule">
+            <field name="name">Pago de Horas Extras Nocturna Trabajadas Mensual</field>
+            <field name="category_id" search="[('code','=','ASIG')]"/>
+            <field name="code">PHENTM</field>
+            <field name="struct_id" ref="structure_payroll_basic" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">13</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">
+#debe existir tipo de entrada HEN01
+result = worked_days.HEN01
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = (worked_days.HEN01.number_of_hours * result_rules.SPH['total'] * 1.5 * (porcentaje_recargo_nocturno / 100)) + (worked_days.HEN01.number_of_hours * result_rules.SPH['total'] * 1.5)
+            </field>
+        </record>
+
+        <!-- regla calculo dias de descando (fines de semana) -->
+        <record id="break_day_rule" model="hr.salary.rule">
+            <field name="name">Pago por Días de Descanso Trabajados Mensual</field>
+            <field name="category_id" search="[('code','=','ASIG')]"/>
+            <field name="code">PDDTM</field>
+            <field name="struct_id" ref="structure_payroll_basic" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">15</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">
+#debe existir tipo de entrada DIADESC
+result = worked_days.DIADESC            
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = worked_days.DIADESC.number_of_hours * 1.5 * result_rules.SPH['total']
+            </field>
+        </record>
+
+        <!-- regla calculo feriado -->
+        <record id="holiday_rule" model="hr.salary.rule">
+            <field name="name">Pago por feriado Trabajados Mensual</field>
+            <field name="category_id" search="[('code','=','ASIG')]"/>
+            <field name="code">PFTM</field>
+            <field name="struct_id" ref="structure_payroll_basic" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">16</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">
+#debe existir tipo de entrada FLAP02
+result = worked_days.FLAP02            
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = worked_days.FLAP02.number_of_hours * 1.5 * result_rules.SPH['total']
+            </field>
+        </record>
+
+        <!-- regla salario devengado -->
+        <record id="wage_accrued_rule" model="hr.salary.rule">
+            <field name="name">Salario devengado</field>
+            <field name="category_id" search="[('code','=','DEV')]"/>
+            <field name="code">DEV</field>
+            <field name="struct_id" ref="structure_payroll_basic" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">25</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = categories.BASIC + categories.ASIG
+            </field>
+        </record>
+
+	<!-- DEDUCCIONES -->
+
+        <!-- regla calculo IVSS estructura mensual-->
+        <record id="ivss_monthly_rule" model="hr.salary.rule">
+            <field name="name">Deducción IVSS</field>
+            <field name="category_id" search="[('code','=','DED')]"/>
+            <field name="code">PMIVSS</field>
+            <field name="struct_id" ref="structure_payroll_basic" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">30</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">
+result = not employee.no_ivss
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+if contract.structure_type_id.wage_type == 'monthly':
+    if (contract.wage &lt;= (tope_ivss * salario_minimo_actual)):
+        result = -(((contract.wage * 12 / 52) * (porc_ivss / 100)) * payslip.env['hr.payslip']._compute_monday_in_range(payslip.id))
+    else:
+        result = -((((tope_ivss * salario_minimo_actual) * 12 / 52) * (porc_ivss / 100)) * payslip.env['hr.payslip']._compute_monday_in_range(payslip.id))
+else: 
+    if DEV &lt;= (tope_ivss * salario_minimo_actual):
+        result = -(((DEV * 12 / 52 ) * porc_ivss/100)* payslip.env['hr.payslip']._compute_monday_in_range(payslip.id))
+    else:
+        result = -((((tope_ivss * salario_minimo_actual) * 12 / 52 ) * porc_ivss/100)* payslip.env['hr.payslip']._compute_monday_in_range(payslip.id))
+            </field>
+        </record>
+
+        <!-- regla calculo paro forzoso estructura mensual -->
+        <record id="pf_monthly_rule" model="hr.salary.rule">
+            <field name="name">Deducción Paro Forzoso</field>
+            <field name="category_id" search="[('code','=','DED')]"/>
+            <field name="code">PMPF</field>
+            <field name="struct_id" ref="structure_payroll_basic" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">35</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">
+result = not employee.no_pmpf
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+if contract.structure_type_id.wage_type == 'monthly':
+    if contract.wage &lt;= tope_pf * salario_minimo_actual:
+        result = -(((contract.wage * 12 / 52) * (porc_pf / 100)) * payslip.env['hr.payslip']._compute_monday_in_range(payslip.id))
+    else:
+        result = -((((tope_pf * salario_minimo_actual) * 12 / 52) * (porc_pf / 100)) * payslip.env['hr.payslip']._compute_monday_in_range(payslip.id))
+else:
+    if DEV &lt;= tope_pf * salario_minimo_actual:
+        result = -(((DEV * 12 / 52 ) * porc_pf/100)* payslip.env['hr.payslip']._compute_monday_in_range(payslip.id))
+    else:
+        result = -((((tope_pf * salario_minimo_actual) * 12 / 52 ) * porc_pf/100)* payslip.env['hr.payslip']._compute_monday_in_range(payslip.id))
+            </field>
+        </record>
+    
+        <!-- regla calculo FAOV estructura mensual -->
+        <record id="faov_monthly_rule" model="hr.salary.rule">
+            <field name="name">Deducción FAOV</field>
+            <field name="category_id" search="[('code','=','DED')]"/>
+            <field name="code">PMFAOV</field>
+            <field name="struct_id" ref="structure_payroll_basic" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">40</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">
+result = not employee.no_faov
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = -(categories.DEV * (porc_faov/100))
+            </field>
+        </record>
+
+        <!-- regla ISLR -->
+        <record id="islr_rule" model="hr.salary.rule">
+            <field name="name">Deducción ISLR</field>
+            <field name="category_id" search="[('code','=','DED')]"/>
+            <field name="code">PM-ISLR</field>
+            <field name="struct_id" ref="structure_payroll_basic" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">45</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = -(categories.DEV * (employee.porc_ari/100))
+            </field>
+        </record>
+
+        <!-- regla pago por descanso de vacaciones -->
+        <record id="vacation_weekend_pay_rule" model="hr.salary.rule">
+            <field name="name">Pago por Descanso de Vacaciones</field>
+            <field name="category_id" search="[('code','=','OCV')]"/>
+            <field name="code">PDDV</field>
+            <field name="struct_id" ref="structure_payroll_vacation" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">5</field>
+            <field name="condition_select">python</field>
+	    <field name="condition_python">
+result = worked_days.DIADESCVAC
+	    </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = worked_days.DIADESCVAC.number_of_days * (contract.wage / 30)
+            </field>
+        </record>
+
+        <!-- regla pago por feriados de vacaciones -->
+        <record id="vacation_holidays_pay_rule" model="hr.salary.rule">
+            <field name="name">Pago por Feriados de Vacaciones</field>
+            <field name="category_id" search="[('code','=','OCV')]"/>
+            <field name="code">PFV</field>
+            <field name="struct_id" ref="structure_payroll_vacation" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">5</field>
+            <field name="condition_select">python</field>
+	    <field name="condition_python">
+result = worked_days.FLAP03
+	    </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = worked_days.FLAP03.number_of_days * (contract.wage / 30)
+            </field>
+        </record>
+
+        <!-- regla salario base vacaciones -->
+        <record id="vacation_basic_rule" model="hr.salary.rule">
+            <field name="name">Salario Normal</field>
+            <field name="category_id" search="[('code','=','BASIC')]"/>
+            <field name="code">BASIC</field>
+            <field name="struct_id" ref="structure_payroll_vacation" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">1</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+flap02nt = worked_days.FLAP02NT.number_of_days if worked_days.FLAP02NT else 0
+flap02 = worked_days.FLAP02.number_of_days if worked_days.FLAP02 else 0
+fsap01 = worked_days.FSAP01.number_of_days if worked_days.FSAP01 else 0
+dlab = worked_days.DLAB.number_of_days if worked_days.DLAB else 0
+diadesc = worked_days.DIADESC.number_of_days if worked_days.DIADESC else 0
+result = (flap02nt + flap02 + fsap01 + dlab + diadesc) * (contract.wage/30)
+            </field>
+        </record>
+
+        <!-- regla total de descanso y feriado -->
+        <record id="vacation_basic_2_rule" model="hr.salary.rule">
+            <field name="name">Total de Descanso y Feriado</field>
+            <field name="category_id" search="[('code','=','VAC')]"/>
+            <field name="code">BASICVAC2</field>
+            <field name="struct_id" ref="structure_payroll_vacation" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">1</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+flap03 = worked_days.FLAP03.number_of_days if worked_days.FLAP03 else 0
+diadescvac = worked_days.DIADESCVAC.number_of_days if worked_days.DIADESCVAC else 0
+result = (flap03 + diadescvac) * (contract.wage / 30)
+            </field>
+        </record>
+
+        <!-- regla calculo horas extra diurnas vacaciones -->
+        <record id="extra_hours_day_vacation_rule" model="hr.salary.rule">
+            <field name="name">Pago de Horas Extras Trabajadas</field>
+            <field name="category_id" search="[('code','=','ASIG')]"/>
+            <field name="code">PHEVAC</field>
+            <field name="struct_id" ref="structure_payroll_vacation" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">2</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">
+#debe existir tipo de entrada HE01
+result = worked_days.HE01            
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = worked_days.HE01.number_of_hours * 1.5 * result_rules.SPH['total']
+            </field>
+        </record>
+
+        <!-- regla calculo horas extra nocturnas vacaciones -->
+        <record id="extra_hours_night_vacation_rule" model="hr.salary.rule">
+            <field name="name">Pago de Horas Extras Nocturna Trabajadas Mensual</field>
+            <field name="category_id" search="[('code','=','ASIG')]"/>
+            <field name="code">PHENTMVAC</field>
+            <field name="struct_id" ref="structure_payroll_vacation" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">2</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">
+#debe existir tipo de entrada HEN01
+result = worked_days.HEN01
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = (worked_days.HEN01.number_of_hours * result_rules.SPH['total'] * 1.5 * (porcentaje_recargo_nocturno / 100)) + (worked_days.HEN01.number_of_hours * result_rules.SPH['total'] * 1.5)
+            </field>
+        </record>
+
+        <!-- regla calculo dias de descando (fines de semana) vacaciones -->
+        <record id="break_day_vacation_rule" model="hr.salary.rule">
+            <field name="name">Pago por Días de Descanso Trabajados Mensual</field>
+            <field name="category_id" search="[('code','=','ASIG')]"/>
+            <field name="code">PDDTMVAC</field>
+            <field name="struct_id" ref="structure_payroll_vacation" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">2</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">
+#debe existir tipo de entrada DIADESC
+result = worked_days.DIADESC            
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = worked_days.DIADESC.number_of_hours * 1.5 * result_rules.SPH['total']
+            </field>
+        </record>
+
+        <!-- regla calculo feriado vacaciones -->
+        <record id="holiday_vacation_rule" model="hr.salary.rule">
+            <field name="name">Pago por feriado Trabajados Mensual</field>
+            <field name="category_id" search="[('code','=','ASIG')]"/>
+            <field name="code">PFTMVAC</field>
+            <field name="struct_id" ref="structure_payroll_vacation" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">2</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">
+#debe existir tipo de entrada FLAP02
+result = worked_days.FLAP02            
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = worked_days.FLAP02.number_of_hours * 1.5 * result_rules.SPH['total']
+            </field>
+        </record>
+
+        <!-- regla salario devengado vacaciones -->
+        <record id="vacation_accrued_rule" model="hr.salary.rule">
+            <field name="name">Salario Devengado</field>
+            <field name="category_id" search="[('code','=','DEVVAC')]"/>
+            <field name="code">DEVVAC</field>
+            <field name="struct_id" ref="structure_payroll_vacation" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">5</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = result_rules.BASIC['total'] + result_rules.ASIG['total']
+            </field>
+        </record>
+
+        <!-- regla Días de Disfrute Vacacional -->
+        <record id="vacation_days_rule" model="hr.salary.rule">
+            <field name="name">Días de Disfrute Vacacional</field>
+            <field name="category_id" search="[('code','=','OCV')]"/>
+            <field name="code">DDVM</field>
+            <field name="struct_id" ref="structure_payroll_vacation" />
+            <field name="appears_on_payslip" eval="False" />
+            <field name="is_a_days_rule" eval="True" />
+            <field name="sequence">6</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = worked_days.VAC.number_of_days if worked_days.VAC else 0
+            </field>
+        </record>
+
+        <!-- regla pago por disfrute vacacional -->
+        <record id="vacation_pay_rule" model="hr.salary.rule">
+            <field name="name">Pago por Disfrute Vacacional</field>
+            <field name="category_id" search="[('code','=','VAC')]"/>
+            <field name="code">PDDVM</field>
+            <field name="struct_id" ref="structure_payroll_vacation" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">7</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = result_rules.DDVM['total'] * (employee.holidays_accrued / 30)
+            </field>
+        </record>
+
+        <!-- regla Días de Disfrute por Bono Vacacional -->
+        <record id="vacation_bonus_days_rule" model="hr.salary.rule">
+            <field name="name">Días por Bono Vacacional</field>
+            <field name="category_id" search="[('code','=','OCV')]"/>
+            <field name="code">DDBVM</field>
+            <field name="struct_id" ref="structure_payroll_vacation" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="is_a_days_rule" eval="True" />
+            <field name="sequence">8</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = employee.get_vacation_bonus_days()
+            </field>
+        </record>
+
+        <!-- regla pago por disfrute de bono vacacional -->
+        <record id="vacation_bonus_pay_rule" model="hr.salary.rule">
+            <field name="name">Pago por Bono Vacacional</field>
+            <field name="category_id" search="[('code','=','VAC')]"/>
+            <field name="code">PDDBVM</field>
+            <field name="struct_id" ref="structure_payroll_vacation" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">10</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = result_rules.DDBVM['total'] * (employee.holidays_accrued / 30)
+            </field>
+        </record>
+
+        <!-- regla total vacaciones -->
+        <record id="vacation_total_rule" model="hr.salary.rule">
+            <field name="name">Total Vacaciones</field>
+            <field name="category_id" search="[('code','=','OCV')]"/>
+            <field name="code">TOTALVAC</field>
+            <field name="struct_id" ref="structure_payroll_vacation" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">12</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = categories.VAC
+            </field>
+        </record>
+
+        <!-- regla deduccion PM-IVSS vacaciones -->
+        <record id="vacation_pm_ivss_ded_rule" model="hr.salary.rule">
+            <field name="name">Deducción IVSS</field>
+            <field name="category_id" search="[('code','=','DEDVAC')]"/>
+            <field name="code">PMIVSSVAC</field>
+            <field name="struct_id" ref="structure_payroll_vacation" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">15</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+if contract.wage &lt;= tope_ivss * salario_minimo_actual:
+    result = -(((contract.wage * 12 / 52) * (porc_ivss/ 100 )) * payslip.env['hr.payslip']._compute_monday_in_range(payslip.id))
+else:
+    result = -((((tope_ivss * salario_minimo_actual) * 12 / 52) * (porc_ivss / 100)) * payslip.env['hr.payslip']._compute_monday_in_range(payslip.id))
+            </field>
+        </record>
+
+        <!-- regla deduccion PM-Paro Forzoso vacaciones -->
+        <record id="vacation_pm_paro_forzoso_ded_rule" model="hr.salary.rule">
+            <field name="name">Deducción Paro Forzoso</field>
+            <field name="category_id" search="[('code','=','DEDVAC')]"/>
+            <field name="code">PMPFVAC</field>
+            <field name="struct_id" ref="structure_payroll_vacation" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">15</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+if contract.wage &lt;= tope_pf * salario_minimo_actual:
+    result = -(((contract.wage * 12 / 52) * (porc_pf/ 100 )) * payslip.env['hr.payslip']._compute_monday_in_range(payslip.id))
+else:
+    result = -((((tope_pf * salario_minimo_actual) * 12 / 52) * (porc_pf / 100)) * payslip.env['hr.payslip']._compute_monday_in_range(payslip.id))
+            </field>
+        </record>
+
+        <!-- regla deduccion PM-FAOV vacaciones -->
+        <record id="vacation_pm_faov_ded_basic_rule" model="hr.salary.rule">
+            <field name="name">Deducción FAOV</field>
+            <field name="category_id" search="[('code','=','DEDVAC')]"/>
+            <field name="code">PMFAOVVACBASIC</field>
+            <field name="struct_id" ref="structure_payroll_vacation" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">15</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = -(categories.DEVVAC * (porc_faov / 100))
+            </field>
+        </record>
+
+        <!-- regla deduccion PM-FAOV vacaciones -->
+        <record id="vacation_pm_faov_ded_rule" model="hr.salary.rule">
+            <field name="name">Deducción FAOV</field>
+            <field name="category_id" search="[('code','=','DEDVAC')]"/>
+            <field name="code">PMFAOVVAC</field>
+            <field name="struct_id" ref="structure_payroll_vacation" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">15</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = -(result_rules.TOTALVAC['total'] * (porc_faov / 100))
+            </field>
+        </record>
+
+        <!-- regla neto vacaciones -->
+        <record id="vacation_net_rule" model="hr.salary.rule">
+            <field name="name">Neto</field>
+            <field name="category_id" search="[('code','=','NET')]"/>
+            <field name="code">NET</field>
+            <field name="struct_id" ref="structure_payroll_vacation" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">20</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = result_rules.DEVVAC['total'] + result_rules.TOTALVAC['total'] + categories.DEDVAC
+            </field>
+        </record>
+
+        <!-- Regla días de utilidades -->
+        <record id="profit_sharing_days_liq" model="hr.salary.rule">
+            <field name="name">Días de Utilidades</field>
+            <field name="category_id" search="[('code','=','OC')]"/>
+            <field name="code">DU</field>
+            <field name="struct_id" ref="structure_payroll_13month" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="is_a_days_rule" eval="True"/>
+            <field name="sequence">98</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = employee.get_profit_sharing_days()
+            </field>
+        </record>
+
+        <!-- Regla pago de utilidades -->
+        <record id="profit_sharing_payment_rule" model="hr.salary.rule">
+            <field name="name">Pago de Utilidades</field>
+            <field name="category_id" search="[('code','=','ALW')]"/>
+            <field name="code">UTIL</field>
+            <field name="struct_id" ref="structure_payroll_13month" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">99</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+salario_para_utilidades = employee.get_profit_sharing_wage()
+dias_utilidades = employee.get_profit_sharing_days()
+result = salario_para_utilidades * dias_utilidades
+            </field>
+        </record>
+
+        <record id="ince_deduction_rule" model="hr.salary.rule">
+          <field name="name">Deducción INCE</field>
+          <field name="category_id" search="[('code','=','DED')]"/>
+          <field name="code">INCE</field>
+          <field name="struct_id" ref="structure_payroll_13month" />
+          <field name="appears_on_payslip" eval="True" />
+          <field name="sequence">100</field>
+          <field name="condition_select">none</field>
+          <field name="amount_select">code</field>
+          <field name="amount_python_compute">
+result = -(result_rules.UTIL['total'] * (porc_ince / 100)) 
+          </field>  
+        </record>
+
+
+        <record id="benefits_net_utilidades_rule" model="hr.salary.rule">
+            <field name="name">Neto</field>
+            <field name="category_id" search="[('code','=','NET')]"/>
+            <field name="code">NET</field>
+            <field name="struct_id" ref="structure_payroll_13month"/>
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">200</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = result_rules.UTIL['total'] + result_rules.INCE['total']
+            </field>
+    	  </record>
+
+        <!-- Regla adelanto de prestaciones -->
+        <record id="benefits_advance_rule" model="hr.salary.rule">
+            <field name="name">Adelanto de Prestaciones</field>
+            <field name="category_id" search="[('code','=','ALW')]"/>
+            <field name="code">ADPRESTA</field>
+            <field name="struct_id" ref="structure_payroll_benefits" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">100</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = payslip.benefits_advance
+            </field>
+        </record>
+
+        <!-- Regla Salario Base liquidacion -->
+        <record id="basic_liquidaciones_rule" model="hr.salary.rule">
+            <field name="name">Salario Base</field>
+            <field name="category_id" search="[('code','=','BASIC')]"/>
+            <field name="code">BASIC</field>
+            <field name="struct_id" ref="structure_payroll_liquidaciones" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">110</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+flap02nt = worked_days.FLAP02NT.number_of_days if worked_days.FLAP02NT else 0
+flap02 = worked_days.FLAP02.number_of_days if worked_days.FLAP02 else 0
+fsap01 = worked_days.FSAP01.number_of_days if worked_days.FSAP01 else 0
+dlab = worked_days.DLAB.number_of_days if worked_days.DLAB else 0
+diadesc = worked_days.DIADESC.number_of_days if worked_days.DIADESC else 0
+result = (flap02nt + flap02 + fsap01 + dlab + diadesc) * (contract.wage/30)
+            </field>
+        </record>
+
+        <!-- Regla calculo horas extra liquidacion -->
+        <record id="extra_hours_liquidaciones_rule" model="hr.salary.rule">
+            <field name="name">Pago de Horas Extras Diurnas Trabajadas  Mensual</field>
+            <field name="category_id" search="[('code','=','ASIG')]"/>
+            <field name="code">PHETMLIQ</field>
+            <field name="struct_id" ref="structure_payroll_liquidaciones" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">115</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">
+#debe existir tipo de entrada HE01
+result = worked_days.HE01            
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = worked_days.HE01.number_of_hours * 1.5 * result_rules.SPH['total']
+            </field>
+        </record>
+
+        <!-- Regla calculo horas extra nocturnas liquidacion-->
+        <record id="extra_hours_night_liquidaciones_rule" model="hr.salary.rule">
+            <field name="name">Pago de Horas Extras Nocturna Trabajadas Mensual</field>
+            <field name="category_id" search="[('code','=','ASIG')]"/>
+            <field name="code">PHENTMLIQ</field>
+            <field name="struct_id" ref="structure_payroll_liquidaciones" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">120</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">
+#debe existir tipo de entrada HEN01
+result = worked_days.HEN01
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = (worked_days.HEN01.number_of_hours * result_rules.SPH['total'] * 1.5 * (porcentaje_recargo_nocturno / 100)) + (worked_days.HEN01.number_of_hours * result_rules.SPH['total'] * 1.5)
+            </field>
+        </record>
+
+        <!-- regla calculo dias de descando (fines de semana) liquidacion -->
+        <record id="break_day_liquidaciones_rule" model="hr.salary.rule">
+            <field name="name">Pago por Días de Descanso Trabajados Mensual</field>
+            <field name="category_id" search="[('code','=','ASIG')]"/>
+            <field name="code">PDDTMLIQ</field>
+            <field name="struct_id" ref="structure_payroll_liquidaciones" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">120</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">
+#debe existir tipo de entrada DIADESC
+result = worked_days.DIADESC            
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = worked_days.DIADESC.number_of_hours * 1.5 * result_rules.SPH['total']
+            </field>
+        </record>
+
+        <!-- Regla calculo feriado liquidacion -->
+        <record id="holiday_liquidaciones_rule" model="hr.salary.rule">
+            <field name="name">Pago por feriado Trabajados Mensual</field>
+            <field name="category_id" search="[('code','=','ASIG')]"/>
+            <field name="code">PFTMLIQ</field>
+            <field name="struct_id" ref="structure_payroll_liquidaciones" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">125</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">
+#debe existir tipo de entrada FLAP02
+result = worked_days.FLAP02            
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = worked_days.FLAP02.number_of_hours * 1.5 * result_rules.SPH['total']
+            </field>
+        </record>
+
+        <!-- Regla pago bono nocturno mensual liquidacion -->
+        <record id="bono_nocturno_liquidation_rule" model="hr.salary.rule">
+            <field name="name">Pago por Bono Nocturno Mensual</field>
+            <field name="category_id" search="[('code','=','ASIG')]"/>
+            <field name="code">PBNMLIQ</field>
+            <field name="struct_id" ref="structure_payroll_liquidaciones" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">130</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">
+#debe existir tipo de entrada HEN01
+result = worked_days.HEN01
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = result_rules.PHENTM['total'] * (porcentaje_recargo_nocturno * 1.5)
+            </field>
+        </record>
+
+        <!-- Regla salario devengado liquidacion -->
+        <record id="wage_accrued_liquidaciones_rule" model="hr.salary.rule">
+            <field name="name">Salario devengado</field>
+            <field name="category_id" search="[('code','=','DEV')]"/>
+            <field name="code">DEVLIQ</field>
+            <field name="struct_id" ref="structure_payroll_liquidaciones" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">135</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = categories.BASIC + categories.ASIG
+            </field>
+        </record>
+
+        <!-- Regla Monto por días de disfrutes pendientes -->
+        <record id="not_taken_vacation_days_payment_liquidaciones_rule" model="hr.salary.rule">
+            <field name="name">Monto por días de disfrutes pendientes</field>
+            <field name="category_id" search="[('code','=','VAC')]"/>
+            <field name="code">MDVNDLIQ</field>
+            <field name="struct_id" ref="structure_payroll_liquidaciones" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">137</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = result_rules.DVNDLIQ['total'] * employee.holidays_accrued / 30
+            </field>
+        </record>
+
+        <!-- Regla Días de Disfrute por Bono Vacacional no Cancelados -->
+        <record id="vacation_bonus_not_paid_days_liquidaciones_rule" model="hr.salary.rule">
+            <field name="name">Cantidad de días de bono vacacional pendientes por pagar</field>
+            <field name="category_id" search="[('code','=','OCV')]"/>
+            <field name="code">DBVPPLIQ</field>
+            <field name="struct_id" ref="structure_payroll_liquidaciones" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="is_a_days_rule" eval="True" />
+            <field name="sequence">140</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+previous_years_days = int((int(payslip.env["ir.config_parameter"].sudo().get_param("dia_adicional_posterior"))) + int(payslip.env["ir.config_parameter"].sudo().get_param("dia_vacaciones_anno"))) * employee._get_seniority_in_years()
+paid_days = employee._get_vacation_bonus_days_of_previous_moves()
+result = previous_years_days - paid_days if previous_years_days > paid_days else 0
+            </field>
+        </record>
+
+        <!-- Regla Pago por Días de Disfrute por Bono Vacacional no Cancelados -->
+        <record id="vacation_bonus_not_paid_days_payment_liquidaciones_rule" model="hr.salary.rule">
+            <field name="name">Bono de vacaciones no pagadas</field>
+            <field name="category_id" search="[('code','=','VAC')]"/>
+            <field name="code">BVNPLIQ</field>
+            <field name="struct_id" ref="structure_payroll_liquidaciones" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">150</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = result_rules.DBVPPLIQ['total'] * employee.holidays_accrued / 30
+            </field>
+        </record>
+
+        <!-- Regla Días de Disfrute Vacacional Liquidaciones-->
+        <record id="vacation_days_liquidaciones_rule" model="hr.salary.rule">
+            <field name="name">Días de Vacaciones Anual</field>
+            <field name="category_id" search="[('code','=','OCV')]"/>
+            <field name="code">DDVMLIQ</field>
+            <field name="struct_id" ref="structure_payroll_liquidaciones" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="is_a_days_rule" eval="True" />
+            <field name="sequence">6</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = employee.get_not_taken_vacation_days()
+            </field>
+        </record>
+
+        <!-- regla pago por disfrute vacacional liquidaciones -->
+        <record id="vacation_pay_liquidaciones_rule" model="hr.salary.rule">
+            <field name="name">Pago por Vacaciones Anual</field>
+            <field name="category_id" search="[('code','=','VAC')]"/>
+            <field name="code">PDDVMLIQ</field>
+            <field name="struct_id" ref="structure_payroll_liquidaciones" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">8</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = result_rules.DDVMLIQ['total'] * (employee.holidays_accrued / 30)
+            </field>
+        </record>
+
+        <!-- Regla Días de Disfrute por Bono Vacacional Liquidaciones -->
+        <record id="vacation_bonus_days_liquidaciones_rule" model="hr.salary.rule">
+            <field name="name">Días por Bono Vacacional</field>
+            <field name="category_id" search="[('code','=','OCV')]"/>
+            <field name="code">DDBVMLIQ</field>
+            <field name="struct_id" ref="structure_payroll_liquidaciones" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="is_a_days_rule" eval="True" />
+            <field name="sequence">7</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = employee.get_not_paid_vacation_bonus_days()
+            </field>
+        </record>
+
+        <!-- regla pago por disfrute de bono vacacional liquidaciones -->
+        <record id="vacation_bonus_pay_liquidaciones_rule" model="hr.salary.rule">
+            <field name="name">Pago por Bono Vacacional Anual</field>
+            <field name="category_id" search="[('code','=','VAC')]"/>
+            <field name="code">PDDBVMLIQ</field>
+            <field name="struct_id" ref="structure_payroll_liquidaciones" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">9</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = result_rules.DDBVMLIQ['total'] * (employee.holidays_accrued / 30)
+            </field>
+        </record>
+
+        <!-- Regla días de utilidades Liquidaciones -->
+        <record id="profit_sharing_days" model="hr.salary.rule">
+            <field name="name">Días de Utilidades</field>
+            <field name="category_id" search="[('code','=','ALW')]"/>
+            <field name="code">DULIQ</field>
+            <field name="struct_id" ref="structure_payroll_liquidaciones" />
+            <field name="appears_on_payslip" eval="True" />
+	    <field name="is_a_days_rule" eval="True"/>
+            <field name="sequence">174</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = employee.get_profit_sharing_days(True)
+            </field>
+        </record>
+
+        <!-- Regla pago de utilidades Liquidaciones -->
+        <record id="profit_sharing_payment_liquidaciones_rule" model="hr.salary.rule">
+            <field name="name">Pago de Utilidades</field>
+            <field name="category_id" search="[('code','=','ALW')]"/>
+            <field name="code">UTILLIQ</field>
+            <field name="struct_id" ref="structure_payroll_liquidaciones" />
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">175</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+salario_para_utilidades = employee.get_profit_sharing_wage()
+dias_utilidades = employee.get_profit_sharing_days(True)
+result = salario_para_utilidades * dias_utilidades
+            </field>
+        </record>
+
+        <!-- Regla pago de prestaciones Liquidaciones -->
+        <record id="benefits_payment_liquidaciones_rule" model="hr.salary.rule">
+            <field name="name">Prestaciones de Antigüedad ART 142-A LOTTT</field>
+            <field name="category_id" search="[('code','=','OC')]"/>
+            <field name="code">PRESTALIQ</field>
+            <field name="struct_id" ref="structure_payroll_liquidaciones"/>
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">1</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+benefit_interest_type = payslip.env['ir.config_parameter'].sudo().get_param('tipo_calculo_intereses_prestaciones')
+available_benefits = payslip.env["hr.payroll.benefits.accumulated"].get_available_benefits(employee.id)
+result = available_benefits
+            </field>
+    	</record>
+
+        <record id="benefits_payment_liquidaciones_per_days_rule" model="hr.salary.rule">
+            <field name="name">Pago de Prestaciones por dias</field>
+            <field name="category_id" search="[('code','=','OC')]"/>
+            <field name="code">PRESTALIQPD</field>
+            <field name="struct_id" ref="structure_payroll_liquidaciones"/>
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">180</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = employee._get_benefits_per_years_amount()
+            </field>
+        </record>
+
+        <record id="benefits_payment_seniority_liquidaciones_art_142_b_rule" model="hr.salary.rule">
+            <field name="name">Prestaciones Antigüedad ART. 142-B LOTTT</field>
+            <field name="category_id" search="[('code','=','OC')]"/>
+            <field name="code">PA142B</field>
+            <field name="struct_id" ref="structure_payroll_liquidaciones"/>
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">2</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = employee.get_benefits_days_total() * contract.get_integral_daily_wage()
+            </field>
+        </record>
+
+        <record id="benefits_payment_seniority_liquidaciones_art_142_c_rule" model="hr.salary.rule">
+            <field name="name">Prestaciones de Antigüedad ART. 142-C</field>
+            <field name="category_id" search="[('code','=','OC')]"/>
+            <field name="code">PA142C</field>
+            <field name="struct_id" ref="structure_payroll_liquidaciones"/>
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">4</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+integral_wage = float(contract.get_integral_daily_wage())
+seniority_years = employee._get_seniority_in_years()
+result = 30 * seniority_years * integral_wage
+            </field>
+        </record>
+
+        <record id="benefits_payment_ip_art_143_rule" model="hr.salary.rule">
+            <field name="name">Intereses sobre Prestaciones ART 143 LOTTT</field>
+            <field name="category_id" search="[('code','=','LIQ')]"/>
+            <field name="code">IP</field>
+            <field name="struct_id" ref="structure_payroll_liquidaciones"/>
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">5</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">
+result = tipo_calculo_intereses_prestaciones_config == "interno"
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+benefit_accumulated = payslip.env["hr.payroll.benefits.accumulated"].search([("employee_id", "=", employee.id)])
+result = benefit_accumulated.accumulated_interest
+            </field>
+        </record>
+
+        <record id="benefits_payment_seniority_liquidaciones_art_142_d_rule" model="hr.salary.rule">
+            <field name="name">Prestaciones de Antigüedad ART. 142-D LOTT</field>
+            <field name="category_id" search="[('code','=','LIQ')]"/>
+            <field name="code">PA142D</field>
+            <field name="struct_id" ref="structure_payroll_liquidaciones"/>
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">6</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = max(result_rules.PRESTALIQ['total'], result_rules.PA142B['total'], result_rules.PA142C['total'])
+            </field>
+        </record>
+
+        <record id="vacation_fraction_liquidation_rule" model="hr.salary.rule">
+            <field name="name">Días de Vacaciones Fraccionadas</field>
+            <field name="category_id" search="[('code','=','OCV')]"/>
+            <field name="code">DVF</field>
+            <field name="struct_id" ref="structure_payroll_liquidaciones"/>
+            <field name="appears_on_payslip" eval="True" />
+            <field name="is_a_days_rule" eval="True" />
+            <field name="sequence">10</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = employee.get_fractional_vacation_days()
+            </field>
+        </record>
+
+        <record id="vacation_bonus_fraction_liquidation_rule" model="hr.salary.rule">
+            <field name="name">Días por Bono Vacacional Fraccionado</field>
+            <field name="category_id" search="[('code','=','OCV')]"/>
+            <field name="code">DBVF</field>
+            <field name="struct_id" ref="structure_payroll_liquidaciones"/>
+            <field name="appears_on_payslip" eval="True" />
+            <field name="is_a_days_rule" eval="True" />
+            <field name="sequence">11</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = employee.get_fractional_vacation_days(True)
+            </field>
+        </record>
+
+        <record id="vacation_fraction_payment_liquidation_rule" model="hr.salary.rule">
+            <field name="name">Pago de Vacaciones Fraccionadas</field>
+            <field name="category_id" search="[('code','=','VAC')]"/>
+            <field name="code">PDVF</field>
+            <field name="struct_id" ref="structure_payroll_liquidaciones"/>
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">12</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = result_rules.DVF['total'] * (employee.holidays_accrued / 30)
+            </field>
+        </record>
+
+        <record id="vacation_bonus_fraction_payment_liquidation_rule" model="hr.salary.rule">
+            <field name="name">Pago de Bono Vacacional Fraccionado</field>
+            <field name="category_id" search="[('code','=','VAC')]"/>
+            <field name="code">PBVA</field>
+            <field name="struct_id" ref="structure_payroll_liquidaciones"/>
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">13</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = result_rules.DBVF['total'] * (employee.holidays_accrued/30)
+            </field>
+        </record>
+
+        <record id="benefits_max_payment_liquidaciones" model="hr.salary.rule">
+            <field name="name">Maximo de pago de prestaciones</field>
+            <field name="category_id" search="[('code','=','OC')]"/>
+            <field name="code">MAXPRESTALIQ</field>
+            <field name="struct_id" ref="structure_payroll_liquidaciones"/>
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">181</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = max(result_rules.PRESTALIQ['total'], result_rules.PRESTALIQPD['total'])
+            </field>
+
+        </record>
+
+        <!-- Regla neto Liquidaciones -->
+        <record id="benefits_net_liquidaciones_rule" model="hr.salary.rule">
+            <field name="name">Neto</field>
+            <field name="category_id" search="[('code','=','NET')]"/>
+            <field name="code">NET</field>
+            <field name="struct_id" ref="structure_payroll_liquidaciones"/>
+            <field name="appears_on_payslip" eval="True" />
+            <field name="sequence">185</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = categories.VAC + categories.DEV + categories.ALW + result_rules.MAXPRESTALIQ['total']
+            </field>
+    	</record>
+
+    </data>
+</odoo>

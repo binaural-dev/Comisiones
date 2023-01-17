@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="hr_payslip_payment_methods_view_form_inh" model="ir.ui.view">
+      <field name="name">Metodos de pago</field>
+      <field name="model">hr.payslip.payment.methods</field>
+      <field name="inherit_id" ref="binaural_nomina.hr_payslip_payment_methods_view_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//sheet" position="before">
+          <header>
+            <button name="download_bnc_txt" string="Generar TXT" type="object" class="oe_highlight"/>
+          </header>
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>

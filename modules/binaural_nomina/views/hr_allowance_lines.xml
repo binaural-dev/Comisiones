@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+	<record id="hr_payslip_allowance_line_tree" model="ir.ui.view">
+	    <field name="name">hr.payslip.line.tree</field>
+	    <field name="model">hr.payslip.line</field>
+	    <field name="arch" type="xml">
+		<tree string="Informe de complemento salarial" editable="bottom" create="false" edit="false" delete="false">
+		    <field name="employee_id"/>
+		    <field name="employee_vat"/>
+		    <field name="category_id"/>
+		    <field name="date_from"/>
+		    <field name="date_to"/>
+		    <field name="total"/>
+		</tree>
+	    </field>
+    	</record>
+
+	<record id="hr_payslip_allowance_line_search" model="ir.ui.view">
+	    <field name="name">hr.payslip.line.search</field>
+	    <field name="model">hr.payslip.line</field>
+	    <field name="arch" type="xml">
+		<search>
+		    <group expand="1" string="Group By">
+			<filter string="Empleado" name="employe_id" context="{'group_by':'employee_id'}"/>
+                    </group>
+		</search>
+	    </field>
+	</record>
+
+	<record id="hr_payslip_allowance_line_action" model="ir.actions.act_window">
+	    <field name="name">Complementos Salariales</field>
+	    <field name="res_model">hr.payslip.line</field>
+	    <field name="domain">[('category_code','=', 'COMPS'), ('slip_state', '=', 'done')]</field>
+            <field name="context">{'search_default_employee_id': 1}</field>
+	    <field name="view_mode">tree,search</field>
+	    <field name="view_id" ref="hr_payslip_allowance_line_tree"/>
+	    <field name="search_view_id" ref="hr_payslip_allowance_line_search"/>
+	</record>
+    </data>
+</odoo>

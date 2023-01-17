@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+	    <record id="wizard_report_municipality_retention_view" model="ir.ui.view">
+            <field name="name">wizard.municipality.retentions.view</field>
+            <field name="model">wizard.municipality.retentions</field>
+            <field name="arch" type="xml">
+                <form string="Descargar Comprobante de Retencion">
+                    <sheet>
+                        <field name="retention_id" force_save="1" invisible="1"/>
+                        <div style="display: flex; justify-content: center">
+                            <button name="imprimir_excel" type="object" string="Descargar Excel de impuesto fiscal" class="btn btn-primary"/>
+                        </div>
+                    </sheet>
+                    <footer>
+                        
+                    </footer>
+                </form>
+            </field>
+        </record>
+       
+    </data>
+</odoo>

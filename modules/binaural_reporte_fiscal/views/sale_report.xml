@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="sale_report_dashboard_view_inherit_binaural_reporte_fiscal" model="ir.ui.view">
+            <field name="name">sale.report.dashboard.view.inherit.binaural.reporte.fiscal</field>
+            <field name="model">sale.report</field>
+            <field name="inherit_id" ref="sale_enterprise.sale_report_view_dashboard"/>
+            <field name="arch" type="xml">
+		<aggregate name="price_subtotal_all_orders" position="after">
+		    <aggregate name="foreign_amount_total_all" string="Ventas totales moneda alterna" field="foreign_amount_total"/>
+		    <aggregate name="foreign_amount_untaxed_all" string="Total libre de impuestos moneda alterna" field="foreign_amount_untaxed"/>
+		    <aggregate name="foreign_amount_tax_all" string="Total impuestos moneda alterna" field="foreign_amount_tax"/>
+		</aggregate>
+            </field>
+        </record>
+	
+        <record id="sale_report_graph_view_inherit_binaural_reporte_fiscal" model="ir.ui.view">
+            <field name="name">sale.report.graph.view.inherit.binaural.reporte.fiscal</field>
+            <field name="model">sale.report</field>
+            <field name="inherit_id" ref="sale.view_order_product_graph"/>
+            <field name="arch" type="xml">
+		<graph position="inside">
+		    <field name="foreign_amount_untaxed" type="measure"/>
+		    <field name="foreign_amount_tax" type="measure"/>
+		    <field name="foreign_amount_total" type="measure"/>
+		</graph>
+            </field>
+        </record>
+
+        <record id="sale_report_pivot_view_inherit_binaural_reporte_fiscal" model="ir.ui.view">
+            <field name="name">sale.report.pivot.view.inherit.binaural.reporte.fiscal</field>
+            <field name="model">sale.report</field>
+            <field name="inherit_id" ref="sale_enterprise.sale_report_view_pivot"/>
+            <field name="arch" type="xml">
+		<pivot position="inside">
+		    <field name="foreign_amount_untaxed"/>
+		    <field name="foreign_amount_tax"/>
+		    <field name="foreign_amount_total"/>
+		</pivot>
+            </field>
+        </record>
+    </data>
+</odoo>

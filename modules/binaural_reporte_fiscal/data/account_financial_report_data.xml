@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+	<!-- Balance de comprobación Binaural -->
+        <record id="action_account_report_coa_binaural" model="ir.actions.client">
+            <field name="name">Balance de comprobación Binaural</field>
+            <field name="tag">account_report</field>
+            <field name="context" eval="{'model': 'account.coa.binaural.report'}" />
+        </record>
+        <record id="action_account_report_coa_binaural_usd" model="ir.actions.client">
+            <field name="name">Balance de comprobación Binaural $</field>
+            <field name="tag">account_report</field>
+            <field name="context" eval="{'model': 'account.coa.binaural.report', 'USD': True}" />
+        </record>
+
+	<menuitem id="menu_action_account_report_coa_binaural"
+		  name="Balance de comprobación Binaural"
+		  action="action_account_report_coa_binaural"
+		  parent="account_reports.account_reports_audit_reports_menu"/>
+	<menuitem id="menu_action_account_report_coa_binaural_usd"
+		  name="Balance de comprobación Binaural $"
+		  action="action_account_report_coa_binaural_usd"
+		  parent="account_reports.account_reports_audit_reports_menu"/>
+
+	<!-- Accciones de Reportes en USD -->
+        <record id="action_account_report_ar_usd" model="ir.actions.client">
+            <field name="name">Vencida por Cobrar $</field>
+            <field name="tag">account_report</field>
+            <field name="context" eval="{'model': 'account.aged.receivable', 'USD': True}" />
+        </record>
+        <record id="action_account_report_ap_usd" model="ir.actions.client">
+            <field name="name">Vencida por Pagar $</field>
+            <field name="tag">account_report</field>
+            <field name="context" eval="{'model': 'account.aged.payable', 'USD': True}" />
+        </record>
+        <record id="action_account_report_general_ledger_usd" model="ir.actions.client">
+            <field name="name">Libro Mayor $</field>
+            <field name="tag">account_report</field>
+            <field name="context" eval="{'model': 'account.general.ledger', 'USD': True}" />
+        </record>
+        <record id="action_account_report_coa_usd" model="ir.actions.client">
+            <field name="name">Balance de comprobación $</field>
+            <field name="tag">account_report</field>
+            <field name="context" eval="{'model': 'account.coa.report', 'USD': True}" />
+        </record>
+        <record id="action_account_report_partner_ledger_usd" model="ir.actions.client">
+            <field name="name">Libro mayor de empresa $</field>
+            <field name="tag">account_report</field>
+            <field name="context" eval="{'model': 'account.partner.ledger', 'USD': True}" />
+        </record>
+
+	<!-- Menuitems de Reportes en USD -->
+	<menuitem id="menu_action_account_report_aged_receivable_usd"
+		  name="Vencida por Cobrar $"
+		  action="action_account_report_ar_usd"
+		  parent="account_reports.account_reports_partners_reports_menu"/>
+	<menuitem id="menu_action_account_report_aged_payable_usd"
+		  name="Vencida por Pagar $"
+		  action="action_account_report_ap_usd"
+		  parent="account_reports.account_reports_partners_reports_menu"/>
+	<menuitem id="menu_action_account_report_general_ledger_usd"
+		  name="Libro Mayor $"
+		  action="action_account_report_general_ledger_usd"
+		  parent="account_reports.account_reports_audit_reports_menu"/>
+	<menuitem id="menu_action_account_report_coa_usd"
+		  name="Balance de comprobación $"
+		  action="action_account_report_coa_usd"
+		  parent="account_reports.account_reports_audit_reports_menu"/>
+	<menuitem id="menu_action_account_report_partner_ledger_usd"
+		  name="Libro mayor de empresa $"
+		  action="action_account_report_partner_ledger_usd"
+		  parent="account_reports.account_reports_partners_reports_menu"/>
+    </data>
+</odoo>

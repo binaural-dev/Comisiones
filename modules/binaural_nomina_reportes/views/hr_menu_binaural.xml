@@ -1,0 +1,22 @@
+<odoo>
+    <menuitem
+        id="faov_txt_report"
+        name="FAOV TXT Report"
+        action="action_faov_txt_wizard"
+        parent="hr_payroll.menu_hr_payroll_report"
+    />
+
+    <menuitem
+        id="ivss_salary_change_txt_report"
+        name="IVSS Salary Change TXT Report"
+        action="action_ivss_salary_change_txt_wizard"
+        parent="hr_payroll.menu_hr_payroll_report"
+    />
+
+    <menuitem
+        id="ivss_employee_ingress_txt_report"
+        name="IVSS Employee ingresses TXT Report"
+        action="action_ivss_employee_ingress_txt_wizard"
+        parent="hr_payroll.menu_hr_payroll_report"
+    />
+</odoo>

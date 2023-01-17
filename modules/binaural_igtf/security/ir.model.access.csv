@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_wizard_pay_igtf,wizard_pay_igtf.wizard_pay_igtf,model_wizard_pay_igtf,,1,1,1,

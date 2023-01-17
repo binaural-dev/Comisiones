@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <record id="res_config_inherit_view_igtf" model="ir.ui.view">
+            <field name="name">res.config.inherit.view.igtf</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+            <field name="priority" eval="100" />
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('settings')]" position="inside">
+                    <div class="app_settings_block" data-string="IGTF" string="IGTF" data-key="binaural_igtf">
+                        <div>
+                            <h2>Configuracion de IGTF</h2>
+                                <div class="row mtl6 o_settings_container" name="igtf_settings_container">
+                                    <div class="o_setting_right_pane">
+                                        <group colspan="2" col="4">
+                                            <field name="is_igtf_on_foreign_exchange"/>
+                                        </group>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="col-6 col-lg-6 o_setting_box" attrs="{'invisible': [('is_igtf_on_foreign_exchange', '=', False)]}">
+                            <div class="o_setting_left_pane">
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">% IGTF en divisas.</span>
+                                <div class="mt16 row" style="margin-left:4px">
+                                    <field name="igtf_percentage" class="oe_inline"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-lg-6 o_setting_box" attrs="{'invisible': [('is_igtf_on_foreign_exchange', '=', False)]}">
+                                <div class="o_setting_left_pane">
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <span class="o_form_label">IGTF percibido por pagar</span>
+                                    <div class="mt16 row" style="margin-left:4px">
+                                        <field name="igtf_received_payable_id" class="oe_inline"/>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="col-6 col-lg-6 o_setting_box" attrs="{'invisible': [('is_igtf_on_foreign_exchange', '=', False)]}">
+                            <div class="o_setting_left_pane">
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Diarios de IGTF</span>
+                                <div class="mt16 row" style="margin-left:4px">
+                                    <field name="journal_id_igtf" class="oe_inline"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-12 o_setting_box" attrs="{'invisible': [('is_igtf_on_foreign_exchange', '=', False)]}">
+                            <div class="o_setting_left_pane">
+                                <field name="is_igtf_expense_account" class="oe_inline"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Al Aplicar el cobro, Cubre la empresa el IGTF</span>
+                            </div>
+                        </div>
+                        <div class="col-6 col-lg-6 o_setting_box" attrs="{'invisible': ['|',('is_igtf_on_foreign_exchange','=',False), ('is_igtf_expense_account','=',False)]}">
+                            <div class="o_setting_left_pane">
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Cuenta de gasto IGTF</span>
+                                <div class="mt16 row" style="margin-left:4px">
+                                    <field name="igtf_expense_account_id" class="oe_inline"/>
+                                </div>
+                                <div class="text-muted">
+                                    Esta cuenta será usada en caso de que la empresa cubra el gasto IGTF
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-12 o_setting_box" attrs="{'invisible': [('is_igtf_on_foreign_exchange', '=', False)]}">
+                            <div class="o_setting_right_pane">
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Proveedores</span>
+                                <div class="mt16 row" style="margin-left:4px">
+                                    <field name="igtf_provider" class="oe_inline"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-lg-6 o_setting_box" attrs="{'invisible': [('igtf_provider', '=', False)]}">
+                            <div class="o_setting_left_pane">
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Cuenta para proveedores</span>
+                                <div class="mt16 row" style="margin-left:4px">
+                                    <field name="igtf_provider_account_id" class="oe_inline"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+    
+
+</odoo>

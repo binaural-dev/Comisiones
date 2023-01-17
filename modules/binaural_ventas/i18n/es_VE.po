@@ -1,0 +1,26 @@
+#. module: binaural_ventas
+#: model_terms:ir.ui.view,arch_db:binaural_ventas.res_config_settings_view_form_binaural_ventas
+msgid ""
+"<span class=\"o_form_label\">\n"
+"                                Do not allow cost equal or greater than price on sale orders.\n"
+"                            </span>"
+msgstr ""
+"<span class=\"o_form_label\">\n"
+"                                No permitir costo Mayor o igual al precio de venta en pedidos.\n"
+"                            </span>"
+
+#. module: binaural_ventas
+#: model_terms:ir.ui.view,arch_db:binaural_ventas.res_config_settings_view_form_binaural_ventas
+msgid ""
+"<span class=\"o_form_label\">\n"
+"                                Do not allow selling a product if there is no stock.\n"
+"                            </span>"
+msgstr ""
+"<span class=\"o_form_label\">\n"
+"                                No permitir vender un producto si no hay disponibilidad.\n"
+"                            </span>"
+
+#. module: binaural_ventas
+#: model:ir.model.fields,field_description:binaural_ventas.field_sale_order_line__brand_id_sale
+msgid "Brand to product"
+msgstr "Marca"

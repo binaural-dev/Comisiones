@@ -1,0 +1,166 @@
+<odoo>
+    <data>
+        <record id="pre_payslip_run_report" model="ir.actions.report">
+            <field name="name">Reporte Pre-nómina</field>
+            <field name="model">hr.payslip.run</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">binaural_nomina_reportes.report_pre_payslip_run</field>
+            <field name="report_file">binaural_nomina_reportes.report_pre_payslip_run</field>
+            <field name="print_report_name">
+                'Reporte Pre-nómina %s - %s' % (
+                    object.date_start.strftime('%m/%d/%Y'), object.date_end.strftime('%m/%d/%Y')
+                )
+            </field>
+            <field name="binding_model_id" ref="hr_payroll.model_hr_payslip_run"/>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="paperformat_pre_payroll_run"/>
+        </record>
+    </data>
+
+    <template id="report_pre_payslip_run">
+        <t t-call="web.html_container">
+            <t t-call="web.basic_layout">
+                <div class="page">
+                    <t t-set="company" t-value="env.company"/>
+                    <div class="row">
+                        <div class="col-3 mb4">
+                            <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 45px;" alt="Logo"/>
+                        </div>
+                        <div class="col-9 text-right" style="margin-top:22px;" t-field="company.report_header" name="moto"/>
+                    </div>
+                    <div t-if="company.logo or company.report_header" class="row zero_min_height">
+                        <div class="col-12">
+                            <div style="border-bottom: 1px solid black;"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6" name="company_address">
+                            <div t-field="company.partner_id"
+                                t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'
+                            />
+                        </div>
+                    </div>
+
+                    <h2>
+                        Reporte Pre-nómina <span t-esc="date_start.strftime('%m/%d/%Y')"/> -
+                        <span t-esc="date_end.strftime('%m/%d/%Y')"/>
+                    </h2>
+
+                    <t t-foreach="docs" t-as="o">
+                        <t t-set="o" t-value="o.with_context(lang=user_lang or env.lang)"/>
+                        <table name="employee-infos" class="table table-sm table-bordered">
+                            <tr>
+                                <td class="w-25"><strong>Empleado</strong></td>
+                                <td class="w-25"><strong>Cédula de Identidad</strong></td>
+                                <td class="w-25"><strong>Departamento</strong></td>
+                                <td class="w-25"><strong>Cargo</strong></td>
+                            </tr>
+                            <tr>
+                                <td><span t-field="o.employee_id"/></td>
+                                <td>
+                                    <span t-field="o.employee_id.prefix_vat"/>
+                                    <span t-field="o.employee_id.vat"/>
+                                </td>
+                                <td><span t-field="o.employee_id.department_id"/></td>
+                                <td><span t-field="o.employee_id.job_title"/></td>
+                            </tr>
+                            <tr>
+                                <td class="w-25"><strong>Fecha de Ingreso</strong></td>
+                                <td class="w-25"><strong>Período de Pago</strong></td>
+                                <td><strong>Calculado en </strong></td>
+                            </tr>
+                            <tr>
+                                <td><span t-field="o.employee_id.entry_date"/></td>
+                                <td><span t-field="o.date_from"/> - <span t-field="o.date_to"/></td>
+                                <td><span t-field="o.compute_date"/></td>
+                            </tr>
+                        </table>
+
+                        <table class="table table-sm">
+                            <tr>
+                                <td class="w-25"><strong>Salario Básico</strong></td>
+                                <td style="color:#875A7B" class="w-25">
+                                    <span t-esc="o.line_ids.filtered(lambda line: line.code == 'BASIC').total"
+                                          t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
+                                </td>
+                                <td class="w-25"></td>
+                                <td class="w-25"></td>
+                            </tr>
+                        </table>
+                        <div id="total">
+                            <table class="table table-sm">
+                                <thead class="o_black_border">
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Número de horas</th>
+                                        <th>Número de días</th>
+                                        <th>Asignaciones</th>
+                                        <th>Deducciones</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <span t-foreach="o.worked_days_line_ids" t-as="worked_days">
+                                        <t t-if="worked_days.code != 'OUT'">
+                                            <tr style="color:none">
+                                                <td><span t-field="worked_days.name"/></td>
+                                                <td><span t-field="worked_days.number_of_hours"/></td>
+                                                <td><span t-field="worked_days.number_of_days"/></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        </t>
+                                    </span>
+                                    <span t-foreach="o.line_ids.filtered(lambda line: line.appears_on_payslip)" t-as="line">
+                                        <t t-set="line_style"/>
+                                        <t t-set="line_class"/>
+                                        <t t-if="line.code == 'NET'">
+                                            <t t-set="line_style" t-value="'color:#875A7B;'"/>
+                                            <t t-set="line_class" t-value="'o_total o_border_bottom'"/>
+                                        </t>
+                                        <t t-if="(line.code == 'BASIC') or (line.code == 'GROSS')">
+                                            <t t-set="line_style" t-value="'color:#00A09D;'"/>
+                                            <t t-set="line_class" t-value="'o_subtotal o_border_bottom'"/>
+                                        </t>
+                                        <tr t-att-class="line_class" t-att-style="line_style" t-if="bool(line.total)">
+                                            <td><span t-field="line.name"/></td>
+                                            <td>
+                                                <t t-if="line.is_a_hours_line">
+                                                    <span t-esc="line.amount"/>
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <t t-if="line.is_a_days_line">
+                                                    <span t-esc="line.amount"/>
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <t t-if="not line.is_a_days_line and not line.is_a_hours_line">
+                                                    <span
+                                                        t-if="line.total &gt; 0"
+                                                        t-esc="line.total"
+                                                        t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'
+                                                    />
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <t t-if="not line.is_a_days_line and not line.is_a_hours_line">
+                                                    <span
+                                                        t-if="line.total &lt; 0"
+                                                        t-esc="line.total"
+                                                        t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'
+                                                    />
+                                                </t>
+                                            </td>
+                                        </tr>
+                                    </span>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+                </div>
+            </t>
+            <p class="text-center">Hecho por Binaural</p>
+        </t>
+    </template>
+</odoo>

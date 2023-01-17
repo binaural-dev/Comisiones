@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <record id="wizard_pay_igtf_form" model="ir.ui.view">
+            <field name="name">Pagos de IGTF</field>
+            <field name="model">wizard.pay.igtf</field>
+            <field name="arch" type="xml">
+                <form string="igtf">
+                <group name="name" string="Pago de IGTF">
+                    <field name="amount"/>
+                    <field name="date"/>
+                    <field name="journal_id"/>
+                    <field name="currency_id"/>
+                    <field name="foreign_currency_rate"/>
+                    <field name="memo"/>
+                    
+                </group>
+                <footer>
+                    <button name="action_pay_igtf" string="Pagar" type="object" class="btn-primary"/>
+                </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+
+</odoo>

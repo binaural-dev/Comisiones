@@ -1,0 +1,11 @@
+#. module: binaural_compras
+#: model:ir.model.fields,field_description:binaural_compras.field_purchase_order_line__brand_id_purchase
+msgid "Brand to product"
+msgstr "Marca"
+
+#. module: binaural_compras
+#: model:ir.model.fields,field_description:binaural_compras.field_purchase_order_line__brand_id_purchase
+msgid "Brand to product"
+msgstr "Marca"
+
+

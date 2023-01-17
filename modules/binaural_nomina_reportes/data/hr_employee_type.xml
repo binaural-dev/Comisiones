@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- http://autoliquidacionv2.ivss.gob.ve:28080/TiunaWeb/instructivos/Instructivo_Carga_Masiva_Ingreso.pdf -->
+
+        <record id="hr_employee_type_1" model="hr.employee.type">
+            <field name="name">Rural menor 20</field>
+            <field name="code">0</field>
+        </record>
+
+        <record id="hr_employee_type_2" model="hr.employee.type">
+            <field name="name">Rural mayor 20</field>
+            <field name="code">1</field>
+        </record>
+
+        <record id="hr_employee_type_3" model="hr.employee.type">
+            <field name="name">Urbano mayor 20</field>
+            <field name="code">2</field>
+        </record>
+
+        <record id="hr_employee_type_4" model="hr.employee.type">
+            <field name="name">Adolescente y Aprendiz</field>
+            <field name="code">3</field>
+        </record>
+
+        <record id="hr_employee_type_5" model="hr.employee.type">
+            <field name="name">Urbano menor de 20</field>
+            <field name="code">4</field>
+        </record>
+
+        <record id="hr_employee_type_6" model="hr.employee.type">
+            <field name="name">Conserje</field>
+            <field name="code">5</field>
+        </record>
+
+        <record id="hr_employee_type_7" model="hr.employee.type">
+            <field name="name">Medio Tiempo</field>
+            <field name="code">6</field>
+        </record>
+
+        <record id="hr_employee_type_8" model="hr.employee.type">
+            <field name="name">A destajo</field>
+            <field name="code">7</field>
+        </record>
+
+        <record id="hr_employee_type_9" model="hr.employee.type">
+            <field name="name">Pasante</field>
+            <field name="code">8</field>
+        </record>
+
+        <record id="hr_employee_type_10" model="hr.employee.type">
+            <field name="name">Domésticos</field>
+            <field name="code">9</field>
+        </record>
+
+    </data>
+</odoo>

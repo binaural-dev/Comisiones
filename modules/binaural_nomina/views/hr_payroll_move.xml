@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+	<record id="hr_payroll_move_view_search" model="ir.ui.view">
+	    <field name="name">hr.payroll.move.view.search</field>
+	    <field name="model">hr.payroll.move</field>
+	    <field name="arch" type="xml">
+		<search string="Pagos de nómina">
+		    <field name="employee_id" string="Empleado"
+			   filter_domain="['|',('employee_name', 'ilike', self),
+			    		       ('employee_vat', 'ilike', self)]"/>
+		    <field name="department_id"/>
+		    <field name="move_type"/>
+		    <field name="date"/>
+		    <separator/>
+		    <group>
+			<filter name="group_employee" string="Empleado"
+				domain="[]" context="{'group_by': 'employee_id'}"/>
+			<filter name="group_department_id" string="Departamento"
+				domain="[]" context="{'group_by': 'department_id'}"/>
+			<filter name="group_move_type" string="Tipo"
+				domain="[]" context="{'group_by': 'move_type'}"/>
+			<filter name="group_date" string="Fecha"
+				domain="[]" context="{'group_by': 'date'}"/>
+		    </group>
+		</search>
+	    </field>
+	</record>
+
+	<record id="hr_payroll_move_salary_view_tree" model="ir.ui.view">
+	    <field name="name">hr.payroll.move.salary.view.tree</field>
+	    <field name="model">hr.payroll.move</field>
+	    <field name="arch" type="xml">
+		<tree string="Pagos de salario" editable="bottom">
+		    <field name="date" optional="show"/>
+		    <field name="employee_id" optional="show"/>
+		    <field name="employee_vat" optional="show"/>
+		    <field name="employee_private_mobile_phone" optional="hide"/>
+		    <field name="department_id" optional="show"/>
+		    <field name="total_basic" optional="show"/>
+		    <field name="total_accrued" optional="show"/>
+		    <field name="total_deduction" optional="show"/>
+		    <field name="total_net" optional="show"/>
+		</tree>
+	    </field>
+	</record>
+
+	<record id="hr_payroll_move_vacation_view_tree" model="ir.ui.view">
+	    <field name="name">hr.payroll.move.vacation.view.tree</field>
+	    <field name="model">hr.payroll.move</field>
+	    <field name="arch" type="xml">
+		<tree string="Pagos de vacaciones" editable="bottom">
+		    <field name="date" optional="show"/>
+		    <field name="date_from_vacation" optional="hide"/>
+		    <field name="date_to_vacation" optional="hide"/>
+		    <field name="vacational_period" optional="show"/>
+		    <field name="employee_id" optional="show"/>
+		    <field name="employee_vat" optional="show"/>
+		    <field name="employee_private_mobile_phone" optional="hide"/>
+		    <field name="department_id" optional="show"/>
+
+		    <field name="total_basic" optional="show"/>
+		    <field name="vacation_days" optional="show"/>
+		    <field name="vacation_bonus_days" optional="show"/>
+		    <field name="consumed_vacation_days" optional="show"/>
+		    <field name="total_vacation" optional="show"/>
+		    <field name="total_vacation_bonus" optional="show"/>
+		    <field name="total_net" optional="show"/>
+		</tree>
+	    </field>
+	</record>
+
+	<record id="hr_payroll_move_benefits_view_tree" model="ir.ui.view">
+	    <field name="name">hr.payroll.move.benefits.view.tree</field>
+	    <field name="model">hr.payroll.move</field>
+	    <field name="arch" type="xml">
+		<tree string="Pagos de prestaciones" editable="bottom">
+		    <field name="date" optional="show"/>
+		    <field name="employee_id" optional="show"/>
+		    <field name="employee_vat" optional="show"/>
+		    <field name="employee_private_mobile_phone" optional="hide"/>
+		    <field name="department_id" optional="show"/>
+
+		    <field name="advance_of_benefits" optional="show"/>
+		    <field name="total_net" optional="show"/>
+		</tree>
+	    </field>
+	</record>
+
+	<record id="hr_payroll_move_profit_sharing_view_tree" model="ir.ui.view">
+	    <field name="name">hr.payroll.move.profit.sharing.view.tree</field>
+	    <field name="model">hr.payroll.move</field>
+	    <field name="arch" type="xml">
+		<tree string="Pagos de utilidades" editable="bottom">
+		    <field name="date" optional="show"/>
+		    <field name="employee_id" optional="show"/>
+		    <field name="employee_vat" optional="show"/>
+		    <field name="employee_private_mobile_phone" optional="hide"/>
+		    <field name="department_id" optional="show"/>
+
+		    <field name="profit_sharing_payment" optional="show"/>
+		    <field name="total_net" optional="show"/>
+		</tree>
+	    </field>
+	</record>
+
+	<record id="hr_payroll_move_liquidation_view_tree" model="ir.ui.view">
+	    <field name="name">hr.payroll.move.liquidation.view.tree</field>
+	    <field name="model">hr.payroll.move</field>
+	    <field name="arch" type="xml">
+		<tree string="Pagos de liquidaciones" editable="bottom">
+		    <field name="date" optional="show"/>
+		    <field name="employee_id" optional="show"/>
+		    <field name="employee_prefix_vat" optional="show"/>
+		    <field name="employee_private_mobile_phone" optional="hide"/>
+		    <field name="department_id" optional="show"/>
+
+		    <field name="total_basic" optional="show"/>
+		    <field name="total_deduction" optional="show"/>
+		    <field name="total_accrued" optional="show"/>
+		    <field name="total_assig" optional="show"/>
+		    <field name="benefits_payment" optional="hide"/>
+		    <field name="vacational_period" optional="hide"/>
+		    <field name="vacation_days" optional="hide"/>
+		    <field name="vacation_bonus_days" optional="show"/>
+		    <field name="consumed_vacation_days" optional="hide"/>
+		    <field name="total_vacation" optional="show"/>
+		    <field name="total_vacation_bonus" optional="show"/>
+		    <field name="profit_sharing_payment" optional="show"/>
+		    <field name="total_net" optional="show"/>
+		</tree>
+	    </field>
+	</record>
+
+	<record id="hr_payroll_move_view_pivot" model="ir.ui.view">
+	    <field name="name">hr.payroll.move.view.pivot</field>
+	    <field name="model">hr.payroll.move</field>
+	    <field name="arch" type="xml">
+		<pivot string="Pagos de nómina">
+		    <field name="employee_id" type="row"/>
+		    <field name="department_id" type="row"/>
+		    <field name="vacational_period" type="row"/>
+
+		    <field name="total_basic" type="measure"/>
+		    <field name="total_deduction" type="measure"/>
+		    <field name="total_accrued" type="measure"/>
+		    <field name="total_net" type="measure"/>
+		    <field name="total_assig" type="measure"/>
+		    <field name="advance_of_benefits" type="measure"/>
+		    <field name="vacation_days" type="measure"/>
+		    <field name="consumed_vacation_days" type="measure"/>
+		    <field name="total_vacation" type="measure"/>
+		</pivot>
+	    </field>
+	</record>
+
+	<record id="hr_payroll_move_salary_action" model="ir.actions.act_window">
+	    <field name="name">Pagos de salario</field>
+	    <field name="res_model">hr.payroll.move</field>
+	    <field name="domain">[("move_type",'=',"salary")]</field>
+	    <field
+	    	name="view_ids"
+	    	eval="[(5, 0, 0),
+		    (0, 0, {'view_mode': 'tree', 'view_id': ref('hr_payroll_move_salary_view_tree')}),
+		    (0, 0, {'view_mode': 'pivot'})]"
+	    />
+	</record>
+
+	<record id="hr_payroll_move_vacation_action" model="ir.actions.act_window">
+	    <field name="name">Pagos de vacaciones</field>
+	    <field name="res_model">hr.payroll.move</field>
+	    <field name="domain">[("move_type",'=',"vacation")]</field>
+	    <field
+	    	name="view_ids"
+	    	eval="[(5, 0, 0),
+		    (0, 0, {'view_mode': 'tree', 'view_id': ref('hr_payroll_move_vacation_view_tree')}),
+		    (0, 0, {'view_mode': 'pivot'})]"
+	    />
+        <field name="context">{"default_move_type": "vacation"}</field>
+	</record>
+
+	<record id="hr_payroll_move_benefits_action" model="ir.actions.act_window">
+	    <field name="name">Pagos de prestaciones</field>
+	    <field name="res_model">hr.payroll.move</field>
+	    <field name="domain">[("move_type",'=',"benefits")]</field>
+	    <field
+	    	name="view_ids"
+	    	eval="[(5, 0, 0),
+		    (0, 0, {'view_mode': 'tree', 'view_id': ref('hr_payroll_move_benefits_view_tree')}),
+		    (0, 0, {'view_mode': 'pivot'})]"
+	    />
+        <field name="context">{"default_move_type": "benefits"}</field>
+	</record>
+
+	<record id="hr_payroll_move_profit_sharing_action" model="ir.actions.act_window">
+	    <field name="name">Pagos de utilidades</field>
+	    <field name="res_model">hr.payroll.move</field>
+	    <field name="domain">[("move_type",'=',"profit_sharing")]</field>
+	    <field
+	    	name="view_ids"
+	    	eval="[(5, 0, 0),
+		    (0, 0, {'view_mode': 'tree', 'view_id': ref('hr_payroll_move_profit_sharing_view_tree')}),
+		    (0, 0, {'view_mode': 'pivot'})]"
+	    />
+        <field name="context">{"default_move_type": "profit_sharing"}</field>
+	</record>
+
+	<record id="hr_payroll_move_liquidation_action" model="ir.actions.act_window">
+	    <field name="name">Pagos de liquidaciones</field>
+	    <field name="res_model">hr.payroll.move</field>
+	    <field name="domain">[("move_type",'=',"liquidation")]</field>
+	    <field
+	    	name="view_ids"
+	    	eval="[(5, 0, 0),
+		    (0, 0, {'view_mode': 'tree', 'view_id': ref('hr_payroll_move_liquidation_view_tree')}),
+		    (0, 0, {'view_mode': 'pivot'})]"
+	    />
+        <field name="context">{"default_move_type": "liquidation"}</field>
+	</record>
+
+    </data>
+</odoo>

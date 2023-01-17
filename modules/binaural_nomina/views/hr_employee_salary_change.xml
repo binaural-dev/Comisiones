@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+	<record id="hr_employee_salary_change_view_search" model="ir.ui.view">
+	    <field name="name">hr.employee.salary.change.view.search</field>
+	    <field name="model">hr.employee.salary.change</field>
+	    <field name="arch" type="xml">
+		<search string="Variaciones Salariales">
+		    <field name="employee_id"/>
+		    <field name="contract_id"/>
+		    <separator/>
+		    <group>
+			<filter name="group_employee" string="Empleado"
+				domain="[]" context="{'group_by': 'employee_id'}"/>
+			<filter name="group_contract" string="Contrato"
+				domain="[]" context="{'group_by': 'contract_id'}"/>
+			<filter name="group_wage_type" string="Tipo de Salario"
+				domain="[]" context="{'group_by': 'wage_type'}"/>
+			<filter name="group_date" string="Fecha"
+				domain="[]" context="{'group_by': 'date'}"/>
+		    </group>
+		</search>
+	    </field>
+	</record>
+
+	<record id="hr_employee_salary_change_view_tree" model="ir.ui.view">
+	    <field name="name">hr.employee.salary.change.view.tree</field>
+	    <field name="model">hr.employee.salary.change</field>
+	    <field name="arch" type="xml">
+		<tree string="Variaciones Salariales">
+		    <field name="date"/>
+		    <field name="employee_id"/>
+		    <field name="contract_id"/>
+		    <field name="wage_type"/>
+		    <field name="wage"/>
+		    <field name="hourly_wage"/>
+		</tree>
+	    </field>
+	</record>
+
+	<record id="hr_employee_salary_change_view_pivot" model="ir.ui.view">
+	    <field name="name">hr.employee.salary.change.view.pivot</field>
+	    <field name="model">hr.employee.salary.change</field>
+	    <field name="arch" type="xml">
+		<pivot string="Variaciones Salariales">
+		    <field name="employee_id" type="row"/>
+		    <field name="contract_id" type="row"/>
+		</pivot>
+	    </field>
+	</record>
+
+	<record id="hr_employee_salary_change_action" model="ir.actions.act_window">
+	    <field name="name">Variaciones Salaraiales</field>
+	    <field name="res_model">hr.employee.salary.change</field>
+	    <field name="view_mode">tree,pivot</field>
+	</record>
+
+    </data>
+</odoo>

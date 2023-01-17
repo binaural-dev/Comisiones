@@ -1,0 +1,116 @@
+<odoo>
+    <data noupdate="1">
+	      <!--TYPE WITHHOLDING-->
+          <record id="demo_type_withholding_0" model="type.withholding">
+	          <field name="name">PORCENTAJE 100%</field>
+	          <field name="value">100</field>
+	          <field name="state" eval="True"/>
+          </record>
+
+	      <record id="demo_type_withholding_1" model="type.withholding">
+	          <field name="name">PORCENTAJE 75%</field>
+	          <field name="value">75</field>
+	          <field name="state" eval="True"/>
+          </record>
+
+          <!--TYPE PERSON-->
+	      <record id="demo_type_person_0" model="type.person">
+	          <field name="name">PN Residente</field>
+	          <field name="state" eval="True"/>
+          </record>
+
+	      <record id="demo_type_person_1" model="type.person">
+		       <field name="name">PJ Domiciliada</field>
+		       <field name="state" eval="True"/>
+	      </record>
+
+	      <!--TAX UNIT-->
+	      <record id="demo_tax_unit_1" model="tax.unit">
+		      <field name="name">1500,00 UT</field>
+		      <field name="value">1500</field>
+		      <field name="status" eval="True"/>
+	      </record>
+
+	      <!--TARIF RETENTION-->
+	      <record id="demo_tarif_retention_0" model="tarif.retention">
+		      <field name="name">T - 2(Acumulativo)</field>
+		      <field name="percentage">0</field>
+		      <field name="sustract_money">0</field>
+		      <field name="apply_subtracting" eval="False"/>
+		      <field name="acumulative_rate" eval="True"/>
+		      <field name="status" eval="True"/>
+		      <field name="tax_unit_ids" eval="demo_tax_unit_1"/>
+		      <field name="acumulative_rate_ids" eval="[(5, 0), (0, 0, {'name': '0-3000 UT', 'since': 0, 'until': 3000, 'percentage': 15, 'sustract_ut': 0})]"/>
+	      </record>
+
+	     <record id="demo_tarif_retention_1" model="tarif.retention">
+		      <field name="name">3%</field>
+		      <field name="percentage">3</field>
+		      <field name="sustract_money">0</field>
+		      <field name="apply_subtracting" eval="False"/>
+		      <field name="acumulative_rate" eval="False"/>
+		      <field name="status" eval="True"/>
+		      <field name="tax_unit_ids" eval="demo_tax_unit_1"/>
+	      </record>
+
+	    <record id="demo_tarif_retention_2" model="tarif.retention">
+		      <field name="name">3% -(Bs. 3.750,00)</field>
+		      <field name="percentage">3</field>
+		      <field name="sustract_money">0</field>
+		      <field name="apply_subtracting" eval="True"/>
+		      <field name="acumulative_rate" eval="False"/>
+		      <field name="status" eval="True"/>
+		      <field name="tax_unit_ids" eval="demo_tax_unit_1"/>
+	      </record>
+
+	    <!--PAYMENT CONCEPT-->
+
+	    <record id="demo_payment_concept_0" model="payment.concept">
+		      <field name="name">Honorarios Profesionales Pagados a</field>
+		      <field name="status" eval="True"/>
+	    </record>
+
+	    <record id="demo_payment_concept_1" model="payment.concept">
+		      <field name="name">Gastos de Trasnporte (Fletes) Pagados a </field>
+		      <field name="status" eval="True"/>
+	    </record>
+
+	    <record id="demo_payment_concept_2" model="payment.concept">
+		      <field name="name">(Contratista) Ejecución de obras y prestación de servicios en Venezuela pagadas a:</field>
+		      <field name="status" eval="True"/>
+	    </record>
+
+		<record id="demo_payment_concept_line_0" model="payment.concept.line">
+		      <field name="code">001</field>
+		      <field name="type_person_ids" ref="demo_type_person_0"/>
+		      <field name="payment_concept_id" ref="demo_payment_concept_0"/>
+			  <field name="percentage_tax_base">100</field>
+			  <field name="tariffs_ids" ref="demo_tarif_retention_0"/>
+			  <field name="pay_from">125000</field>
+	    </record>
+
+		<!--SIGNATURE CONF-->
+
+	    <record id="demo_signature_config_0" model="signature.config">
+		      <field name="email">demo@odoo.com</field>
+		      <field name="active" eval="True"/>
+	    </record>
+
+	    <!--RES COUNTRY STATE-->
+
+	    <record id="demo_res_country_state_0" model="res.country.state">
+		      <field name="name">Portuguesa</field>
+		      <field name="code">VEPO</field>
+		      <field name="country_id" ref="base.ve"/>
+	    </record>
+
+	    <!--RES COUNTRY CITY-->
+
+	    <record id="demo_res_country_city_0" model="res.country.city">
+		      <field name="name">Guanare</field>
+		      <field name="country_id" ref="base.ve"/>
+		      <field name="state_id" ref="demo_res_country_state_0"/>
+	    </record>
+
+    </data>
+</odoo>

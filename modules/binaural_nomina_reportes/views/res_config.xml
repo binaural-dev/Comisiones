@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_inherit_binaural_nomina_reportes" model="ir.ui.view">
+        <field name="name">Configuracion Nomina Venezuela (Reportes)</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="45"/>
+        <field name="inherit_id" ref="binaural_nomina.res_config_settings_inherit_binaural_nomina"/>
+        <field name="arch" type="xml">
+            <group name="default_deductions_1" position="inside">
+                <label for="numero_afiliacion_nomina"/>
+                <div>
+                    <field name="numero_afiliacion_nomina" nolabel="1"/>
+                </div>
+            </group>
+            <group name="default_deductions_2" position="inside">
+                <label for="separador_campos_ivss"/>
+                <div>
+                    <field name="separador_campos_ivss" nolabel="1"/>
+                </div>
+                <label for="separador_decimales_ivss"/>
+                <div>
+                    <field name="separador_decimales_ivss" nolabel="1"/>
+                </div>
+            </group>
+	    </field>
+    </record>
+</odoo>

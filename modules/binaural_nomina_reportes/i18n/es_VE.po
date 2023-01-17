@@ -1,0 +1,310 @@
+#. module: binaural_nomina_reportes
+#: model_terms:ir.ui.view,arch_db:binaural_nomina_reportes.faov_txt_wizard_form
+#: model_terms:ir.ui.view,arch_db:binaural_nomina_reportes.ivss_employee_ingress_txt_wizard_form
+#: model_terms:ir.ui.view,arch_db:binaural_nomina_reportes.ivss_salary_change_txt_wizard_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: binaural_nomina_reportes
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_hr_employee_entry_occupation__code
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_hr_employee_type__code
+msgid "Code"
+msgstr "Código"
+
+#. module: binaural_nomina_reportes
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_hr_employee__condition
+msgid "Condition"
+msgstr "Condición"
+
+#. module: binaural_nomina_reportes
+#: model:ir.model,name:binaural_nomina_reportes.model_res_config_settings
+msgid "Config Settings"
+msgstr "Opciones de configuración"
+
+#. module: binaural_nomina_reportes
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_faov_txt_wizard__create_uid
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_hr_employee_entry_occupation__create_uid
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_hr_employee_type__create_uid
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_ivss_employee_ingress_txt_wizard__create_uid
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_ivss_salary_change_txt_wizard__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: binaural_nomina_reportes
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_faov_txt_wizard__create_date
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_hr_employee_entry_occupation__create_date
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_hr_employee_type__create_date
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_ivss_employee_ingress_txt_wizard__create_date
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_ivss_salary_change_txt_wizard__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: binaural_nomina_reportes
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_faov_txt_wizard__date_from
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_ivss_employee_ingress_txt_wizard__date_from
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_ivss_salary_change_txt_wizard__date_from
+msgid "Date From"
+msgstr "Desde"
+
+#. module: binaural_nomina_reportes
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_faov_txt_wizard__date_to
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_ivss_employee_ingress_txt_wizard__date_to
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_ivss_salary_change_txt_wizard__date_to
+msgid "Date To"
+msgstr "Hasta"
+
+#. module: binaural_nomina_reportes
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_hr_employee_entry_occupation__name
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_hr_employee_type__name
+msgid "Description"
+msgstr "Descripción"
+
+#. module: binaural_nomina_reportes
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_faov_txt_wizard__display_name
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_hr_contract__display_name
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_hr_employee__display_name
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_hr_employee_entry_occupation__display_name
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_hr_employee_salary_change__display_name
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_hr_employee_type__display_name
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_hr_payslip__display_name
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_hr_payslip_payment_methods__display_name
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_ivss_employee_ingress_txt_wizard__display_name
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_ivss_salary_change_txt_wizard__display_name
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_res_config_settings__display_name
+msgid "Display Name"
+msgstr "Mostrar nombre"
+
+#. module: binaural_nomina_reportes
+#: model:ir.model,name:binaural_nomina_reportes.model_hr_employee
+msgid "Employee"
+msgstr "Empleado"
+
+#. module: binaural_nomina_reportes
+#: model:ir.model,name:binaural_nomina_reportes.model_hr_employee_entry_occupation
+msgid "Employee Entry Occupation"
+msgstr "Ocupación del Empleado"
+
+#. module: binaural_nomina_reportes
+#: model:ir.model,name:binaural_nomina_reportes.model_hr_employee_type
+msgid "Employee Type"
+msgstr "Tipo de Trabajador"
+
+#. module: binaural_nomina_reportes
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_hr_employee__entry_occupation_id
+msgid "Entry Occupation"
+msgstr "Ocupación"
+
+#. module: binaural_nomina_reportes
+#: model:ir.ui.menu,name:binaural_nomina_reportes.faov_txt_report
+msgid "FAOV TXT Report"
+msgstr "Reporte TXT de FAOV"
+
+#. module: binaural_nomina_reportes
+#: model_terms:ir.ui.view,arch_db:binaural_nomina_reportes.faov_txt_wizard_form
+#: model_terms:ir.ui.view,arch_db:binaural_nomina_reportes.ivss_employee_ingress_txt_wizard_form
+#: model_terms:ir.ui.view,arch_db:binaural_nomina_reportes.ivss_salary_change_txt_wizard_form
+msgid "Generate txt"
+msgstr "Generar txt"
+
+#. module: binaural_nomina_reportes
+#: model:ir.actions.act_window,name:binaural_nomina_reportes.action_faov_txt_wizard
+msgid "Generate txt FAOV"
+msgstr "Generar txt FAOV"
+
+#. module: binaural_nomina_reportes
+#: model:ir.actions.act_window,name:binaural_nomina_reportes.action_ivss_employee_ingress_txt_wizard
+msgid "Generate txt of IVSS employee ingresses"
+msgstr "Generar txt de ingresos de empleados IVSS"
+
+#. module: binaural_nomina_reportes
+#: model:ir.actions.act_window,name:binaural_nomina_reportes.action_ivss_salary_change_txt_wizard
+msgid "Generate txt of IVSS salary change"
+msgstr "Generar txt de cambio de salario IVSS"
+
+#. module: binaural_nomina_reportes
+#: model_terms:ir.ui.view,arch_db:binaural_nomina_reportes.employee_inherit_binaural_nomina_reportes_form
+msgid "IVSS Configuration"
+msgstr "Configuración del IVSS"
+
+#. module: binaural_nomina_reportes
+#: model:ir.ui.menu,name:binaural_nomina_reportes.ivss_employee_ingress_txt_report
+msgid "IVSS Employee ingresses TXT Report"
+msgstr "Reporte TXT de ingresos de empleados IVSS"
+
+#. module: binaural_nomina_reportes
+#: model:ir.ui.menu,name:binaural_nomina_reportes.ivss_salary_change_txt_report
+msgid "IVSS Salary Change TXT Report"
+msgstr "Reporte TXT de cambio de salario IVSS"
+
+#. module: binaural_nomina_reportes
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_faov_txt_wizard____last_update
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_hr_contract____last_update
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_hr_employee____last_update
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_hr_employee_entry_occupation____last_update
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_hr_employee_salary_change____last_update
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_hr_employee_type____last_update
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_hr_payslip____last_update
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_hr_payslip_payment_methods____last_update
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_ivss_employee_ingress_txt_wizard____last_update
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_ivss_salary_change_txt_wizard____last_update
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_res_config_settings____last_update
+msgid "Last Modified on"
+msgstr "Modificada por última vez"
+
+#. module: binaural_nomina_reportes
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_faov_txt_wizard__write_uid
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_hr_employee_entry_occupation__write_uid
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_hr_employee_type__write_uid
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_ivss_employee_ingress_txt_wizard__write_uid
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_ivss_salary_change_txt_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: binaural_nomina_reportes
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_faov_txt_wizard__write_date
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_hr_employee_entry_occupation__write_date
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_hr_employee_type__write_date
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_ivss_employee_ingress_txt_wizard__write_date
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_ivss_salary_change_txt_wizard__write_date
+msgid "Last Updated on"
+msgstr "Última actualización en"
+
+#. module: binaural_nomina_reportes
+#: model:ir.model.fields.selection,name:binaural_nomina_reportes.selection__hr_employee__motor_skill__s
+msgid "Left Handed"
+msgstr "Zurdo"
+
+#. module: binaural_nomina_reportes
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_hr_employee__motor_skill
+msgid "Motor Skill"
+msgstr "Habilidad motriz"
+
+#. module: binaural_nomina_reportes
+#: code:addons/binaural_nomina_reportes/wizard/ivss_employee_ingress_txt_wizard.py:0
+#, python-format
+msgid "No employees ingress are registered for the selected date range."
+msgstr ""
+"No hay ingresos de empleados registrados para el rango de fechas "
+"seleccionado."
+
+#. module: binaural_nomina_reportes
+#: code:addons/binaural_nomina_reportes/wizard/ivss_salary_change_txt_wizard.py:0
+#, python-format
+msgid "No salary variations found for the selected date range."
+msgstr ""
+"No se encontraron variaciones salariales en el rango de fecha seleccionado."
+
+#. module: binaural_nomina_reportes
+#: model:ir.model.fields.selection,name:binaural_nomina_reportes.selection__hr_employee__condition__n
+msgid "Normal"
+msgstr "Normal"
+
+#. module: binaural_nomina_reportes
+#: model:ir.model,name:binaural_nomina_reportes.model_hr_payslip
+msgid "Pay Slip"
+msgstr "Recibo de nómina"
+
+#. module: binaural_nomina_reportes
+#: model:ir.model,name:binaural_nomina_reportes.model_hr_payslip_payment_methods
+msgid "Payment Methods"
+msgstr "Métodos de pago"
+
+#. module: binaural_nomina_reportes
+#: model:ir.model.fields.selection,name:binaural_nomina_reportes.selection__hr_employee__condition__p
+msgid "Pensioner"
+msgstr "Pensionado"
+
+#. module: binaural_nomina_reportes
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_hr_employee_salary_change__previous_wage
+msgid "Previous Wage"
+msgstr "Salario anterior"
+
+#. module: binaural_nomina_reportes
+#: model:ir.model.fields.selection,name:binaural_nomina_reportes.selection__hr_employee__condition__j
+msgid "Retired"
+msgstr "Jubilado"
+
+#. module: binaural_nomina_reportes
+#: model:ir.model.fields.selection,name:binaural_nomina_reportes.selection__hr_employee__motor_skill__n
+msgid "Right Handed"
+msgstr "Diestro"
+
+#. module: binaural_nomina_reportes
+#: code:addons/binaural_nomina_reportes/wizard/ivss_employee_ingress_txt_wizard.py:0
+#, python-format
+msgid ""
+"The following fields are required:\n"
+"\tType, Occupation, Condition, Motor Skill, State, Municipality, Parish, Phone, Private Mobile Phone and Work Email."
+msgstr ""
+"Estos campos son requeridos:\n"
+"\tTipo de trabajador, Ocupación, Condición, Habilidad motriz, Estado, Municipio, Parroquia, Teléfono, Teléfono móvil y Correo electrónico laboral."
+
+#. module: binaural_nomina_reportes
+#: code:addons/binaural_nomina_reportes/wizard/ivss_employee_ingress_txt_wizard.py:0
+#, python-format
+msgid ""
+"The number of employee ingresses is over 10,000, please select a smaller "
+"date range."
+msgstr ""
+"El número de ingresos de empleados es mayor a 10,000, por favor seleccione "
+"un Rango de fecha más pequeño."
+
+#. module: binaural_nomina_reportes
+#: code:addons/binaural_nomina_reportes/wizard/ivss_salary_change_txt_wizard.py:0
+#, python-format
+msgid ""
+"The number of salary variations is over 10,000, please select a smaller date"
+" range."
+msgstr ""
+"El número de variaciones salariales es mayor a 10.000, por favor seleccione "
+"un rango de fecha más pequeño."
+
+#. module: binaural_nomina_reportes
+#: code:addons/binaural_nomina_reportes/models/hr_employee_inherit.py:0
+#, python-format
+msgid "The private mobile phone must be in the format 4141234567."
+msgstr "El teléfono celular personal debe estar en el formato 4141234567."
+
+#. module: binaural_nomina_reportes
+#: code:addons/binaural_nomina_reportes/models/hr_employee_inherit.py:0
+#, python-format
+msgid "The work email must be in the format example@example.com."
+msgstr "El correo electrónico laboral debe estar en el formato ejemplo@ejemplo.com"
+
+#. module: binaural_nomina_reportes
+#: code:addons/binaural_nomina_reportes/wizard/ivss_employee_ingress_txt_wizard.py:0
+#, python-format
+msgid "There is an error with the data of the following employees:\n"
+msgstr "Hay un error con los datos de los siguientes empleados:\n"
+
+#. module: binaural_nomina_reportes
+#: model:ir.model.fields,field_description:binaural_nomina_reportes.field_hr_employee__type
+msgid "Type"
+msgstr "Tipo de trabajador"
+
+#. module: binaural_nomina_reportes
+#: model:ir.model,name:binaural_nomina_reportes.model_faov_txt_wizard
+msgid "Wizard to generate FAOV txt file"
+msgstr "Asistente para generar archivo txt de FAOV"
+
+#. module: binaural_nomina_reportes
+#: model:ir.model,name:binaural_nomina_reportes.model_ivss_employee_ingress_txt_wizard
+msgid "Wizard to generate IVSS employee ingress txt file"
+msgstr "Asistente para generar archivo txt de ingresos de empleados de IVSS"
+
+#. module: binaural_nomina_reportes
+#: model:ir.model,name:binaural_nomina_reportes.model_ivss_salary_change_txt_wizard
+msgid "Wizard to generate IVSS salary change txt file"
+msgstr "Asistente para generar archivo txt de cambio de salario IVSS"
+
+#. module: binaural_nomina_reportes
+#: code:addons/binaural_nomina_reportes/wizard/ivss_employee_ingress_txt_wizard.py:0
+#, python-format
+msgid "employee_ingresses-%s"
+msgstr "ingresos_empleados-%s"
+
+#. module: binaural_nomina_reportes
+#: code:addons/binaural_nomina_reportes/wizard/ivss_salary_change_txt_wizard.py:0
+#, python-format
+msgid "salary_changes-%s"
+msgstr "Cambio_salario-%s"

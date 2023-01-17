@@ -1,0 +1,27 @@
+#. module: binaural_latest_standard_price
+#: model_terms:ir.ui.view,arch_db:binaural_latest_standard_price.product_pricelist_item_form_view
+msgid ""
+"<span attrs=\"{'invisible':[('base', '!=', "
+"'latest_standard_price')]}\">Latest Cost  -  </span>"
+msgstr ""
+"<span attrs=\"{'invisible':[('base', '!=', "
+"'latest_standard_price')]}\">Último Costo  -  </span>"
+
+#. module: binaural_latest_standard_price
+#: model:ir.model.fields,field_description:binaural_latest_standard_price.field_product_product__last_latest_standard_price
+#: model:ir.model.fields,field_description:binaural_latest_standard_price.field_product_template__last_latest_standard_price
+msgid "Last Latest Standard Price"
+msgstr "Último costo antes de la última compra"
+
+#. module: binaural_latest_standard_price
+#: model:ir.model.fields,field_description:binaural_latest_standard_price.field_product_product__latest_standard_price
+#: model:ir.model.fields,field_description:binaural_latest_standard_price.field_product_template__latest_standard_price
+#: model:ir.model.fields,field_description:binaural_latest_standard_price.field_purchase_order_line__latest_standard_price
+#: model:ir.model.fields.selection,name:binaural_latest_standard_price.selection__product_pricelist_item__base__latest_standard_price
+msgid "Latest Standard Price"
+msgstr "Último Costo"
+
+#. module: binaural_latest_standard_price
+#: model:ir.model.fields,field_description:binaural_latest_standard_price.field_purchase_order_line__update_latest_standard_price
+msgid "Update Latest Standard Price"
+msgstr "Actualizar Último Costo"

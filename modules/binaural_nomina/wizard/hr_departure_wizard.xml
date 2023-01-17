@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hr_departure_wizard_view_form_inherit_binaural" model="ir.ui.view">
+        <field name="name">hr.departure.wizard.view.form.inherit.binaural</field>
+        <field name="model">hr.departure.wizard</field>
+        <field name="inherit_id" ref="hr.hr_departure_wizard_view_form"/>
+        <field name="arch" type="xml">
+	    <field name="departure_date" position="attributes">
+		<attribute name="invisible">1</attribute>
+	    </field>
+        </field>
+    </record>
+
+</odoo>

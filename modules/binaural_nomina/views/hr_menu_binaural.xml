@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Configuracion Vzla -->
+    <menuitem
+        id="menu_hr_master_configuration"
+        name="Master Venezuela"
+        parent="hr_work_entry_contract.menu_hr_payroll_configuration"
+        sequence="90"
+        groups="hr_payroll.group_hr_payroll_user"
+    />    
+
+  <menuitem
+        id="menu_hr_payroll_provision"
+        name="Provisiones"
+        parent="hr_payroll.menu_hr_payroll_payslips"
+        sequence="60"
+        action="action_view_hr_payslip_provision"/>
+
+  <menuitem
+        id="menu_hr_payslip_payment_methods"
+        name="Metodos de pago"
+        parent="hr_work_entry_contract.menu_hr_payroll_root"
+    sequence="70"/>
+
+  <menuitem
+    id="menu_hr_payslip_payment_methods_list"
+    name="Listado"
+    parent="menu_hr_payslip_payment_methods"
+    sequence="70"
+    action="action_view_hr_payslip_payment_methods"/>
+
+   <!-- Variaciones Salariales -->
+    <menuitem
+	id="menu_hr_employee_salary_change"
+	name="Variaciones Salariales"
+	action="hr_employee_salary_change_action"
+	parent="hr_payroll.menu_hr_payroll_report"
+    />
+
+   <!-- Pagos de Nomina -->
+    <menuitem
+	id="menu_hr_payslip_allowance_lines"
+	name="Informe de complementos Salariales"
+	action="hr_payslip_allowance_line_action"
+	parent="hr_payroll.menu_hr_payroll_report"
+    />
+
+    <menuitem
+	id="menu_hr_payroll_salary_move"
+	name="Pagos de salario"
+	action="hr_payroll_move_salary_action"
+	parent="hr_payroll.menu_hr_payroll_report"
+    />
+    <menuitem
+	id="menu_hr_payroll_vacation_move"
+	name="Pagos de vacaciones"
+	action="hr_payroll_move_vacation_action"
+	parent="hr_payroll.menu_hr_payroll_report"
+    />
+    <menuitem
+	id="menu_hr_payroll_benefits_move"
+	name="Pagos de prestaciones"
+	action="hr_payroll_move_benefits_action"
+	parent="hr_payroll.menu_hr_payroll_report"
+    />
+    <menuitem
+	id="menu_hr_payroll_profit_sharing_move"
+	name="Pagos de utilidades"
+	action="hr_payroll_move_profit_sharing_action"
+	parent="hr_payroll.menu_hr_payroll_report"
+    />
+    <menuitem
+	id="menu_hr_payroll_liquidation_move"
+	name="Pagos de liquidaciones"
+	action="hr_payroll_move_liquidation_action"
+	parent="hr_payroll.menu_hr_payroll_report"
+    />
+
+    <!-- Histórico acumulado de prestaciones -->
+    <menuitem
+	id="menu_hr_payroll_benefits_accumulated"
+	name="Acumulado de prestaciones"
+	action="hr_payroll_benefits_accumulated_action"
+	parent="hr_payroll.menu_hr_payroll_report"
+    />
+
+    <!-- Histórico detalle acumulado de prestaciones -->
+    <menuitem
+	id="menu_hr_payroll_benefits_accumulated_detail"
+	name="Detalle acumulado de prestaciones"
+	action="hr_payroll_benefits_accumulated_detail_action"
+	parent="hr_payroll.menu_hr_payroll_report"
+    />
+
+    <!-- Complementos salariales -->
+    <menuitem
+	id="menu_hr_allowance"
+	name="Complementos Salariales"
+	action="hr_allowance_action"
+	parent="hr_work_entry_contract.menu_hr_payroll_configuration"
+	sequence="13"
+    />
+
+    <!-- Tabuladores salariales -->
+    <menuitem
+	id="menu_hr_salary_tab"
+	name="Tabuladores Salariales"
+	action="hr_salary_tab_action"
+	parent="hr_work_entry_contract.menu_hr_payroll_configuration"
+    />
+</odoo>

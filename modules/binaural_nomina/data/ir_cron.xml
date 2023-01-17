@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+	<record id="benefits_monthly_calculation_scheduler" model="ir.cron">
+	    <field name="name">Calculo mensual de prestaciones</field>
+	    <field name="model_id" ref="model_hr_payroll_benefits_accumulated"/>
+	    <field name="type">ir.actions.server</field>
+	    <field name="state">code</field>
+	    <field name="code">model.get_monthly_benefits()</field>
+	    <field name="interval_number">1</field>
+	    <field name="interval_type">months</field>
+	    <field name="numbercall">-1</field>
+	</record>
+
+	<record id="benefits_quarterly_calculation_scheduler" model="ir.cron">
+			<field name="name">Calculo trimestral de prestaciones</field>
+			<field name="model_id" ref="model_hr_payroll_benefits_accumulated"/>
+			<field name="type">ir.actions.server</field>
+			<field name="state">code</field>
+			<field name="code">model.get_quarterly_benefits()</field>
+			<field name="interval_number">3</field>
+			<field name="interval_type">months</field>
+			<field name="numbercall">-1</field>
+	</record>
+
+	<record id="benefits_annual_calculation_scheduler" model="ir.cron">
+	    <field name="name">Calculo anual de prestaciones</field>
+	    <field name="model_id" ref="model_hr_payroll_benefits_accumulated"/>
+	    <field name="type">ir.actions.server</field>
+	    <field name="state">code</field>
+	    <field name="code">model.get_annual_benefits()</field>
+	    <field name="interval_number">1</field>
+	    <field name="interval_type">days</field>
+	    <field name="numbercall">-1</field>
+	</record>
+
+	<record id="benefits_interest_calculation_scheduler" model="ir.cron">
+	    <field name="name">Calculo de intereses de prestaciones</field>
+	    <field name="model_id" ref="model_hr_payroll_benefits_accumulated"/>
+	    <field name="type">ir.actions.server</field>
+	    <field name="state">code</field>
+	    <field name="code">model.get_benefits_interest()</field>
+	    <field name="interval_number">1</field>
+	    <field name="interval_type">days</field>
+	    <field name="numbercall">-1</field>
+	</record>
+
+	<record id="provisions_slips_creation_scheduler" model="ir.cron">
+	    <field name="name">Crear Provisiones del mes</field>
+	    <field name="model_id" ref="model_hr_payslip"/>
+	    <field name="type">ir.actions.server</field>
+	    <field name="state">code</field>
+	    <field name="code">model.create_and_confirm_provisions()</field>
+	    <field name="interval_number">1</field>
+	    <field name="interval_type">days</field>
+	    <field name="numbercall">-1</field>
+	</record>
+
+	<record id="vacation_leave_allocation_scheduler" model="ir.cron">
+	    <field name="name">Crear asignaciones de vacaciones</field>
+	    <field name="model_id" ref="model_hr_leave_allocation"/>
+	    <field name="type">ir.actions.server</field>
+	    <field name="state">code</field>
+	    <field name="code">model.create_vacation_allocation_per_employee()</field>
+	    <field name="interval_number">1</field>
+	    <field name="interval_type">days</field>
+	    <field name="numbercall">-1</field>
+	</record>
+
+  </data>
+</odoo>

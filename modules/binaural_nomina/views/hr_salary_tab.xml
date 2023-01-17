@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+	<record id="hr_salary_tab_view_search" model="ir.ui.view">
+	    <field name="name">hr.salary.tab.view.search</field>
+	    <field name="model">hr.salary.tab</field>
+	    <field name="arch" type="xml">
+		<search string="Tabuladores Salariales">
+			<field name="job_id"/>
+	    	    <separator/>
+		    <filter string="Archivado" name="inactive" domain="[('active', '=', False)]"/>
+		</search>
+	    </field>
+	</record>
+
+	<record id="hr_salary_tab_view_tree" model="ir.ui.view">
+	    <field name="name">hr.salary.tab.view.tree</field>
+	    <field name="model">hr.salary.tab</field>
+	    <field name="arch" type="xml">
+		<tree delete="false">
+		    <field name="active" invisible="1"/>
+		    <field name="date_from"/>
+		    <field name="job_id"/>
+		    <field name="wage_type"/>
+		</tree>
+	    </field>
+	</record>
+
+	<record id="hr_salary_tab_view_form" model="ir.ui.view">
+	    <field name="name">hr.salary.tab.view.form</field>
+	    <field name="model">hr.salary.tab</field>
+	    <field name="arch" type="xml">
+		<form delete="false">
+		    <header>
+			<button name="action_update" type="object" string="Actualizar Tabulador"
+				attrs="{'invisible': [('active', '=', False)]}"
+				confirm="¿Deseas Actualizar los Salarios?"/>
+			<field name="state" widget="statusbar"/>
+		    </header>
+		    <sheet>
+			<group>
+			    <field name="active" invisible="1"/>
+			    <group>
+				<field name="job_id" widget="selection"/>
+				<field name="date_from"/>
+				<field name="wage_type"/>
+			    </group>
+			</group>
+			<group string="Salario">
+			    <field name="wage" strig="Mensual"
+				   attrs="{'invisible': [('wage_type', 'in', ('hourly', False))]}"/>
+			    <field name="hourly_wage" string="Por Hora"
+				   attrs="{'invisible': [('wage_type', 'in', ('monthly', False))]}"/>
+			</group>
+		    </sheet>
+		    <div class="oe_chatter">
+			<field name="message_follower_ids"/>
+			<field name="message_ids"/>
+		    </div>
+		</form>
+	    </field>
+    	</record>
+
+	<record id="hr_salary_tab_action" model="ir.actions.act_window">
+	    <field name="name">Tabuladores Salariales</field>
+	    <field name="res_model">hr.salary.tab</field>
+	    <field name="view_mode">tree,form</field>
+	</record>
+    </data>
+</odoo>

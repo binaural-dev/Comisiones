@@ -1,0 +1,128 @@
+#. module: binaural_marca
+#: model_terms:ir.ui.view,arch_db:binaural_marca.view_product_template_search_brand
+msgid "Brand"
+msgstr "Marca"
+
+#. module: binaural_marca
+#: model:ir.model.fields,help:binaural_marca.field_product_brand__name
+msgid "Brand name"
+msgstr "Marca"
+
+#. module: binaural_marca
+#: model:ir.model.fields,field_description:binaural_marca.field_account_move_line__brand_id
+#: model:ir.model.fields,field_description:binaural_marca.field_product_product__brand_id
+#: model:ir.model.fields,field_description:binaural_marca.field_product_template__brand_id
+#: model:ir.model.fields,field_description:binaural_marca.field_purchase_order_line__brand_id_purchase
+#: model:ir.model.fields,field_description:binaural_marca.field_sale_order_line__brand_id_sale
+#: model:ir.model.fields,field_description:binaural_marca.field_stock_move__brand_id
+#: model:ir.model.fields,field_description:binaural_marca.field_stock_move_line__brand_id
+#: model:ir.model.fields,field_description:binaural_marca.field_stock_picking__brand_id
+#: model:ir.model.fields,field_description:binaural_marca.field_stock_quant__brand_id
+#: model:ir.model.fields,field_description:binaural_marca.field_stock_valuation_layer__brand_id
+#: model:ir.model.fields,field_description:binaural_marca.field_stock_warehouse_orderpoint__brand_id
+msgid "Brand to product"
+msgstr "Marca"
+
+#. module: binaural_marca
+#: model:ir.model,name:binaural_marca.model_product_brand
+msgid "Brands"
+msgstr "Marcas de producto"
+
+#. module: binaural_marca
+#: model_terms:ir.actions.act_window,help:binaural_marca.product_brand_action
+msgid "Create a new brand for products!"
+msgstr "Crea una nueva marca de producto"
+
+
+#. module: binaural_marca
+#: model:ir.model.fields,field_description:binaural_marca.field_account_move_line__display_name
+#: model:ir.model.fields,field_description:binaural_marca.field_product_brand__display_name
+#: model:ir.model.fields,field_description:binaural_marca.field_product_template__display_name
+#: model:ir.model.fields,field_description:binaural_marca.field_purchase_order_line__display_name
+#: model:ir.model.fields,field_description:binaural_marca.field_sale_order_line__display_name
+#: model:ir.model.fields,field_description:binaural_marca.field_stock_move__display_name
+#: model:ir.model.fields,field_description:binaural_marca.field_stock_move_line__display_name
+#: model:ir.model.fields,field_description:binaural_marca.field_stock_picking__display_name
+#: model:ir.model.fields,field_description:binaural_marca.field_stock_quant__display_name
+#: model:ir.model.fields,field_description:binaural_marca.field_stock_valuation_layer__display_name
+#: model:ir.model.fields,field_description:binaural_marca.field_stock_warehouse_orderpoint__display_name
+msgid "Display Name"
+msgstr "Mostrar nombre"
+
+
+#. module: binaural_marca
+#: model:ir.model,name:binaural_marca.model_account_move_line
+msgid "Journal Item"
+msgstr "Apunte contable"
+
+#. module: binaural_marca
+#: model:ir.model.fields,field_description:binaural_marca.field_account_move_line____last_update
+#: model:ir.model.fields,field_description:binaural_marca.field_product_brand____last_update
+#: model:ir.model.fields,field_description:binaural_marca.field_product_template____last_update
+#: model:ir.model.fields,field_description:binaural_marca.field_purchase_order_line____last_update
+#: model:ir.model.fields,field_description:binaural_marca.field_sale_order_line____last_update
+#: model:ir.model.fields,field_description:binaural_marca.field_stock_move____last_update
+#: model:ir.model.fields,field_description:binaural_marca.field_stock_move_line____last_update
+#: model:ir.model.fields,field_description:binaural_marca.field_stock_picking____last_update
+#: model:ir.model.fields,field_description:binaural_marca.field_stock_quant____last_update
+#: model:ir.model.fields,field_description:binaural_marca.field_stock_valuation_layer____last_update
+#: model:ir.model.fields,field_description:binaural_marca.field_stock_warehouse_orderpoint____last_update
+msgid "Last Modified on"
+msgstr "Modificada por última vez"
+
+#. module: binaural_marca
+#: model:ir.model,name:binaural_marca.model_stock_warehouse_orderpoint
+msgid "Minimum Inventory Rule"
+msgstr "Regla de inventario mínimo"
+
+#. module: binaural_marca
+#: model:ir.model.fields,field_description:binaural_marca.field_product_brand__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: binaural_marca
+#: model_terms:ir.ui.view,arch_db:binaural_marca.product_brand_search_form_view
+msgid "Product Brand"
+msgstr "Marca"
+
+#. module: binaural_marca
+#: model:ir.model,name:binaural_marca.model_stock_move_line
+msgid "Product Moves (Stock Move Line)"
+msgstr "Movimientos de Producto (Stock Move Line)"
+
+#. module: binaural_marca
+#: model:ir.model,name:binaural_marca.model_product_template
+msgid "Product Template"
+msgstr "Plantilla de producto"
+
+#. module: binaural_marca
+#: model:ir.actions.act_window,name:binaural_marca.product_brand_action
+#: model:ir.ui.menu,name:binaural_marca.product_brand_menu
+#: model_terms:ir.ui.view,arch_db:binaural_marca.product_brand_tree_view
+msgid "Product brands"
+msgstr "Marcas de producto"
+
+#. module: binaural_marca
+#: model:ir.model,name:binaural_marca.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "Línea pedido de compra"
+
+#. module: binaural_marca
+#: model:ir.model,name:binaural_marca.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Línea pedido de venta"
+
+#. module: binaural_marca
+#: model:ir.model,name:binaural_marca.model_stock_move
+msgid "Stock Move"
+msgstr "Movimiento stock"
+
+#. module: binaural_marca
+#: model:ir.model,name:binaural_marca.model_stock_valuation_layer
+msgid "Stock Valuation Layer"
+msgstr "Capa de valoración de stock"
+
+#. module: binaural_marca
+#: model:ir.model,name:binaural_marca.model_stock_picking
+msgid "Transfer"
+msgstr "Transferir"

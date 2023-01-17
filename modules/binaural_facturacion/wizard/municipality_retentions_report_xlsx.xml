@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="wizard_report_municipality_retentions_report_view" model="ir.ui.view">
+        <field name="name">wizard.municipality.retentions.report.view</field>
+        <field name="model">wizard.municipality.retentions.report</field>
+        <field name="arch" type="xml">
+            <form string="Reportes de Retenciones Municipales">
+                <sheet>
+                    <group>
+                        <field name="date_start" />
+                        <field name="date_end" />
+                    </group>
+
+                </sheet>
+                <footer>
+                    <div style="display: flex; justify-content: center">
+                        <button name="imprimir_excel" type="object" string="Descargar Excel de impuesto fiscal" class="btn btn-primary" />
+                    </div>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="wizard_report_municipality_retentions_report_action" model="ir.actions.act_window">
+        <field name="name">Reporte Retenciones Municipales</field>
+        <field name="res_model">wizard.municipality.retentions.report</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+
+    <menuitem id="wizard_report_municipality_retentions_report_menu" action="wizard_report_municipality_retentions_report_action" parent="binaural_facturacion.menu_retention_municipality" sequence="1" name="Reporte de Retenciones de Proveedores" />
+
+</odoo>

@@ -1,0 +1,66 @@
+#. module: binaural_inventario
+#: model:ir.model.fields,field_description:binaural_inventario.field_product_brand__name
+msgid "Name"
+msgstr "nombre"
+
+#. module: binaural_inventario
+#: model:ir.model.fields,field_description:binaural_inventario.field_product_product__brand_id
+#: model:ir.model.fields,field_description:binaural_inventario.field_product_template__brand_id
+msgid "Brand to product"
+msgstr "Marca"
+
+#. module: binaural_inventario
+#: model:ir.actions.act_window,name:binaural_inventario.product_brand_action
+#: model:ir.ui.menu,name:binaural_inventario.product_brand_menu
+#: model_terms:ir.ui.view,arch_db:binaural_inventario.product_brand_tree_view
+msgid "Product brands"
+msgstr "Marca de Producto"
+
+
+
+#. module: binaural_inventario
+#: model_terms:ir.ui.view,arch_db:binaural_inventario.view_product_template_search_brand
+msgid "Brand"
+msgstr "Marca"
+
+#. module: binaural_inventario
+#: model:ir.model.fields,help:binaural_inventario.field_product_brand__name
+msgid "Brand name"
+msgstr "Marca"
+
+#. module: binaural_inventario
+#: model:ir.model.fields,field_description:binaural_inventario.field_product_product__brand_id
+#: model:ir.model.fields,field_description:binaural_inventario.field_product_template__brand_id
+#: model:ir.model.fields,field_description:binaural_inventario.field_stock_move__brand_id
+#: model:ir.model.fields,field_description:binaural_inventario.field_stock_move_line__brand_id
+#: model:ir.model.fields,field_description:binaural_inventario.field_stock_picking__brand_id
+#: model:ir.model.fields,field_description:binaural_inventario.field_stock_quant__brand_id
+#: model:ir.model.fields,field_description:binaural_inventario.field_stock_valuation_layer__brand_id
+#: model:ir.model.fields,field_description:binaural_inventario.field_stock_warehouse_orderpoint__brand_id
+msgid "Brand to product"
+msgstr "Marca"
+
+#. module: binaural_inventario
+#: model:ir.model,name:binaural_inventario.model_product_brand
+msgid "Brands"
+msgstr "Marca"
+
+
+
+
+#. module: binaural_inventario
+#: model_terms:ir.ui.view,arch_db:binaural_inventario.product_brand_search_form_view
+msgid "Product Brand"
+msgstr "Marca"
+
+
+
+#. module: binaural_inventario
+#: model:ir.actions.act_window,name:binaural_inventario.product_brand_action
+#: model:ir.ui.menu,name:binaural_inventario.product_brand_menu
+#: model_terms:ir.ui.view,arch_db:binaural_inventario.product_brand_tree_view
+msgid "Product brands"
+msgstr "Marca"
+
+
+

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="action_res_bank" model="ir.actions.act_window">
+      <field name="name">Bancos</field>
+      <field name="res_model">res.bank</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Click to create a new bank.
+        </p>
+      </field>
+    </record>
+
+    <menuitem id="menu_binaural_nomina" name="Bancos" action="action_res_bank" parent="hr_work_entry_contract.menu_hr_payroll_configuration" sequence="3"/>
+
+  </data>
+</odoo>

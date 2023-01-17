@@ -1,0 +1,680 @@
+
+<odoo>
+    <data noupdate="0">
+
+	<!-- Ganancias y Pérdidas $ -->
+	<record id="account_financial_report_profitandloss0_usd" model="account.financial.html.report" context="{'USD': True}">
+            <field name="name">Ganancias y Pérdidas $</field>
+            <field name="analytic" eval="True"/>
+            <field name="unfold_all_filter" eval="True"/>
+            <field name="show_journal_filter" eval="True"/>
+	    <field name="usd" eval="True"/>
+            <field name='parent_id' ref='account.account_reports_legal_statements_menu'/>
+        </record>
+        <record id="account_financial_report_net_profit0_usd" model="account.financial.html.report.line">
+            <field name="name">Beneficio Bruto</field>
+            <field name="code">NEP_USD</field>
+            <field name="financial_report_id" ref="account_financial_report_profitandloss0_usd"/>
+            <!-- Use the expanded computation for clarity -->
+            <field name="formulas">OPINC_USD + OIN_USD - COS_USD - EXP_USD - DEP_USD</field>
+            <field name="sequence" eval="3"/>
+            <field name="level" eval="0" />
+        </record>
+
+        <record id="account_financial_report_totalincome0_usd" model="account.financial.html.report.line">
+            <field name="name">Ingreso</field>
+            <field name="code">INC_USD</field>
+            <field name="formulas">OPINC_USD + OIN_USD</field>
+            <field name="parent_id" eval="False"/>
+            <field name="financial_report_id" ref="account_financial_report_profitandloss0_usd"/>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="0" />
+        </record>
+
+        <record id="account_financial_report_gross_profit0_usd" model="account.financial.html.report.line">
+            <field name="name">Beneficio Bruto</field>
+            <field name="code">GRP_USD</field>
+            <field name="formulas">OPINC_USD - COS_USD</field>
+            <field name="parent_id" ref='account_financial_report_totalincome0_usd'/>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="2" />
+        </record>
+
+        <record id="account_financial_report_income0_usd" model="account.financial.html.report.line">
+            <field name="name">Ingreso Operativo</field>
+            <field name="code">OPINC_USD</field>
+            <field name="formulas">-sum</field>
+            <field name="parent_id" ref='account_financial_report_gross_profit0_usd'/>
+            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_revenue'))]" />
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="3" />
+        </record>
+
+        <record id="account_financial_report_cost_sales0_usd" model="account.financial.html.report.line">
+            <field name="name">Costo directo de las ventas</field>
+            <field name="code">COS_USD</field>
+            <field name="formulas">sum</field>
+            <field name="parent_id" ref='account_financial_report_gross_profit0_usd'/>
+            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_direct_costs'))]" />
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="3"/>
+            <field name="green_on_positive" eval="False"/>
+            <field name="level" eval="3" />
+        </record>
+
+        <record id="account_financial_report_other_income0_usd" model="account.financial.html.report.line">
+            <field name="name">Otro Ingreso</field>
+            <field name="code">OIN_USD</field>
+            <field name="formulas">-sum</field>
+            <field name="parent_id" ref='account_financial_report_totalincome0_usd'/>
+            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_other_income'))]" />
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="2" />
+        </record>
+
+        <record id="account_financial_report_less_expenses0_usd" model="account.financial.html.report.line">
+            <field name="name">Gastos</field>
+            <field name="code">LEX_USD</field>
+            <field name="formulas">EXP_USD + DEP_USD</field>
+            <field name="parent_id" eval="False"/>
+            <field name="sequence" eval="2"/>
+            <field name="financial_report_id" ref="account_financial_report_profitandloss0_usd"/>
+            <field name="green_on_positive" eval="False"/>
+            <field name="level" eval="0" />
+        </record>
+        <record id="account_financial_report_expense0_usd" model="account.financial.html.report.line">
+            <field name="name">Gastos</field>
+            <field name="code">EXP_USD</field>
+            <field name="formulas">sum</field>
+            <field name="parent_id" ref='account_financial_report_less_expenses0_usd'/>
+            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_expenses'))]" />
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="1"/>
+            <field name="green_on_positive" eval="False"/>
+            <field name="level" eval="2" />
+        </record>
+        <record id="account_financial_report_depreciation0_usd" model="account.financial.html.report.line">
+            <field name="name">Amortización</field>
+            <field name="code">DEP_USD</field>
+            <field name="formulas">sum</field>
+            <field name="parent_id" ref='account_financial_report_less_expenses0_usd'/>
+            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_depreciation'))]" />
+            <field name="groupby">account_id</field>
+            <field name="sequence" eval="2"/>
+            <field name="green_on_positive" eval="False"/>
+            <field name="level" eval="2" />
+        </record>
+
+	<!-- Balance de Situación $ -->
+	
+       <record id="account_financial_report_balancesheet0_usd" model="account.financial.html.report">
+            <field name="name">Balance de Situación $</field>
+            <field name="date_range" eval="False"/>
+            <field name="analytic" eval="True"/>
+            <field name="unfold_all_filter" eval="True"/>
+            <field name="show_journal_filter" eval="True"/>
+            <field name='parent_id' ref='account.account_reports_legal_statements_menu'/>
+	    <field name='usd' eval="True"/>
+        </record>
+        <record id="account_financial_report_total_assets0_usd" model="account.financial.html.report.line">
+            <field name="name">ACTIVOS</field>
+            <field name="code">TA_USD</field>
+            <field name="financial_report_id" ref="account_financial_report_balancesheet0_usd"/>
+            <field name="formulas">CA_USD + FA_USD + PNCA_USD</field>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="0" />
+        </record>
+        <record id="account_financial_report_current_assets_view0_usd" model="account.financial.html.report.line">
+            <field name="name">Activos Circulantes</field>
+            <field name="code">CA_USD</field>
+            <field name="parent_id" ref='account_financial_report_total_assets0_usd'/>
+            <field name="formulas">BA_USD + REC_USD + CAS_USD + PRE_USD</field>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="1" />
+        </record>
+        <record id="account_financial_report_bank_view0_usd" model="account.financial.html.report.line">
+            <field name="name">Cuentas de Banco y Caja</field>
+            <field name="code">BA_USD</field>
+            <field name="parent_id" ref='account_financial_report_current_assets_view0_usd'/>
+            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_liquidity'))]" />
+            <field name="groupby">account_id</field>
+            <field name="formulas">sum</field>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="2" />
+        </record>
+        <record id="account_financial_report_receivable0_usd" model="account.financial.html.report.line">
+            <field name="name">Pendientes de Cobro</field>
+            <field name="code">REC_USD</field>
+            <field name="parent_id" ref='account_financial_report_current_assets_view0_usd'/>
+            <field name="domain" eval="[('account_id.user_type_id.type', '=', 'receivable')]" />
+            <field name="groupby">account_id</field>
+            <field name="formulas">sum</field>
+            <field name="sequence" eval="2"/>
+            <field name="level" eval="2" />
+        </record>
+        <record id="account_financial_report_current_assets0_usd" model="account.financial.html.report.line">
+            <field name="name">Activos Circulantes</field>
+            <field name="code">CAS_USD</field>
+            <field name="parent_id" ref='account_financial_report_current_assets_view0_usd'/>
+            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_current_assets'))]" />
+            <field name="groupby">account_id</field>
+            <field name="formulas">sum</field>
+            <field name="sequence" eval="3"/>
+            <field name="level" eval="2" />
+        </record>
+        <record id="account_financial_report_prepayements0_usd" model="account.financial.html.report.line">
+            <field name="name">Pre-pagos</field>
+            <field name="code">PRE_USD</field>
+            <field name="parent_id" ref='account_financial_report_current_assets_view0_usd'/>
+            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_prepayments'))]" />
+            <field name="groupby">account_id</field>
+            <field name="formulas">sum</field>
+            <field name="sequence" eval="4"/>
+            <field name="level" eval="2" />
+        </record>
+        <record id="account_financial_report_fixed_assets_view0_usd" model="account.financial.html.report.line">
+            <field name="name">Más activos fijos</field>
+            <field name="code">FA_USD</field>
+            <field name="parent_id" ref='account_financial_report_total_assets0_usd'/>
+            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_fixed_assets'))]" />
+            <field name="groupby">account_id</field>
+            <field name="formulas">sum</field>
+            <field name="sequence" eval="3"/>
+            <field name="level" eval="1" />
+        </record>
+        <record id="account_financial_report_non_current_assets_view0_usd" model="account.financial.html.report.line">
+            <field name="name">Más Activos No-circulantes</field>
+            <field name="code">PNCA_USD</field>
+            <field name="parent_id" ref='account_financial_report_total_assets0_usd'/>
+            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_non_current_assets'))]" />
+            <field name="groupby">account_id</field>
+            <field name="formulas">sum</field>
+            <field name="sequence" eval="4"/>
+            <field name="level" eval="1" />
+        </record>
+        <record id="account_financial_report_liabilities_view0_usd" model="account.financial.html.report.line">
+            <field name="name">PASIVOS</field>
+            <field name="code">L_USD</field>
+            <field name="financial_report_id" ref="account_financial_report_balancesheet0_usd"/>
+            <field name="groupby">account_id</field>
+            <field name="formulas">CL_USD + NL_USD</field>
+            <field name="sequence" eval="2"/>
+            <field name="green_on_positive" eval="False"/>
+            <field name="level" eval="0" />
+        </record>
+        <record id="account_financial_report_current_liabilities0_usd" model="account.financial.html.report.line">
+            <field name="name">Pasivos circulantes</field>
+            <field name="code">CL_USD</field>
+            <field name="parent_id" ref='account_financial_report_liabilities_view0_usd'/>
+            <field name="formulas">CL1_USD + CL2_USD</field>
+            <field name="sequence" eval="1"/>
+            <field name="green_on_positive" eval="False"/>
+            <field name="level" eval="1" />
+        </record>
+        <record id="account_financial_report_current_liabilities1_usd" model="account.financial.html.report.line">
+            <field name="name">Pasivos circulantes</field>
+            <field name="code">CL1_USD</field>
+            <field name="parent_id" ref='account_financial_report_current_liabilities0_usd'/>
+            <field name="domain" eval="[('account_id.user_type_id', 'in', [ref('account.data_account_type_current_liabilities'), ref('account.data_account_type_credit_card')])]"/>
+            <field name="groupby">account_id</field>
+            <field name="formulas">-sum</field>
+            <field name="sequence" eval="1"/>
+            <field name="green_on_positive" eval="False"/>
+            <field name="level" eval="2" />
+        </record>
+        <record id="account_financial_report_current_liabilities_payable_usd" model="account.financial.html.report.line">
+            <field name="name">Por Pagar</field>
+            <field name="code">CL2_USD</field>
+            <field name="parent_id" ref='account_financial_report_current_liabilities0_usd'/>
+            <field name="domain" eval="[('account_id.user_type_id.type', '=', 'payable')]"/>
+            <field name="groupby">account_id</field>
+            <field name="formulas">-sum</field>
+            <field name="sequence" eval="2"/>
+            <field name="green_on_positive" eval="False"/>
+            <field name="level" eval="2" />
+        </record>
+        <record id="account_financial_report_non_current_liabilities0_usd" model="account.financial.html.report.line">
+            <field name="name">Más Pasivos No-ciculantes</field>
+            <field name="code">NL_USD</field>
+            <field name="parent_id" ref='account_financial_report_liabilities_view0_usd'/>
+            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_non_current_liabilities'))]" />
+            <field name="groupby">account_id</field>
+            <field name="formulas">-sum</field>
+            <field name="sequence" eval="2"/>
+            <field name="green_on_positive" eval="False"/>
+            <field name="level" eval="1" />
+        </record>
+        <record id="account_financial_report_net_assets0_usd" model="account.financial.html.report.line">
+            <field name="name">Activos Netos</field>
+            <field name="code">NA_USD</field>
+            <field name="formulas">TA_USD - L_USD</field>
+            <field name="sequence" eval="3"/>
+            <field name="level" eval="0" />
+        </record>
+        <record id="account_financial_report_equity0_usd" model="account.financial.html.report.line">
+            <field name="name">CAPITAL</field>
+            <field name="code">EQ_USD</field>
+            <field name="formulas">UNAFFECTED_EARNINGS_USD + RETAINED_EARNINGS_USD</field>
+            <field name="sequence" eval="4"/>
+            <field name="financial_report_id" ref="account_financial_report_balancesheet0_usd"/>
+            <field name="level" eval="0" />
+        </record>
+        <record id="account_financial_unaffected_earnings0_usd" model="account.financial.html.report.line">
+            <field name="name">Ganancias no asignadas</field>
+            <field name="code">UNAFFECTED_EARNINGS_USD</field>
+            <field name="domain">[]</field>
+            <field name="formulas">CURR_YEAR_EARNINGS_USD + PREV_YEAR_EARNINGS_USD</field>
+            <field name="sequence" eval="1"/>
+            <field name="special_date_changer">normal</field>
+            <field name="parent_id" ref='account_financial_report_equity0_usd'/>
+            <field name="level" eval="1" />
+        </record>
+        <record id="account_financial_current_year_earnings0_usd" model="account.financial.html.report.line">
+            <field name="name">Ganancias no asignadas del año actual</field>
+            <field name="code">CURR_YEAR_EARNINGS_USD</field>
+            <field name="formulas">CURR_YEAR_EARNINGS_PNL_USD + CURR_YEAR_EARNINGS_ALLOC_USD</field>
+            <field name="sequence" eval="1"/>
+            <field name="parent_id" ref='account_financial_unaffected_earnings0_usd'/>
+            <field name="level" eval="2" />
+        </record>
+        <record id="account_financial_current_year_earnings_line_1_usd" model="account.financial.html.report.line">
+            <field name="name">Ganancias año actual</field>
+            <field name="code">CURR_YEAR_EARNINGS_PNL_USD</field>
+            <field name="domain" eval="[('account_id.user_type_id', 'in', [
+                ref('account.data_account_type_revenue'),
+                ref('account.data_account_type_other_income'),
+                ref('account.data_account_type_direct_costs'),
+                ref('account.data_account_type_expenses'),
+                ref('account.data_account_type_depreciation')
+            ])]" />
+            <field name="formulas">-sum</field>
+            <field name="sequence" eval="1"/>
+            <field name="parent_id" ref='account_financial_current_year_earnings0_usd'/>
+            <field name="special_date_changer">from_fiscalyear</field>
+            <field name="level" eval="3" />
+        </record>
+        <record id="account_financial_current_year_earnings_line_2_usd" model="account.financial.html.report.line">
+            <field name="name">Ganancias asignadas del año actual </field>
+            <field name="code">CURR_YEAR_EARNINGS_ALLOC_USD</field>
+            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_unaffected_earnings'))]" />
+            <field name="formulas">-sum</field>
+            <field name="sequence" eval="2"/>
+            <field name="parent_id" ref='account_financial_current_year_earnings0_usd'/>
+            <field name="special_date_changer">from_fiscalyear</field>
+            <field name="level" eval="3" />
+        </record>
+        <record id="account_financial_previous_year_earnings0_usd" model="account.financial.html.report.line">
+            <field name="name">Ganancias no asignados de años anteriores</field>
+            <field name="code">PREV_YEAR_EARNINGS_USD</field>
+            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_unaffected_earnings'))]" />
+            <field name="formulas">NEP_USD - sum - CURR_YEAR_EARNINGS_USD</field>
+            <field name="sequence" eval="2"/>
+            <field name="special_date_changer">from_beginning</field>
+            <field name="parent_id" ref='account_financial_unaffected_earnings0_usd'/>
+            <field name="level" eval="2" />
+        </record>
+        <record id="account_financial_retained_earnings0_usd" model="account.financial.html.report.line">
+            <field name="name">Ganancias Retenidas</field>
+            <field name="code">RETAINED_EARNINGS_USD</field>
+            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_equity'))]" />
+            <field name="groupby">account_id</field>
+            <field name="formulas">-sum</field>
+            <field name="sequence" eval="2"/>
+            <field name="parent_id" ref='account_financial_report_equity0_usd'/>
+            <field name="level" eval="1" />
+        </record>
+        <record id="account_financial_report_liabilities_and_equity_view0_usd" model="account.financial.html.report.line">
+            <field name="name">PASIVOS + CAPITAL</field>
+            <field name="code">LE_USD</field>
+            <field name="financial_report_id" ref="account_financial_report_balancesheet0_usd"/>
+            <field name="groupby">account_id</field>
+            <field name="formulas">L_USD + EQ_USD</field>
+            <field name="sequence" eval="4"/>
+            <field name="green_on_positive" eval="False"/>
+            <field name="level" eval="0" />
+        </record>
+        <record id="account_financial_report_off_sheet_usd" model="account.financial.html.report.line">
+            <field name="name">OFF BALANCE SHEET ACCOUNTS</field>
+            <field name="code">OS_USD</field>
+            <field name="financial_report_id" ref="account_financial_report_balancesheet0_usd"/>
+            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_off_sheet'))]"/>
+            <field name="groupby">account_id</field>
+            <field name="formulas">-sum</field>
+            <field name="sequence" eval="5"/>
+            <field name="level" eval="0"/>
+            <field name="hide_if_empty" eval="1"/>
+        </record>
+
+
+        <!-- Estado de Resultado -->
+        <record id="account_financial_report_estado_resultado" model="account.financial.html.report">
+            <field name="name">Estado de Resultado</field>
+            <field name="analytic" eval="True"/>
+            <field name="unfold_all_filter" eval="True"/>
+            <field name="show_journal_filter" eval="True"/>
+            <field name='parent_id' ref='account.account_reports_legal_statements_menu'/>
+        </record>
+
+        <record id="account_financial_html_report_line_ingresos" model="account.financial.html.report.line">
+            <field name="name">Ingresos</field>
+            <field name="code">INC_BIN</field>
+            <field name="financial_report_id" ref="account_financial_report_estado_resultado"/>
+            <field name="formulas">-sum</field>
+            <field name="domain" eval="[('account_id.user_type_id', 'in', [ref('account.data_account_type_revenue'),ref('account.data_account_type_other_income')])]"/>
+            <field name="level" eval="0"/>
+            <field name="sequence" eval="0"/>
+            <field name="account_prefi" eval="4"/>
+            <field name="type_control_ids" eval="[(6,0,[ref('account.data_account_type_revenue'),ref('account.data_account_type_other_income')])]"/>
+            <field name="green_on_positive" eval="True"/>
+            <field name="figure_type">float</field>
+            <field name="show_domain">foldable</field>
+            <field name="groupby">account_id</field>
+        </record>
+
+        <record id="account_financial_html_report_line_costo" model="account.financial.html.report.line">
+            <field name="name">Costo</field>
+            <field name="code">CTO_BIN</field>
+            <field name="financial_report_id" ref="account_financial_report_estado_resultado"/>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_direct_costs'))]"/>
+            <field name="level" eval="0"/>
+            <field name="sequence" eval="0"/>
+            <field name="account_prefi" eval="6"/>
+            <field name="type_control_ids" eval="[(6,0,[ref('account.data_account_type_direct_costs')])]"/>
+            <field name="green_on_positive" eval="True"/>
+            <field name="figure_type">float</field>
+            <field name="show_domain">foldable</field>
+            <field name="groupby">account_id</field>
+        </record>
+
+        <record id="account_financial_html_report_line_egreso" model="account.financial.html.report.line">
+            <field name="name">Egreso</field>
+            <field name="code">LEX_BIN</field>
+            <field name="financial_report_id" ref="account_financial_report_estado_resultado"/>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.user_type_id', 'in', [ref('account.data_account_type_expenses'),ref('account.data_account_type_depreciation')])]"/>
+            <field name="level" eval="0"/>
+            <field name="sequence" eval="0"/>
+            <field name="account_prefi" eval="5"/>
+            <field name="type_control_ids" eval="[(6,0,[ref('account.data_account_type_expenses'),ref('account.data_account_type_depreciation')])]"/>
+            <field name="green_on_positive" eval="True"/>
+            <field name="figure_type">float</field>
+            <field name="show_domain">foldable</field>
+            <field name="groupby">account_id</field>
+        </record>
+
+        <record id="account_financial_html_report_line_ganancias_perdidas" model="account.financial.html.report.line">
+            <field name="name">Ganancias y/o Perdidas</field>
+            <field name="code">NEP_BIN</field>
+            <field name="financial_report_id" ref="account_financial_report_estado_resultado"/>
+            <field name="formulas">INC_BIN - (LEX_BIN + CTO_BIN)</field>
+            <field name="level" eval="0"/>
+            <field name="sequence" eval="0"/>
+            <field name="green_on_positive" eval="True"/>
+            <field name="figure_type">float</field>
+            <field name="show_domain">foldable</field>
+        </record>
+
+
+	<!-- Estado de Resultado en $ -->
+        <record id="account_financial_report_estado_resultado_usd" model="account.financial.html.report">
+            <field name="name">Estado de Resultado $</field>
+            <field name="analytic" eval="True"/>
+            <field name="unfold_all_filter" eval="True"/>
+            <field name="show_journal_filter" eval="True"/>
+	    <field name="usd" eval="True"/>
+            <field name='parent_id' ref='account.account_reports_legal_statements_menu'/>
+        </record>
+
+        <record id="account_financial_html_report_line_ingresos_usd" model="account.financial.html.report.line">
+            <field name="name">Ingresos</field>
+            <field name="code">INC_BIN_USD</field>
+            <field name="financial_report_id" ref="account_financial_report_estado_resultado_usd"/>
+            <field name="formulas">-sum</field>
+            <field name="domain" eval="[('account_id.user_type_id', 'in', [ref('account.data_account_type_revenue'),ref('account.data_account_type_other_income')])]"/>
+            <field name="level" eval="0"/>
+            <field name="sequence" eval="0"/>
+            <field name="account_prefi" eval="4"/>
+            <field name="type_control_ids" eval="[(6,0,[ref('account.data_account_type_revenue'),ref('account.data_account_type_other_income')])]"/>
+            <field name="green_on_positive" eval="True"/>
+            <field name="figure_type">float</field>
+            <field name="show_domain">foldable</field>
+            <field name="groupby">account_id</field>
+        </record>
+
+        <record id="account_financial_html_report_line_costo_usd" model="account.financial.html.report.line">
+            <field name="name">Costo</field>
+            <field name="code">CTO_BIN_USD</field>
+            <field name="financial_report_id" ref="account_financial_report_estado_resultado_usd"/>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_direct_costs'))]"/>
+            <field name="level" eval="0"/>
+            <field name="sequence" eval="0"/>
+            <field name="account_prefi" eval="6"/>
+            <field name="type_control_ids" eval="[(6,0,[ref('account.data_account_type_direct_costs')])]"/>
+            <field name="green_on_positive" eval="True"/>
+            <field name="figure_type">float</field>
+            <field name="show_domain">foldable</field>
+            <field name="groupby">account_id</field>
+        </record>
+
+        <record id="account_financial_html_report_line_egreso_usd" model="account.financial.html.report.line">
+            <field name="name">Egreso</field>
+            <field name="code">LEX_BIN_USD</field>
+            <field name="financial_report_id" ref="account_financial_report_estado_resultado_usd"/>
+            <field name="formulas">sum</field>
+            <field name="domain" eval="[('account_id.user_type_id', 'in', [ref('account.data_account_type_expenses'),ref('account.data_account_type_depreciation')])]"/>
+            <field name="level" eval="0"/>
+            <field name="sequence" eval="0"/>
+            <field name="account_prefi" eval="5"/>
+            <field name="type_control_ids" eval="[(6,0,[ref('account.data_account_type_expenses'),ref('account.data_account_type_depreciation')])]"/>
+            <field name="green_on_positive" eval="True"/>
+            <field name="figure_type">float</field>
+            <field name="show_domain">foldable</field>
+            <field name="groupby">account_id</field>
+        </record>
+
+        <record id="account_financial_html_report_line_ganancias_perdidas_usd" model="account.financial.html.report.line">
+            <field name="name">Ganancias y/o Perdidas</field>
+            <field name="code">NEP_BIN_USD</field>
+            <field name="financial_report_id" ref="account_financial_report_estado_resultado_usd"/>
+            <field name="formulas">INC_BIN_USD - (LEX_BIN_USD + CTO_BIN_USD)</field>
+            <field name="level" eval="0"/>
+            <field name="sequence" eval="0"/>
+            <field name="green_on_positive" eval="True"/>
+            <field name="figure_type">float</field>
+            <field name="show_domain">foldable</field>
+        </record>
+
+
+        <!-- Estado de Situación Financiera -->
+        <record id="account_financial_report_sitaucion_financiera" model="account.financial.html.report">
+            <field name="name">Estado de Situación Financiera</field>
+            <field name="analytic" eval="True"/>
+            <field name="unfold_all_filter" eval="True"/>
+            <field name="show_journal_filter" eval="True"/>
+            <field name='parent_id' ref='account.account_reports_legal_statements_menu'/>
+        </record>
+
+        <record id="account_financial_html_report_line_activos" model="account.financial.html.report.line">
+            <field name="name">Activos</field>
+            <field name="code">TA_BIN</field>
+            <field name="financial_report_id" ref="account_financial_report_sitaucion_financiera"/>
+            <field name="formulas">sum</field>
+            <field name="domain"
+                   eval="[('account_id.user_type_id', 'in', [
+                   ref('account.data_account_type_fixed_assets'),
+                   ref('account.data_account_type_non_current_assets'),
+                   ref('account.data_account_type_liquidity'),
+                   ref('account.data_account_type_receivable'),
+                   ref('account.data_account_type_current_assets'),
+                   ref('account.data_account_type_prepayments')])]"/>
+            <field name="level" eval="0"/>
+            <field name="sequence" eval="0"/>
+            <field name="account_prefi" eval="1"/>
+            <field name="type_control_ids" eval="[(6,0,[ref('account.data_account_type_fixed_assets'),
+                   ref('account.data_account_type_non_current_assets'),
+                   ref('account.data_account_type_liquidity'),
+                   ref('account.data_account_type_receivable'),
+                   ref('account.data_account_type_current_assets'),
+                   ref('account.data_account_type_prepayments')])]"/>
+            <field name="green_on_positive" eval="True"/>
+            <field name="groupby">account_id</field>
+            <field name="figure_type">float</field>
+            <field name="show_domain">foldable</field>
+        </record>
+
+        <record id="account_financial_html_report_line_pasivos" model="account.financial.html.report.line">
+            <field name="name">Pasivos</field>
+            <field name="code">L_BIN</field>
+            <field name="financial_report_id" ref="account_financial_report_sitaucion_financiera"/>
+            <field name="formulas">-sum</field>
+            <field name="domain"
+                   eval="[('account_id.user_type_id', 'in', [
+                   ref('account.data_account_type_non_current_liabilities'),
+                   ref('account.data_account_type_current_liabilities'),
+                   ref('account.data_account_type_credit_card'),
+                   ref('account.data_account_type_payable')])]"/>
+            <field name="level" eval="0"/>
+            <field name="sequence" eval="0"/>
+            <field name="account_prefi" eval="2"/>
+            <field name="type_control_ids" eval="[(6,0,[ref('account.data_account_type_non_current_liabilities'),
+                   ref('account.data_account_type_current_liabilities'),
+                   ref('account.data_account_type_credit_card'),
+                   ref('account.data_account_type_payable')])]"/>
+            <field name="green_on_positive" eval="True"/>
+            <field name="groupby">account_id</field>
+            <field name="figure_type">float</field>
+            <field name="show_domain">foldable</field>
+        </record>
+
+        <record id="account_financial_html_report_line_capital" model="account.financial.html.report.line">
+            <field name="name">Capital</field>
+            <field name="code">EQ_BIN</field>
+            <field name="financial_report_id" ref="account_financial_report_sitaucion_financiera"/>
+            <field name="formulas">-sum</field>
+            <field name="domain"
+                   eval="[('account_id.user_type_id', 'in', [
+                   ref('account.data_unaffected_earnings'),
+                   ref('account.data_account_type_equity')])]"/>
+            <field name="level" eval="0"/>
+            <field name="sequence" eval="0"/>
+            <field name="account_prefi" eval="3"/>
+            <field name="type_control_ids" eval="[(6,0,[ref('account.data_unaffected_earnings'),ref('account.data_account_type_equity')])]"/>
+            <field name="green_on_positive" eval="True"/>
+            <field name="groupby">account_id</field>
+            <field name="figure_type">float</field>
+            <field name="show_domain">foldable</field>
+        </record>
+
+        <record id="account_financial_html_report_line_apc" model="account.financial.html.report.line">
+            <field name="name">Activo - (Pasivo + Capital)</field>
+            <field name="code">APC_BIN</field>
+            <field name="financial_report_id" ref="account_financial_report_sitaucion_financiera"/>
+            <field name="formulas">TA_BIN - (L_BIN + EQ_BIN)</field>
+            <field name="level" eval="0"/>
+            <field name="sequence" eval="0"/>
+            <field name="account_prefi" eval="4"/>
+            <field name="green_on_positive" eval="True"/>
+            <field name="figure_type">float</field>
+            <field name="show_domain">foldable</field>
+        </record>
+
+        <!-- Estado de Situación Financiera $ -->
+        <record id="account_financial_report_sitaucion_financiera_usd" model="account.financial.html.report">
+            <field name="name">Estado de Situación Financiera $</field>
+            <field name="analytic" eval="True"/>
+            <field name="unfold_all_filter" eval="True"/>
+            <field name="show_journal_filter" eval="True"/>
+	    <field name="usd" eval="True"/>
+            <field name='parent_id' ref='account.account_reports_legal_statements_menu'/>
+        </record>
+
+        <record id="account_financial_html_report_line_activos_usd" model="account.financial.html.report.line">
+            <field name="name">Activos</field>
+            <field name="code">TA_BIN_USD</field>
+            <field name="financial_report_id" ref="account_financial_report_sitaucion_financiera_usd"/>
+            <field name="formulas">sum</field>
+            <field name="domain"
+                   eval="[('account_id.user_type_id', 'in', [
+                   ref('account.data_account_type_fixed_assets'),
+                   ref('account.data_account_type_non_current_assets'),
+                   ref('account.data_account_type_liquidity'),
+                   ref('account.data_account_type_receivable'),
+                   ref('account.data_account_type_current_assets'),
+                   ref('account.data_account_type_prepayments')])]"/>
+            <field name="level" eval="0"/>
+            <field name="sequence" eval="0"/>
+            <field name="account_prefi" eval="1"/>
+            <field name="type_control_ids" eval="[(6,0,[ref('account.data_account_type_fixed_assets'),
+                   ref('account.data_account_type_non_current_assets'),
+                   ref('account.data_account_type_liquidity'),
+                   ref('account.data_account_type_receivable'),
+                   ref('account.data_account_type_current_assets'),
+                   ref('account.data_account_type_prepayments')])]"/>
+            <field name="green_on_positive" eval="True"/>
+            <field name="groupby">account_id</field>
+            <field name="figure_type">float</field>
+            <field name="show_domain">foldable</field>
+        </record>
+
+        <record id="account_financial_html_report_line_pasivos_usd" model="account.financial.html.report.line">
+            <field name="name">Pasivos</field>
+            <field name="code">L_BIN_USD</field>
+            <field name="financial_report_id" ref="account_financial_report_sitaucion_financiera_usd"/>
+            <field name="formulas">-sum</field>
+            <field name="domain"
+                   eval="[('account_id.user_type_id', 'in', [
+                   ref('account.data_account_type_non_current_liabilities'),
+                   ref('account.data_account_type_current_liabilities'),
+                   ref('account.data_account_type_credit_card'),
+                   ref('account.data_account_type_payable')])]"/>
+            <field name="level" eval="0"/>
+            <field name="sequence" eval="1"/>
+            <field name="account_prefi" eval="2"/>
+            <field name="type_control_ids" eval="[(6,0,[ref('account.data_account_type_non_current_liabilities'),
+                   ref('account.data_account_type_current_liabilities'),
+                   ref('account.data_account_type_credit_card'),
+                   ref('account.data_account_type_payable')])]"/>
+            <field name="green_on_positive" eval="True"/>
+            <field name="groupby">account_id</field>
+            <field name="figure_type">float</field>
+            <field name="show_domain">foldable</field>
+        </record>
+
+        <record id="account_financial_html_report_line_capital_usd" model="account.financial.html.report.line">
+            <field name="name">Capital</field>
+            <field name="code">EQ_BIN_USD</field>
+            <field name="financial_report_id" ref="account_financial_report_sitaucion_financiera_usd"/>
+            <field name="formulas">-sum</field>
+            <field name="domain"
+                   eval="[('account_id.user_type_id', 'in', [
+                   ref('account.data_unaffected_earnings'),
+                   ref('account.data_account_type_equity')])]"/>
+            <field name="level" eval="0"/>
+            <field name="sequence" eval="2"/>
+            <field name="account_prefi" eval="3"/>
+            <field name="type_control_ids" eval="[(6,0,[ref('account.data_unaffected_earnings'),ref('account.data_account_type_equity')])]"/>
+            <field name="green_on_positive" eval="True"/>
+            <field name="groupby">account_id</field>
+            <field name="figure_type">float</field>
+            <field name="show_domain">foldable</field>
+        </record>
+
+        <record id="account_financial_html_report_line_apc_usd" model="account.financial.html.report.line">
+            <field name="name">Activo - (Pasivo + Capital)</field>
+            <field name="code">APC_BIN_USD</field>
+            <field name="financial_report_id" ref="account_financial_report_sitaucion_financiera_usd"/>
+            <field name="formulas">TA_BIN_USD - (L_BIN_USD + EQ_BIN_USD)</field>
+            <field name="level" eval="0"/>
+            <field name="sequence" eval="3"/>
+            <field name="account_prefi" eval="4"/>
+            <field name="green_on_positive" eval="True"/>
+            <field name="figure_type">float</field>
+            <field name="show_domain">foldable</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,19 @@
+<odoo>
+    <data noupdate="1">
+        <record id="paperformat_pre_payroll_run" model="report.paperformat">
+            <field name="name">Formato de Reporte Pre-nómina</field>
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">00</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">10</field>
+            <field name="margin_right">10</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">35</field>
+            <field name="dpi">90</field>
+        </record>
+
+    </data>
+</odoo>

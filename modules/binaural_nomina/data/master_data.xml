@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data noupdate="1">
+
+	<record id="hr_allowance_cestaticket" model="hr.allowance">
+	    <field name="name">Cesta Ticket</field>
+	    <field name="code">CEST</field>
+	    <field name="description">Cesta Ticket</field>
+	    <field name="value">0</field>
+	</record>
+
+  <record id="res_bank_bnc" model="res.bank">
+    <field name="name">Banco Nacional de Crédito</field>
+    <field name="country" ref="base.ve"/>
+  </record>
+	<!-- categoria de regla salarial -->
+
+	<record id="hr_salary_rule_category_complemento" model="hr.salary.rule.category">
+	    <field name="name">Complemento salarial</field>
+	    <field name="code">COMPS</field>
+	    <field name="note">Complemento salarial</field>
+	</record>
+
+        <record id="hr_salary_rule_category_asignacion" model="hr.salary.rule.category">
+            <field name="name">Asignación</field>
+            <field name="code">ASIG</field>
+            <field name="note">Asignacion</field>
+        </record>
+
+        <record id="hr_salary_rule_category_vacation" model="hr.salary.rule.category">
+            <field name="name">Vacaciones</field>
+            <field name="code">VAC</field>
+            <field name="note">Vacaciones</field>
+        </record>
+
+        <record id="hr_salary_rule_category_dev" model="hr.salary.rule.category">
+            <field name="name">Devengado</field>
+            <field name="code">DEV</field>
+            <field name="note">Devengado</field>
+        </record>
+
+        <record id="hr_salary_rule_category_other" model="hr.salary.rule.category">
+            <field name="name">Otros cálculos</field>
+            <field name="code">OC</field>
+            <field name="note">Otros</field>
+        </record>
+
+        <record id="hr_salary_rule_category_vacation_accrued" model="hr.salary.rule.category">
+            <field name="name">Devengado vacaciones</field>
+            <field name="code">DEVVAC</field>
+            <field name="note">Devengado Vacaciones</field>
+        </record>
+
+        <record id="hr_salary_rule_category_vacation_deduction" model="hr.salary.rule.category">
+            <field name="name">Deducciones vacaciones</field>
+            <field name="code">DEDVAC</field>
+            <field name="note">Deducciones Vacaciones</field>
+        </record>
+
+        <record id="hr_salary_rule_category_vacation_other" model="hr.salary.rule.category">
+            <field name="name">Otros cálculos vacaciones</field>
+            <field name="code">OCV</field>
+            <field name="note">Otros Vacaciones</field>
+        </record>
+
+        <record id="hr_salary_rule_category_provision" model="hr.salary.rule.category">
+            <field name="name">Provisiones</field>
+            <field name="code">PROV</field>
+            <field name="note">Provisiones</field>
+        </record>
+
+        <record id="hr_salary_rule_category_liq" model="hr.salary.rule.category">
+            <field name="name">Liquidaciones</field>
+            <field name="code">LIQ</field>
+            <field name="note">Liquidaciones</field>
+        </record>
+
+        <!-- tipo entrada de trabajo -->
+        <!-- OJO: Se usa la referencia de ausencias  -->
+        <record id="hr_work_entry_binaural_basic" model="hr.work.entry.type">
+            <field name="name">Días Laborados</field>
+            <field name="code">DLAB</field>
+            <field name="is_leave" eval="False"/>
+            <field name="round_days">NO</field>
+        </record>
+
+        <record id="hr_work_entry_binaural_leave" model="hr.work.entry.type">
+            <field name="name">Inasistencia</field>
+            <field name="code">INASIS</field>
+            <field name="is_leave" eval="False"/>
+            <field name="round_days">NO</field>
+        </record>
+
+        <record id="hr_work_entry_binaural_weekend" model="hr.work.entry.type">
+            <field name="name">Días de Descanso</field>
+            <field name="code">FSAP01</field>
+            <field name="is_leave" eval="False" />                        
+            <field name="round_days">NO</field>
+        </record>
+
+         <record id="hr_work_entry_binaural_asistencia_nocturna" model="hr.work.entry.type">
+            <field name="name">Asistencia nocturna</field>
+            <field name="code">ASISNOC</field>
+            <field name="is_leave" eval="False" />                        
+            <field name="round_days">NO</field>            
+        </record>
+
+        <record id="hr_work_entry_binaural_hora_laboradas" model="hr.work.entry.type">
+            <field name="name">Horas Laboradas</field>
+            <field name="code">HORALAB</field>
+            <field name="is_leave" eval="False" />
+            <field name="round_days">NO</field>
+        </record>
+
+        <record id="hr_work_entry_binaural_horas_a_distancia_virtual" model="hr.work.entry.type">
+            <field name="name">Horas a distancia virtual</field>
+            <field name="code">HDVTL</field>
+            <field name="is_leave" eval="False" />
+            <field name="round_days">NO</field>
+        </record>
+
+        <record id="hr_work_entry_binaural_inasistencia" model="hr.work.entry.type">
+            <field name="name">Inasistencia horas</field>
+            <field name="code">INAS</field>
+            <field name="is_leave" eval="False" />
+            <field name="round_days">NO</field>
+        </record>
+
+        <record id="hr_work_entry_binaural_extra_hours" model="hr.work.entry.type">
+            <field name="name">Horas extra trabajada</field>
+            <field name="code">HE01</field>
+            <field name="is_leave" eval="False" />
+            <field name="leave_type_ids" eval="[(6,0,[ref('hr_holidays.holiday_status_cl')])]" />
+            <field name="round_days">NO</field>            
+        </record>
+
+        <record id="hr_work_entry_binaural_extra_hours_day" model="hr.work.entry.type">
+            <field name="name">Horas extra trabajada (Diurna)</field>
+            <field name="code">HED01</field>
+            <field name="is_leave" eval="False" />
+            <field name="leave_type_ids" eval="[(6,0,[ref('hr_holidays.holiday_status_cl')])]" />
+            <field name="round_days">NO</field>
+        </record>
+
+         <record id="hr_work_entry_binaural_extra_hours_night" model="hr.work.entry.type">
+            <field name="name">Horas extra trabajada (nocturna)</field>
+            <field name="code">HEN01</field>
+            <field name="is_leave" eval="False" />
+            <field name="leave_type_ids" eval="[(6,0,[ref('hr_holidays.holiday_status_cl')])]" />
+            <field name="round_days">NO</field>            
+        </record>
+
+        <!-- OJO: Se usa la referencia de ausencias  -->
+        <record id="hr_work_entry_binaural_holiday" model="hr.work.entry.type">
+            <field name="name">Feriado de ley trabajado</field>
+            <field name="code">FLAP02</field>
+            <field name="is_leave" eval="False" />
+            <field name="leave_type_ids" eval="[(6,0,[ref('hr_holidays.holiday_status_cl')])]" />
+            <field name="round_days">NO</field>            
+        </record>
+
+        <record id="hr_work_entry_binaural_holiday_not_worked" model="hr.work.entry.type">
+            <field name="name">Feriado de ley</field>
+            <field name="code">FLAP02NT</field>
+            <field name="is_leave" eval="False" />
+            <field name="leave_type_ids" eval="[(6,0,[ref('hr_holidays.holiday_status_cl')])]" />
+            <field name="round_days">NO</field>            
+        </record>
+        
+        <record id="hr_work_entry_binaural_break_day" model="hr.work.entry.type">
+            <field name="name">Día de descanso trabajado</field>
+            <field name="code">DIADESC</field>
+            <field name="is_leave" eval="False" />
+            <field name="leave_type_ids" eval="[(6,0,[ref('hr_holidays.holiday_status_cl')])]" />            
+            <field name="round_days">NO</field>            
+        </record>
+
+        <record id="hr_work_entry_binaural_vacation" model="hr.work.entry.type">
+            <field name="name">Vacaciones</field>
+            <field name="code">VAC</field>
+            <field name="is_leave" eval="False" />
+            <field name="leave_type_ids" eval="[(6,0,[ref('hr_holidays.holiday_status_cl')])]" />
+            <field name="round_days">NO</field>
+        </record>
+
+         <record id="hr_work_entry_binaural_vacation_holiday" model="hr.work.entry.type">
+            <field name="name">Feriado Vacaciones</field>
+            <field name="code">FLAP03</field>
+            <field name="is_leave" eval="False" />
+            <field name="round_days">HALF</field>            
+        </record>
+
+         <record id="hr_work_entry_binaural_vacation_weekend" model="hr.work.entry.type">
+            <field name="name">Día de Descanso Vacaciones</field>
+            <field name="code">DIADESCVAC</field>
+            <field name="is_leave" eval="False" />
+            <field name="round_days">HALF</field>            
+        </record>
+
+         <!-- tipo de ausencias -->
+        <record id="hr_leave_feriados" model="hr.leave.type">
+            <field name="name">Feriados de ley</field>
+            <field name="request_unit">day</field>
+            <field name="validity_start" eval="datetime.now().date().replace(month=1, day=1)" />
+            <field name="validity_stop" eval="datetime.now().date().replace(month=12, day=31)" />
+            <field name="allocation_type">fixed</field>
+            <field name="leave_validation_type">no_validation</field>
+            <field name="create_calendar_meeting" eval="True" />
+            <field name="color_name">violet</field>
+            <field name="work_entry_type_id" ref="hr_work_entry_binaural_holiday" />
+        </record>       
+
+        <record id="hr_leave_vacaciones" model="hr.leave.type">
+            <field name="name">Vacaciones</field>
+            <field name="request_unit">day</field>
+            <field name="allocation_type">fixed</field>
+            <field name="leave_validation_type">hr</field>
+            <field name="create_calendar_meeting" eval="True" />
+            <field name="color_name">red</field>
+            <field name="work_entry_type_id" ref="hr_work_entry_binaural_vacation" />
+            <field name="holiday_work_entry_type_id" ref="hr_work_entry_binaural_vacation_holiday"/>
+            <field name="break_day_work_entry_type_id" ref="hr_work_entry_binaural_vacation_weekend"/>
+        </record>       
+
+        <!-- tipo de trabajo diurno (cambiar a este recurso por defecto en la configuracion) -->
+        <record id="hr_resource_calendar_diurno_40h" model="resource.calendar">
+            <field name="name">40 Horas/Semana Diurna</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="hours_per_day">8.0</field>
+            <field name="tz">America/Caracas</field>
+            <field name="full_time_required_hours">56</field> <!-- preguntar esto a daniela -->
+            <field name="attendance_ids"
+                eval="[(5, 0, 0),
+                    (0, 0, {'name': 'Lunes mañana', 'dayofweek': '0', 'hour_from': 8, 'hour_to': 12, 'day_period': 'morning','work_entry_type_id':ref('binaural_nomina.hr_work_entry_binaural_basic')}),
+                    (0, 0, {'name': 'Lunes tarde', 'dayofweek': '0', 'hour_from': 13, 'hour_to': 17, 'day_period': 'afternoon','work_entry_type_id':ref('binaural_nomina.hr_work_entry_binaural_basic')}),
+                    (0, 0, {'name': 'Martes mañana', 'dayofweek': '1', 'hour_from': 8, 'hour_to': 12, 'day_period': 'morning','work_entry_type_id':ref('binaural_nomina.hr_work_entry_binaural_basic')}),
+                    (0, 0, {'name': 'Martes tarde', 'dayofweek': '1', 'hour_from': 13, 'hour_to': 17, 'day_period': 'afternoon','work_entry_type_id':ref('binaural_nomina.hr_work_entry_binaural_basic')}),
+                    (0, 0, {'name': 'Miercoles mañana', 'dayofweek': '2', 'hour_from': 8, 'hour_to': 12, 'day_period': 'morning','work_entry_type_id':ref('binaural_nomina.hr_work_entry_binaural_basic')}),
+                    (0, 0, {'name': 'Miercoles tarde', 'dayofweek': '2', 'hour_from': 13, 'hour_to': 17, 'day_period': 'afternoon','work_entry_type_id':ref('binaural_nomina.hr_work_entry_binaural_basic')}),
+                    (0, 0, {'name': 'Jueves mañana', 'dayofweek': '3', 'hour_from': 8, 'hour_to': 12, 'day_period': 'morning','work_entry_type_id':ref('binaural_nomina.hr_work_entry_binaural_basic')}),
+                    (0, 0, {'name': 'Jueves tarde', 'dayofweek': '3', 'hour_from': 13, 'hour_to': 17, 'day_period': 'afternoon','work_entry_type_id':ref('binaural_nomina.hr_work_entry_binaural_basic')}),
+                    (0, 0, {'name': 'Viernes mañana', 'dayofweek': '4', 'hour_from': 8, 'hour_to': 12, 'day_period': 'morning','work_entry_type_id':ref('binaural_nomina.hr_work_entry_binaural_basic')}),
+                    (0, 0, {'name': 'Viernes tarde', 'dayofweek': '4', 'hour_from': 13, 'hour_to': 17, 'day_period': 'afternoon','work_entry_type_id':ref('binaural_nomina.hr_work_entry_binaural_basic')}),
+                    (0, 0, {'name': 'Sabado mañana', 'dayofweek': '5', 'hour_from': 8, 'hour_to': 12, 'day_period': 'morning','work_entry_type_id':ref('hr_work_entry_binaural_weekend')}),
+                    (0, 0, {'name': 'Sabado tarde', 'dayofweek': '5', 'hour_from': 13, 'hour_to': 17, 'day_period': 'afternoon','work_entry_type_id':ref('hr_work_entry_binaural_weekend')}),
+                    (0, 0, {'name': 'Domingo mañana', 'dayofweek': '6', 'hour_from': 8, 'hour_to': 12, 'day_period': 'morning','work_entry_type_id':ref('hr_work_entry_binaural_weekend')}),
+                    (0, 0, {'name': 'Domingo tarde', 'dayofweek': '6', 'hour_from': 13, 'hour_to': 17, 'day_period': 'afternoon','work_entry_type_id':ref('hr_work_entry_binaural_weekend')})]"
+            />
+        </record>
+        <record id="hr_resource_calendar_per_hours" model="resource.calendar">
+            <field name="name">Horas variables</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="hours_per_day">0</field>
+            <field name="tz">America/Caracas</field>
+            <field name="full_time_required_hours">0</field> <!-- preguntar esto a daniela -->
+            <field name="attendance_ids" eval="[(2, 0, 0)]"/>
+        </record>
+
+        <record id="hr_resource_calendar_nocturno_35h" model="resource.calendar">
+            <field name="name">35 Horas/Semana Nocturna</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="hours_per_day">7.0</field>
+            <field name="tz">America/Caracas</field>
+            <field name="full_time_required_hours">35</field>
+            <field name="attendance_ids"
+                eval="[(5, 0, 0),
+                    (0, 0, {'name': 'Lunes mañana', 'dayofweek': '0', 'hour_from': 0, 'hour_to': 4, 'day_period': 'early_morning','work_entry_type_id':ref('binaural_nomina.hr_work_entry_binaural_basic')}),
+                    (0, 0, {'name': 'Lunes tarde', 'dayofweek': '0', 'hour_from': 21, 'hour_to': 24, 'day_period': 'night','work_entry_type_id':ref('binaural_nomina.hr_work_entry_binaural_basic')}),
+                    (0, 0, {'name': 'Martes mañana', 'dayofweek': '1', 'hour_from': 0, 'hour_to': 4, 'day_period': 'early_morning','work_entry_type_id':ref('binaural_nomina.hr_work_entry_binaural_basic')}),
+                    (0, 0, {'name': 'Martes tarde', 'dayofweek': '1', 'hour_from': 21, 'hour_to': 24, 'day_period': 'night','work_entry_type_id':ref('binaural_nomina.hr_work_entry_binaural_basic')}),
+                    (0, 0, {'name': 'Miercoles mañana', 'dayofweek': '2', 'hour_from': 0, 'hour_to': 4, 'day_period': 'early_morning','work_entry_type_id':ref('binaural_nomina.hr_work_entry_binaural_basic')}),
+                    (0, 0, {'name': 'Miercoles tarde', 'dayofweek': '2', 'hour_from': 21, 'hour_to': 24, 'day_period': 'night','work_entry_type_id':ref('binaural_nomina.hr_work_entry_binaural_basic')}),
+                    (0, 0, {'name': 'Jueves mañana', 'dayofweek': '3', 'hour_from': 0, 'hour_to': 4, 'day_period': 'early_morning','work_entry_type_id':ref('binaural_nomina.hr_work_entry_binaural_basic')}),
+                    (0, 0, {'name': 'Jueves tarde', 'dayofweek': '3', 'hour_from': 21, 'hour_to': 24, 'day_period': 'night','work_entry_type_id':ref('binaural_nomina.hr_work_entry_binaural_basic')}),
+                    (0, 0, {'name': 'Viernes mañana', 'dayofweek': '4', 'hour_from': 0, 'hour_to': 4, 'day_period': 'early_morning','work_entry_type_id':ref('binaural_nomina.hr_work_entry_binaural_basic')}),
+                    (0, 0, {'name': 'Viernes tarde', 'dayofweek': '4', 'hour_from': 21, 'hour_to': 24, 'day_period': 'night','work_entry_type_id':ref('binaural_nomina.hr_work_entry_binaural_basic')}),
+                    (0, 0, {'name': 'Sabado mañana', 'dayofweek': '5', 'hour_from': 0, 'hour_to': 4, 'day_period': 'early_morning','work_entry_type_id':ref('hr_work_entry_binaural_weekend')}),
+                    (0, 0, {'name': 'Sabado tarde', 'dayofweek': '5', 'hour_from': 21, 'hour_to': 24, 'day_period': 'night','work_entry_type_id':ref('hr_work_entry_binaural_weekend')}),
+                    (0, 0, {'name': 'Domingo mañana', 'dayofweek': '6', 'hour_from': 0, 'hour_to': 4, 'day_period': 'early_morning','work_entry_type_id':ref('hr_work_entry_binaural_weekend')}),
+                    (0, 0, {'name': 'Domingo tarde', 'dayofweek': '6', 'hour_from': 21, 'hour_to': 24, 'day_period': 'night','work_entry_type_id':ref('hr_work_entry_binaural_weekend')})]"
+            />
+        </record>
+
+        <!-- tipo de estructura mensual 40 horas -->
+        <record id="structure_type_40h_month" model="hr.payroll.structure.type">
+            <field name="name">Nomina Mensual / 40 horas por semana (Diurno)</field>
+            <field name="country_id" search="[('name','=','Venezuela')]"/>
+            <field name="wage_type">monthly</field>
+            <field name="default_schedule_pay">monthly</field>
+            <field name="default_resource_calendar_id" ref="hr_resource_calendar_diurno_40h" />
+            <field name="default_work_entry_type_id" ref="binaural_nomina.hr_work_entry_binaural_basic" />
+            <!-- <field name="default_struct_id" ref="structure_payroll_monthly" /> este valor hay que asignarlo, buscar la forma --> 
+        </record>
+
+
+        <!-- estructura salarial Básica Mensual -->
+        <record id="structure_payroll_basic" model="hr.payroll.structure">
+            <field name="name">Nomina Básica</field>
+            <field name="category">salary</field>
+            <field name="type_id" ref="structure_type_40h_month" />
+            <field name="use_worked_day_lines" eval="True" />
+            <field name="country_id" search="[('name','=','Venezuela')]"/>
+            <field name="report_id" search="[('model','=','hr.payslip'),('report_type','=','qweb-pdf')]" />
+            <field name="schedule_pay">monthly</field>  
+            <field name="rule_ids" eval="[(5, 0, 0),
+                (0,0,{'name': 'Salario neto','sequence': 200,'code': 'NET','category_id': ref('hr_payroll.NET'),'condition_select': 'none','amount_select': 'code', 'amount_python_compute': 'result = categories.BASIC + categories.ASIG + categories.DED'})
+                ]" />
+          </record>
+
+          <record id="structure_payroll_provisions" model="hr.payroll.structure">
+            <field name="name">Provisiones</field>
+            <field name="category">provision</field>
+            <field name="type_id" ref="structure_type_40h_month" />
+            <field name="use_worked_day_lines" eval="True" />
+            <field name="country_id" search="[('name','=','Venezuela')]"/>
+            <field name="report_id" search="[('model','=','hr.payslip'),('report_type','=','qweb-pdf')]" />
+            <field name="schedule_pay">monthly</field>
+            <field name="journal_id" ref="binaural_nomina.provisions_journal"/>
+	        <field name="rule_ids" eval="[]"/>
+          </record>
+
+	<!-- estructura salarial Cesta Ticket -->
+	<record id="structure_payroll_ticket" model="hr.payroll.structure">
+	    <field name="name">Nomina Cesta Ticket</field>
+	    <field name="category">salary</field>
+	    <field name="type_id" ref="structure_type_40h_month" />
+	    <field name="use_worked_day_lines" eval="True" />
+	    <field name="country_id" search="[('name','=','Venezuela')]"/>
+	    <field name="report_id" search="[('model','=','hr.payslip'),('report_type','=','qweb-pdf')]" />
+	    <field name="schedule_pay">monthly</field>
+	    <field name="rule_ids" eval="[(5, 0, 0),
+		(0,0,{'name': 'Salario neto','sequence': 200,'code': 'NET','category_id': ref('hr_payroll.NET'),'condition_select': 'none','amount_select': 'code', 'amount_python_compute': 'result = categories.COMPS'})
+		]" />
+	</record>
+
+        <!-- estructura salarial Vacaciones Mensual -->
+        <record id="structure_payroll_vacation" model="hr.payroll.structure">
+            <field name="name">Nomina Vacaciones</field>
+            <field name="category">vacation</field>
+            <field name="type_id" ref="structure_type_40h_month" />
+            <field name="use_worked_day_lines" eval="True" />
+            <field name="country_id" search="[('name','=','Venezuela')]"/>
+            <field name="report_id" search="[('model','=','hr.payslip'),('report_type','=','qweb-pdf')]" />
+            <field name="schedule_pay">monthly</field>
+            <field name="rule_ids" eval="[]" />
+        </record>
+
+        <!-- estructura salarial Utilidades Mensual -->
+        <record id="structure_payroll_13month" model="hr.payroll.structure">
+            <field name="name">Nomina Utilidades</field>
+            <field name="type_id" ref="structure_type_40h_month" />
+            <field name="category">profit_sharing</field>
+            <field name="use_worked_day_lines" eval="True" />
+            <field name="country_id" search="[('name','=','Venezuela')]"/>
+            <field name="report_id" search="[('model','=','hr.payslip'),('report_type','=','qweb-pdf')]" />
+            <field name="schedule_pay">monthly</field>
+            <field name="rule_ids" eval="[]" />
+        </record>
+
+        <!-- estructura salarial Prestaciones Mensual -->
+        <record id="structure_payroll_benefits" model="hr.payroll.structure">
+            <field name="name">Adelanto de Prestaciones</field>
+            <field name="type_id" ref="structure_type_40h_month" />
+            <field name="category">benefits</field>
+            <field name="use_worked_day_lines" eval="True" />
+            <field name="country_id" search="[('name','=','Venezuela')]"/>
+            <field name="report_id" search="[('model','=','hr.payslip'),('report_type','=','qweb-pdf')]" />
+            <field name="schedule_pay">monthly</field>
+            <field name="rule_ids" eval="[]" />
+        </record>
+
+        <!-- estructura salarial Liquidaciones Mensual -->
+        <record id="structure_payroll_liquidaciones" model="hr.payroll.structure">
+            <field name="name">Nomina Liquidaciones</field>
+            <field name="type_id" ref="structure_type_40h_month" />
+            <field name="category">liquidation</field>
+            <field name="use_worked_day_lines" eval="True" />
+            <field name="country_id" search="[('name','=','Venezuela')]"/>
+            <field name="report_id" search="[('model','=','hr.payslip'),('report_type','=','qweb-pdf')]" />
+            <field name="schedule_pay">monthly</field>
+            <field name="rule_ids" eval="[]" />
+        </record>
+
+       
+      <record id="hr_employee1" model="hr.employee">
+        <field name="name">Angelica</field>
+        <field name="lastname">Azuaje</field>
+        <field name="entry_date">2021-12-20</field>
+        <field name="tz">America/Caracas</field>
+      </record>
+
+      <record id="hr_employee2" model="hr.employee">
+        <field name="name">Daniela</field>
+        <field name="lastname">Gomez</field>
+        <field name="entry_date">2021-12-20</field>
+        <field name="tz">America/Caracas</field>
+      </record>
+
+      <record id="hr_employee3" model="hr.employee">
+        <field name="name">Miguel</field>
+        <field name="lastname">Gozaine</field>
+        <field name="entry_date">2021-12-20</field>
+        <field name="tz">America/Caracas</field>
+      </record>
+
+      <record id="hr_employee4" model="hr.employee">
+        <field name="name">Sahira</field>
+        <field name="lastname">Lacruz</field>
+        <field name="entry_date">2021-12-20</field>
+        <field name="tz">America/Caracas</field>
+      </record>
+
+      <record id="hr_contract1" model="hr.contract">
+        <field name="name">administracion</field>
+        <field name="employee_id" ref="hr_employee1" />
+        <field name="structure_type_id" ref="structure_type_40h_month" />
+        <field name="date_start">2022-03-01</field>
+        <field name="resource_calendar_id" ref="hr_resource_calendar_diurno_40h" />
+        <field name="wage">800</field>
+      </record>
+
+       <record id="hr_contract2" model="hr.contract">
+        <field name="name">consultoria</field>
+        <field name="employee_id" ref="hr_employee2" />
+        <field name="structure_type_id" ref="structure_type_40h_month" />
+        <field name="date_start">2022-02-01</field>
+        <field name="resource_calendar_id" ref="hr_resource_calendar_diurno_40h" />
+        <field name="wage">1200</field>
+      </record>
+
+       <record id="hr_contract3" model="hr.contract">
+        <field name="name">programacion</field>
+        <field name="employee_id" ref="hr_employee3" />
+        <field name="structure_type_id" ref="structure_type_40h_month" />
+        <field name="date_start">2022-01-18</field>
+        <field name="resource_calendar_id" ref="hr_resource_calendar_diurno_40h" />
+        <field name="wage">1500</field>
+      </record>
+
+       <record id="hr_contract4" model="hr.contract">
+        <field name="name">gente</field>
+        <field name="employee_id" ref="hr_employee4" />
+        <field name="structure_type_id" ref="structure_type_40h_month" />
+        <field name="date_start">2022-02-01</field>
+        <field name="resource_calendar_id" ref="hr_resource_calendar_diurno_40h" />
+        <field name="wage">1800</field>
+      </record>
+    </data>
+</odoo>

@@ -1,0 +1,12 @@
+<odoo>
+    <data>
+        <record id="provisions_journal" model="account.journal">
+            <field name="name">Provisiones</field>
+            <field name="code">PROV</field>
+            <field name="type">general</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="invoice_reference_model">odoo</field>
+            <field name="invoice_reference_type">partner</field>
+        </record>
+    </data>
+</odoo>

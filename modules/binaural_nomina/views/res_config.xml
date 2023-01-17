@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_inherit_binaural_nomina" model="ir.ui.view">
+        <field name="name">Configuracion Nomina Venezuela</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="45"/>
+        <field name="inherit_id" ref="hr_payroll.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='hr_payroll_localization']" position="after">                
+                    <h2>Nómina Venezuela</h2>
+                    <div class="row mt16 o_settings_container" id="l10n_ve_hr_payroll">
+                        <div class="col-lg-8 col-12 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <!-- <label for="default_commission_on_target" string="Valores iniciales"/> -->
+                                <div class="text-muted">
+                                    Sueldo minimo de ley
+                                </div>
+                                <group class="mt16" name="default_deductions_1">
+                                    <label for="sueldo_base_ley"/>
+                                    <div>
+                                        <field name="sueldo_base_ley" nolabel="1"/>
+                                        <span>Bs</span>
+                                    </div>                                                                    
+                                </group>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-12 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <div class="text-muted">
+                                    Configure los valores de FAOV e INCE
+                                </div>
+                                <group class="mt16" name="default_deductions_1">
+                                    <label for="porcentaje_deduccion_faov"/>
+                                    <div>
+                                        <field name="porcentaje_deduccion_faov" nolabel="1"/>
+                                        <span>% / mes</span>
+                                    </div>                                
+                                    <label for="porcentaje_deduccion_ince"/>
+                                    <div>
+                                        <field name="porcentaje_deduccion_ince" nolabel="1"/>
+                                        <span>% / mes</span>
+                                    </div>                                
+                                </group>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-12 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <div class="text-muted">
+                                    Configuracion de IVSS
+                                </div>
+                                <group class="mt16" name="default_deductions_2">
+                                    <label for="porcentaje_deduccion_ivss"/>
+                                    <div>
+                                        <field name="porcentaje_deduccion_ivss" nolabel="1"/>
+                                        <span>% / mes</span>
+                                    </div>                                
+                                    <label for="tope_salario_ivss"/>
+                                    <div>
+                                        <field name="tope_salario_ivss" nolabel="1"/>
+                                        <span> / mes</span>
+                                    </div>
+                                    <label for="monto_maximo_ivss"/>
+                                    <div>
+                                        <field name="monto_maximo_ivss" nolabel="1"/>
+                                        <span> / mes</span>
+                                    </div>                                
+                                </group>
+                            </div>
+                        </div> 
+                        <div class="col-lg-8 col-12 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <div class="text-muted">
+                                    Configuracion de Paro Forzoso
+                                </div>
+                                <group class="mt16" name="default_deductions_3">
+                                    <label for="porcentaje_deduccion_pf"/>
+                                    <div>
+                                        <field name="porcentaje_deduccion_pf" nolabel="1"/>
+                                        <span>% / mes</span>
+                                    </div>                                
+                                    <label for="tope_salario_pf"/>
+                                    <div>
+                                        <field name="tope_salario_pf" nolabel="1"/>
+                                        <span> / mes</span>
+                                    </div>
+                                    <label for="monto_maximo_pf"/>
+                                    <div>
+                                        <field name="monto_maximo_pf" nolabel="1"/>
+                                        <span> / mes</span>
+                                    </div>                                 
+                                </group>
+                            </div>
+                        </div> 
+
+                        <div class="col-lg-8 col-12 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <div class="text-muted">
+                                    Configuracion horas nocturnas
+                                </div>
+                                <group class="mt16" name="default_deductions_3">
+                                    <label for="porcentaje_recargo_nocturno"/>
+                                    <div>
+                                        <field name="porcentaje_recargo_nocturno" nolabel="1"/>
+                                        <span>%</span>
+                                    </div>                                                                    
+                                </group>
+                            </div>
+                        </div> 
+
+                        <div class="col-lg-8 col-12 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <div class="text-muted">
+                                    Configuracion Vacaciones
+                                </div>
+                                <group class="mt16" name="default_vacation">
+                                    <label for="dia_adicional_posterior"/>
+                                    <div>
+                                        <field name="dia_adicional_posterior" nolabel="1"/>
+                                        <span>Día(s)</span>
+                                    </div>                                
+                                    <label for="dia_vacaciones_anno"/>
+                                    <div>
+                                        <field name="dia_vacaciones_anno" nolabel="1"/>
+                                         <span>Día(s)</span>
+                                    </div>
+                                    <label for="dia_adic_cc"/>
+                                    <div>
+                                        <field name="dia_adic_cc" nolabel="1"/>
+                                        <span>Día(s)</span>
+                                    </div>
+                                    <label for="dia_adic_bono_cc"/>
+                                    <div>
+                                        <field name="dia_adic_bono_cc" nolabel="1"/>
+                                        <span>Día(s)</span>
+                                    </div>                                  
+                                </group>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-8 col-12 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <div class="text-muted">
+                                    Configuracion Utilidades
+                                </div>
+                                <group class="mt16" name="default_profit_sharing">
+                                    <label for="tipo_utilidades"/>
+                                    <div>
+                                        <field name="tipo_utilidades" nolabel="1" widget="radio"/>
+                                    </div>
+                                    <label for="dias_utilidades"/>
+                                    <div>
+                                        <field name="dias_utilidades" nolabel="1"/>
+                                         <span>Día(s)</span>
+                                    </div>
+                                </group>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-8 col-12 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <div class="text-muted">
+                                    Configuracion Prestaciones
+                                </div>
+                                <group class="mt16" name="default_benefits">
+                                    <label for="dias_prestaciones_mes"/>
+                                    <div>
+                                        <field name="dias_prestaciones_mes" nolabel="1"/>
+                                        <span>Día(s)</span>
+                                    </div>
+                                    <label for="dias_prestaciones_anno"/>
+                                    <div>
+                                        <field name="dias_prestaciones_anno" nolabel="1"/>
+                                        <span>Día(s)</span>
+                                    </div>
+                                    <label for="maximo_dias_prestaciones_anno"/>
+                                    <div>
+                                        <field name="maximo_dias_prestaciones_anno" nolabel="1"/>
+                                        <span>Día(s)</span>
+                                    </div>
+                                    <label for="tipo_calculo_intereses_prestaciones"/>
+                                    <div>
+                                        <field name="tipo_calculo_intereses_prestaciones" nolabel="1" widget="radio"/>
+                                    </div>
+                                    <label for="tasa_intereses_prestaciones"
+					   attrs="{'invisible': [('tipo_calculo_intereses_prestaciones','=','fideicomiso')]}"/>
+                                    <div>
+					<field name="tasa_intereses_prestaciones" nolabel="1"
+					       attrs="{'invisible': [('tipo_calculo_intereses_prestaciones','=','fideicomiso')]}"/>
+                                    </div>
+                                    <label for="calculo_prestaciones"/>
+                                    <div>
+                                        <field name="calculo_prestaciones" nolabel="1" widget="radio"/>
+                                    </div>
+                                </group>
+                            </div>
+                        </div>
+                    </div>               
+                    <h2>Contabilidad analitica</h2>
+                    <div class="row mt16 o_settings_container" id="l10n_ve_hr_payroll">
+                      <div class="col-lg-8 col-12 o_setting_box">
+                        <div class="o_setting_left_pane">
+                          <field name="cuenta_analitica_departamentos"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                          <label for="cuenta_analitica_departamentos"/>
+                        </div>
+                      </div>
+                    </div>               
+                    <h2>CRON</h2>
+                    <div class="row mt16 o_settings_container" id="l10n_ve_hr_payroll">
+                      <div class="col-lg-8 col-12 o_setting_box">
+                        <div class="o_setting_left_pane"></div>
+                        <div class="o_setting_right_pane">
+                          <label for="dia_cron_provisiones"/>
+                          <field name="dia_cron_provisiones"/>
+                        </div>
+                      </div>
+                    </div>
+	         </xpath>
+        </field>
+    </record>
+
+</odoo>

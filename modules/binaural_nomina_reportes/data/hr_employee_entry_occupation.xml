@@ -1,0 +1,2908 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <!-- http://autoliquidacionv2.ivss.gob.ve:28080/TiunaWeb/instructivos/Masiva_Ingreso_Codigo_de_Cargos.pdf -->
+    
+    <record id="hr_employee_entry_occupation_1" model="hr.employee.entry.occupation">
+      <field name="name">Abogado</field>
+      <field name="code">1101</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_2" model="hr.employee.entry.occupation">
+      <field name="name">Actor</field>
+      <field name="code">102</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_3" model="hr.employee.entry.occupation">
+      <field name="name">Administrador</field>
+      <field name="code">1010</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_4" model="hr.employee.entry.occupation">
+      <field name="name">Administrador de Comercial</field>
+      <field name="code">1106</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_5" model="hr.employee.entry.occupation">
+      <field name="name">Aerofotografo</field>
+      <field name="code">566</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_6" model="hr.employee.entry.occupation">
+      <field name="name">Aeromozas</field>
+      <field name="code">501</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_7" model="hr.employee.entry.occupation">
+      <field name="name">Afilador</field>
+      <field name="code">8201</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_8" model="hr.employee.entry.occupation">
+      <field name="name">Aforador</field>
+      <field name="code">8199</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_9" model="hr.employee.entry.occupation">
+      <field name="name">Agente Comercial</field>
+      <field name="code">1301</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_10" model="hr.employee.entry.occupation">
+      <field name="name">Agente de Seguridad</field>
+      <field name="code">2501</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_11" model="hr.employee.entry.occupation">
+      <field name="name">Agente de Seguro</field>
+      <field name="code">1303</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_12" model="hr.employee.entry.occupation">
+      <field name="name">Agente de Tráfico Aéreo</field>
+      <field name="code">9397</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_13" model="hr.employee.entry.occupation">
+      <field name="name">Agente Viajero</field>
+      <field name="code">1305</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_14" model="hr.employee.entry.occupation">
+      <field name="name">Agricultor</field>
+      <field name="code">3801</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_15" model="hr.employee.entry.occupation">
+      <field name="name">Agrimensor</field>
+      <field name="code">1103</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_16" model="hr.employee.entry.occupation">
+      <field name="name">Agrónomo</field>
+      <field name="code">1105</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_17" model="hr.employee.entry.occupation">
+      <field name="name">Albañil</field>
+      <field name="code">1509</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_18" model="hr.employee.entry.occupation">
+      <field name="name">Alfarero</field>
+      <field name="code">3201</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_19" model="hr.employee.entry.occupation">
+      <field name="name">Alpargatero</field>
+      <field name="code">3202</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_20" model="hr.employee.entry.occupation">
+      <field name="name">Ama de Llaves</field>
+      <field name="code">3204</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_21" model="hr.employee.entry.occupation">
+      <field name="name">Amador de Buques</field>
+      <field name="code">4301</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_22" model="hr.employee.entry.occupation">
+      <field name="name">Analista</field>
+      <field name="code">8213</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_23" model="hr.employee.entry.occupation">
+      <field name="name">Analista de Sistemas</field>
+      <field name="code">980</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_24" model="hr.employee.entry.occupation">
+      <field name="name">Anestesista</field>
+      <field name="code">1182</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_25" model="hr.employee.entry.occupation">
+      <field name="name">Antropólogo</field>
+      <field name="code">1184</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_26" model="hr.employee.entry.occupation">
+      <field name="name">Aplanchador</field>
+      <field name="code">8205</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_27" model="hr.employee.entry.occupation">
+      <field name="name">Apoderado de Comercio</field>
+      <field name="code">1307</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_28" model="hr.employee.entry.occupation">
+      <field name="name">Aprendiz</field>
+      <field name="code">9383</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_29" model="hr.employee.entry.occupation">
+      <field name="name">Archivero</field>
+      <field name="code">4984</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_30" model="hr.employee.entry.occupation">
+      <field name="name">Armador</field>
+      <field name="code">983</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_31" model="hr.employee.entry.occupation">
+      <field name="name">Armero</field>
+      <field name="code">3200</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_32" model="hr.employee.entry.occupation">
+      <field name="name">Arqueólogo</field>
+      <field name="code">1107</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_33" model="hr.employee.entry.occupation">
+      <field name="name">Arquitecto</field>
+      <field name="code">1108</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_34" model="hr.employee.entry.occupation">
+      <field name="name">Artes Gráficas</field>
+      <field name="code">304</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_35" model="hr.employee.entry.occupation">
+      <field name="name">Artesano</field>
+      <field name="code">8016</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_36" model="hr.employee.entry.occupation">
+      <field name="name">Artista</field>
+      <field name="code">101</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_37" model="hr.employee.entry.occupation">
+      <field name="name">Ascensorista</field>
+      <field name="code">8207</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_38" model="hr.employee.entry.occupation">
+      <field name="name">Aserrador</field>
+      <field name="code">3282</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_39" model="hr.employee.entry.occupation">
+      <field name="name">Asesor</field>
+      <field name="code">9384</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_40" model="hr.employee.entry.occupation">
+      <field name="name">Asistente</field>
+      <field name="code">9367</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_41" model="hr.employee.entry.occupation">
+      <field name="name">Asistente Administrativo</field>
+      <field name="code">9372</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_42" model="hr.employee.entry.occupation">
+      <field name="name">Asistente Contable</field>
+      <field name="code">9402</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_43" model="hr.employee.entry.occupation">
+      <field name="name">Atención al Cliente</field>
+      <field name="code">9356</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_44" model="hr.employee.entry.occupation">
+      <field name="name">Auditor</field>
+      <field name="code">4901</field>
+    </record>
+    
+    <record id="hr_employee_entry_occupation_45" model="hr.employee.entry.occupation">
+      <field name="name">Auxiliar</field>
+      <field name="code">9353</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_46" model="hr.employee.entry.occupation">
+      <field name="name">Auxiliar de Enfermería</field>
+      <field name="code">9380</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_47" model="hr.employee.entry.occupation">
+      <field name="name">Auxiliar de Farmacia</field>
+      <field name="code">8202</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_48" model="hr.employee.entry.occupation">
+      <field name="name">Auxiliar de Laboratorio</field>
+      <field name="code">9401</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_49" model="hr.employee.entry.occupation">
+      <field name="name">Aviador Militar</field>
+      <field name="code">2521</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_50" model="hr.employee.entry.occupation">
+      <field name="name">Avicultor</field>
+      <field name="code">8212</field>
+    </record>
+    
+    <record id="hr_employee_entry_occupation_51" model="hr.employee.entry.occupation">
+      <field name="name">Aya o Mineria</field>
+      <field name="code">9203</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_52" model="hr.employee.entry.occupation">
+      <field name="name">Ayudante</field>
+      <field name="code">9355</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_53" model="hr.employee.entry.occupation">
+      <field name="name">Azogador</field>
+      <field name="code">8204</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_54" model="hr.employee.entry.occupation">
+      <field name="name">Bacteriólogo</field>
+      <field name="code">1109</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_55" model="hr.employee.entry.occupation">
+      <field name="name">Banquero</field>
+      <field name="code">709</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_56" model="hr.employee.entry.occupation">
+      <field name="name">Barbero</field>
+      <field name="code">8209</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_57" model="hr.employee.entry.occupation">
+      <field name="name">Barman</field>
+      <field name="code">9403</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_58" model="hr.employee.entry.occupation">
+      <field name="name">Bicliotecario</field>
+      <field name="code">4027</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_59" model="hr.employee.entry.occupation">
+      <field name="name">Billetero</field>
+      <field name="code">8208</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_60" model="hr.employee.entry.occupation">
+      <field name="name">Bioanalista</field>
+      <field name="code">9393</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_61" model="hr.employee.entry.occupation">
+      <field name="name">Biologo</field>
+      <field name="code">1110</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_62" model="hr.employee.entry.occupation">
+      <field name="name">Bioquimico</field>
+      <field name="code">1120</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_63" model="hr.employee.entry.occupation">
+      <field name="name">Bombero</field>
+      <field name="code">8300</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_64" model="hr.employee.entry.occupation">
+      <field name="name">Bordador</field>
+      <field name="code">109</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_65" model="hr.employee.entry.occupation">
+      <field name="name">Botanico</field>
+      <field name="code">1111</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_66" model="hr.employee.entry.occupation">
+      <field name="name">Botiquinero</field>
+      <field name="code">8211</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_67" model="hr.employee.entry.occupation">
+      <field name="name">Boxeador</field>
+      <field name="code">1709</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_68" model="hr.employee.entry.occupation">
+      <field name="name">Caballericero</field>
+      <field name="code">8215</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_69" model="hr.employee.entry.occupation">
+      <field name="name">Cabillero</field>
+      <field name="code">9373</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_70" model="hr.employee.entry.occupation">
+      <field name="name">Cablegratista</field>
+      <field name="code">1415</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_71" model="hr.employee.entry.occupation">
+      <field name="name">Cajero</field>
+      <field name="code">8218</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_72" model="hr.employee.entry.occupation">
+      <field name="name">Cajista</field>
+      <field name="code">301</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_73" model="hr.employee.entry.occupation">
+      <field name="name">Calcetero</field>
+      <field name="code">8251</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_74" model="hr.employee.entry.occupation">
+      <field name="name">Calderero</field>
+      <field name="code">215</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_75" model="hr.employee.entry.occupation">
+      <field name="name">Caligrafo</field>
+      <field name="code">111</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_76" model="hr.employee.entry.occupation">
+      <field name="name">Camarero</field>
+      <field name="code">8242</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_77" model="hr.employee.entry.occupation">
+      <field name="name">Camarero de barco</field>
+      <field name="code">4315</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_78" model="hr.employee.entry.occupation">
+      <field name="name">Camillero</field>
+      <field name="code">9389</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_79" model="hr.employee.entry.occupation">
+      <field name="name">Camiraman</field>
+      <field name="code">2315</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_80" model="hr.employee.entry.occupation">
+      <field name="name">Cantero</field>
+      <field name="code">1515</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_81" model="hr.employee.entry.occupation">
+      <field name="name">Capataz o caporal</field>
+      <field name="code">8217</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_82" model="hr.employee.entry.occupation">
+      <field name="name">Capicultor</field>
+      <field name="code">8103</field>
+    </record> 
+
+    <record id="hr_employee_entry_occupation_83" model="hr.employee.entry.occupation">
+      <field name="name">Capitan de navio</field>
+      <field name="code">4317</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_84" model="hr.employee.entry.occupation">
+      <field name="name">Carbonero</field>
+      <field name="code">8307</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_85" model="hr.employee.entry.occupation">
+      <field name="name">Carnicero</field>
+      <field name="code">8216</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_86" model="hr.employee.entry.occupation">
+      <field name="name">Carpintero</field>
+      <field name="code">3217</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_87" model="hr.employee.entry.occupation">
+      <field name="name">Carpintero o carretillero</field>
+      <field name="code">8305</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_88" model="hr.employee.entry.occupation">
+      <field name="name">Carriero</field>
+      <field name="code">1417</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_89" model="hr.employee.entry.occupation">
+      <field name="name">Carruajero</field>
+      <field name="code">3218</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_90" model="hr.employee.entry.occupation">
+      <field name="name">Cartografo</field>
+      <field name="code">303</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_91" model="hr.employee.entry.occupation">
+      <field name="name">Cartonero</field>
+      <field name="code">302</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_92" model="hr.employee.entry.occupation">
+      <field name="name">Catedratico</field>
+      <field name="code">1916</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_93" model="hr.employee.entry.occupation">
+      <field name="name">Cauchero</field>
+      <field name="code">6617</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_94" model="hr.employee.entry.occupation">
+      <field name="name">Cementero</field>
+      <field name="code">1510</field>
+    </record> 
+
+    <record id="hr_employee_entry_occupation_95" model="hr.employee.entry.occupation">
+      <field name="name">Ceramista</field>
+      <field name="code">115</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_96" model="hr.employee.entry.occupation">
+      <field name="name">Cerrajero</field>
+      <field name="code">3223</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_97" model="hr.employee.entry.occupation">
+      <field name="name">Charcutero</field>
+      <field name="code">8116</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_98" model="hr.employee.entry.occupation">
+      <field name="name">Chofer</field>
+      <field name="code">8015</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_99" model="hr.employee.entry.occupation">
+      <field name="name">Cientifico</field>
+      <field name="code">1100</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_100" model="hr.employee.entry.occupation">
+      <field name="name">Climatologo</field>
+      <field name="code">1122</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_101" model="hr.employee.entry.occupation">
+      <field name="name">Cobrador</field>
+      <field name="code">1392</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_102" model="hr.employee.entry.occupation">
+      <field name="name">Cocinero</field>
+      <field name="code">8219</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_103" model="hr.employee.entry.occupation">
+      <field name="name">Colector</field>
+      <field name="code">8018</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_104" model="hr.employee.entry.occupation">
+      <field name="name">Colector de autobuses</field>
+      <field name="code">8017</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_105" model="hr.employee.entry.occupation">
+      <field name="name">Colector de tranvias</field>
+      <field name="code">8019</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_106" model="hr.employee.entry.occupation">
+      <field name="name">Comentarista</field>
+      <field name="code">4023</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_107" model="hr.employee.entry.occupation">
+      <field name="name">Comerciante</field>
+      <field name="code">1310</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_108" model="hr.employee.entry.occupation">
+      <field name="name">Comisionista</field>
+      <field name="code">1311</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_109" model="hr.employee.entry.occupation">
+      <field name="name">Conferencista</field>
+      <field name="code">4030</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_110" model="hr.employee.entry.occupation">
+      <field name="name">Confitero o dulcero</field>
+      <field name="code">3222</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_111" model="hr.employee.entry.occupation">
+      <field name="name">Conserje</field>
+      <field name="code">1520</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_112" model="hr.employee.entry.occupation">
+      <field name="name">Constructor</field>
+      <field name="code">1517</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_113" model="hr.employee.entry.occupation">
+      <field name="name">Contabilista</field>
+      <field name="code">4915</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_114" model="hr.employee.entry.occupation">
+      <field name="name">Contador</field>
+      <field name="code">9364</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_115" model="hr.employee.entry.occupation">
+      <field name="name">Continuacion facultativa</field>
+      <field name="code">1</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_116" model="hr.employee.entry.occupation">
+      <field name="name">Contralor</field>
+      <field name="code">9369</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_117" model="hr.employee.entry.occupation">
+      <field name="name">Contratista de obra</field>
+      <field name="code">1519</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_118" model="hr.employee.entry.occupation">
+      <field name="name">Coordinador</field>
+      <field name="code">4028</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_119" model="hr.employee.entry.occupation">
+      <field name="name">Copiloto</field>
+      <field name="code">505</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_120" model="hr.employee.entry.occupation">
+      <field name="name">Corcetero</field>
+      <field name="code">3219</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_121" model="hr.employee.entry.occupation">
+      <field name="name">Cordelero</field>
+      <field name="code">3220</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_122" model="hr.employee.entry.occupation">
+      <field name="name">Coreografo</field>
+      <field name="code">2316</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_123" model="hr.employee.entry.occupation">
+      <field name="name">Corredor de comercio</field>
+      <field name="code">1314</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_124" model="hr.employee.entry.occupation">
+      <field name="name">Corresponsal</field>
+      <field name="code">4024</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_125" model="hr.employee.entry.occupation">
+      <field name="name">Cortador de sastreria</field>
+      <field name="code">3280</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_126" model="hr.employee.entry.occupation">
+      <field name="name">Cortador de zapateria</field>
+      <field name="code">3299</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_127" model="hr.employee.entry.occupation">
+      <field name="name">Cosmetista</field>
+      <field name="code">3279</field>
+    </record>
+    
+    <record id="hr_employee_entry_occupation_128" model="hr.employee.entry.occupation">
+      <field name="name">Costurero</field>
+      <field name="code">8220</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_129" model="hr.employee.entry.occupation">
+      <field name="name">Criador</field>
+      <field name="code">8115</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_130" model="hr.employee.entry.occupation">
+      <field name="name">Criador de caballos</field>
+      <field name="code">8114</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_131" model="hr.employee.entry.occupation">
+      <field name="name">Criptologo</field>
+      <field name="code">8235</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_132" model="hr.employee.entry.occupation">
+      <field name="name">Curtidor</field>
+      <field name="code">3221</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_133" model="hr.employee.entry.occupation">
+      <field name="name">Dactiloscopista</field>
+      <field name="code">1121</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_134" model="hr.employee.entry.occupation">
+      <field name="name">Declamador</field>
+      <field name="code">104</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_135" model="hr.employee.entry.occupation">
+      <field name="name">Decorador</field>
+      <field name="code">121</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_136" model="hr.employee.entry.occupation">
+      <field name="name">Demost. hogar campesino</field>
+      <field name="code">1905</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_137" model="hr.employee.entry.occupation">
+      <field name="name">Dentista</field>
+      <field name="code">1123</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_138" model="hr.employee.entry.occupation">
+      <field name="name">Dependiente</field>
+      <field name="code">9398</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_139" model="hr.employee.entry.occupation">
+      <field name="name">Deportista profesional</field>
+      <field name="code">1721</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_140" model="hr.employee.entry.occupation">
+      <field name="name">Despachador</field>
+      <field name="code">1722</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_141" model="hr.employee.entry.occupation">
+      <field name="name">Detective</field>
+      <field name="code">8210</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_142" model="hr.employee.entry.occupation">
+      <field name="name">Dibujante</field>
+      <field name="code">8221</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_143" model="hr.employee.entry.occupation">
+      <field name="name">Dietista</field>
+      <field name="code">1117</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_144" model="hr.employee.entry.occupation">
+      <field name="name">Diplomatico</field>
+      <field name="code">1124</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_145" model="hr.employee.entry.occupation">
+      <field name="name">Director</field>
+      <field name="code">2331</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_146" model="hr.employee.entry.occupation">
+      <field name="name">Diseñador</field>
+      <field name="code">122</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_147" model="hr.employee.entry.occupation">
+      <field name="name">Diseñador grafico</field>
+      <field name="code">126</field>
+    </record>
+    
+    <record id="hr_employee_entry_occupation_148" model="hr.employee.entry.occupation">
+      <field name="name">Docente</field>
+      <field name="code">9368</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_149" model="hr.employee.entry.occupation">
+      <field name="name">Domador</field>
+      <field name="code">8312</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_150" model="hr.employee.entry.occupation">
+      <field name="name">Domestica</field>
+      <field name="code">9351</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_151" model="hr.employee.entry.occupation">
+      <field name="name">Ebanista</field>
+      <field name="code">8325</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_152" model="hr.employee.entry.occupation">
+      <field name="name">Ecologo</field>
+      <field name="code">1143</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_153" model="hr.employee.entry.occupation">
+      <field name="name">Economista</field>
+      <field name="code">1000</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_154" model="hr.employee.entry.occupation">
+      <field name="name">Economo</field>
+      <field name="code">1001</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_155" model="hr.employee.entry.occupation">
+      <field name="name">Edafologo</field>
+      <field name="code">1127</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_156" model="hr.employee.entry.occupation">
+      <field name="name">Editor</field>
+      <field name="code">4026</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_157" model="hr.employee.entry.occupation">
+      <field name="name">Ejecutivo</field>
+      <field name="code">5338</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_158" model="hr.employee.entry.occupation">
+      <field name="name">Electricista</field>
+      <field name="code">8227</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_159" model="hr.employee.entry.occupation">
+      <field name="name">Electromecanico</field>
+      <field name="code">8222</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_160" model="hr.employee.entry.occupation">
+      <field name="name">Ematologo</field>
+      <field name="code">1150</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_161" model="hr.employee.entry.occupation">
+      <field name="name">Embalador</field>
+      <field name="code">8332</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_162" model="hr.employee.entry.occupation">
+      <field name="name">Embalsador</field>
+      <field name="code">3237</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_163" model="hr.employee.entry.occupation">
+      <field name="name">Empaquetador</field>
+      <field name="code">9371</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_164" model="hr.employee.entry.occupation">
+      <field name="name">Empleado</field>
+      <field name="code">8226</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_165" model="hr.employee.entry.occupation">
+      <field name="name">Empleado CIA.Electrica</field>
+      <field name="code">5701</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_166" model="hr.employee.entry.occupation">
+      <field name="name">Empleado de Banco</field>
+      <field name="code">725</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_167" model="hr.employee.entry.occupation">
+      <field name="name">Empleado de Comercio</field>
+      <field name="code">1324</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_168" model="hr.employee.entry.occupation">
+      <field name="name">Empleado de Industria</field>
+      <field name="code">3225</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_169" model="hr.employee.entry.occupation">
+      <field name="name">Empleado Gobierno</field>
+      <field name="code"> </field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_170" model="hr.employee.entry.occupation">
+      <field name="name">Empleado Extranjero</field>
+      <field name="code">2907</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_171" model="hr.employee.entry.occupation">
+      <field name="name">Empleado Publico</field>
+      <field name="code">2909</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_172" model="hr.employee.entry.occupation">
+      <field name="name">Empleado Publico Estandal</field>
+      <field name="code">2901</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_173" model="hr.employee.entry.occupation">
+      <field name="name">Empleado Publico Federal</field>
+      <field name="code">2903</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_174" model="hr.employee.entry.occupation">
+      <field name="name">Empleado Publico Municipal</field>
+      <field name="code">2905</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_175" model="hr.employee.entry.occupation">
+      <field name="name">Empleado Servicios de Agua</field>
+      <field name="code">5703</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_176" model="hr.employee.entry.occupation">
+      <field name="name">Empresario</field>
+      <field name="code">1325</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_177" model="hr.employee.entry.occupation">
+      <field name="name">Empresario Teatral</field>
+      <field name="code">103</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_178" model="hr.employee.entry.occupation">
+      <field name="name">Encargado</field>
+      <field name="code">9352</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_179" model="hr.employee.entry.occupation">
+      <field name="name">Encuadernador</field>
+      <field name="code">325</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_180" model="hr.employee.entry.occupation">
+      <field name="name">Enfermero</field>
+      <field name="code">8228</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_181" model="hr.employee.entry.occupation">
+      <field name="name">Engrasador</field>
+      <field name="code">8299</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_182" model="hr.employee.entry.occupation">
+      <field name="name">Enlatador</field>
+      <field name="code">3226</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_183" model="hr.employee.entry.occupation">
+      <field name="name">Entomologo</field>
+      <field name="code">1128</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_184" model="hr.employee.entry.occupation">
+      <field name="name">Entrenador</field>
+      <field name="code">1717</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_185" model="hr.employee.entry.occupation">
+      <field name="name">Equipajero</field>
+      <field name="code">550</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_186" model="hr.employee.entry.occupation">
+      <field name="name">Escritor</field>
+      <field name="code">4025</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_187" model="hr.employee.entry.occupation">
+      <field name="name">Escultor</field>
+      <field name="code">125</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_188" model="hr.employee.entry.occupation">
+      <field name="name">Esquilador</field>
+      <field name="code">9104</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_189" model="hr.employee.entry.occupation">
+      <field name="name">Estadista</field>
+      <field name="code">1116</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_190" model="hr.employee.entry.occupation">
+      <field name="name">Estadistico</field>
+      <field name="code">1126</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_191" model="hr.employee.entry.occupation">
+      <field name="name">Estereotipista</field>
+      <field name="code">4917</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_192" model="hr.employee.entry.occupation">
+      <field name="name">Estibador</field>
+      <field name="code">4316</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_193" model="hr.employee.entry.occupation">
+      <field name="name">Estucador</field>
+      <field name="code">1525</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_194" model="hr.employee.entry.occupation">
+      <field name="name">Estudiante</field>
+      <field name="code">9224</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_195" model="hr.employee.entry.occupation">
+      <field name="name">Etnologo</field>
+      <field name="code">1118</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_196" model="hr.employee.entry.occupation">
+      <field name="name">Explorador</field>
+      <field name="code">1725</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_197" model="hr.employee.entry.occupation">
+      <field name="name">Exportador</field>
+      <field name="code">1315</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_198" model="hr.employee.entry.occupation">
+      <field name="name">Fabricador</field>
+      <field name="code">9396</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_199" model="hr.employee.entry.occupation">
+      <field name="name">Farmaceutico</field>
+      <field name="code">1129</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_200" model="hr.employee.entry.occupation">
+      <field name="name">Ferrocarrilero</field>
+      <field name="code">8029</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_201" model="hr.employee.entry.occupation">
+      <field name="name">Filologo</field>
+      <field name="code">1102</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_202" model="hr.employee.entry.occupation">
+      <field name="name">Filosofo</field>
+      <field name="code">1130</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_203" model="hr.employee.entry.occupation">
+      <field name="name">Financista</field>
+      <field name="code">1147</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_204" model="hr.employee.entry.occupation">
+      <field name="name">Fiscal</field>
+      <field name="code">8298</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_205" model="hr.employee.entry.occupation">
+      <field name="name">Fiscal de Transito</field>
+      <field name="code">8231</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_206" model="hr.employee.entry.occupation">
+      <field name="name">Fisico</field>
+      <field name="code">1114</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_207" model="hr.employee.entry.occupation">
+      <field name="name">Fisiologo</field>
+      <field name="code">1115</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_208" model="hr.employee.entry.occupation">
+      <field name="name">Fisioterapista</field>
+      <field name="code">1132</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_209" model="hr.employee.entry.occupation">
+      <field name="name">Fitopatologo</field>
+      <field name="code">1112</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_210" model="hr.employee.entry.occupation">
+      <field name="name">Floricultor</field>
+      <field name="code">3829</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_211" model="hr.employee.entry.occupation">
+      <field name="name">Florista</field>
+      <field name="code">3828</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_212" model="hr.employee.entry.occupation">
+      <field name="name">Fogonero</field>
+      <field name="code">8229</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_213" model="hr.employee.entry.occupation">
+      <field name="name">Forjador</field>
+      <field name="code">8230</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_214" model="hr.employee.entry.occupation">
+      <field name="name">Fotograbador</field>
+      <field name="code">329</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_215" model="hr.employee.entry.occupation">
+      <field name="name">Fotografo</field>
+      <field name="code">2329</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_216" model="hr.employee.entry.occupation">
+      <field name="name">Fotogrametrista</field>
+      <field name="code">2330</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_217" model="hr.employee.entry.occupation">
+      <field name="name">Fresador</field>
+      <field name="code">3228</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_218" model="hr.employee.entry.occupation">
+      <field name="name">Fruticultor</field>
+      <field name="code">3830</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_219" model="hr.employee.entry.occupation">
+      <field name="name">Fundidor</field>
+      <field name="code">3229</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_220" model="hr.employee.entry.occupation">
+      <field name="name">Futbolista</field>
+      <field name="code">1710</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_221" model="hr.employee.entry.occupation">
+      <field name="name">Galletero</field>
+      <field name="code">3231</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_222" model="hr.employee.entry.occupation">
+      <field name="name">Ganadero</field>
+      <field name="code">9132</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_223" model="hr.employee.entry.occupation">
+      <field name="name">Genetista</field>
+      <field name="code">1133</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_224" model="hr.employee.entry.occupation">
+      <field name="name">Geofisico</field>
+      <field name="code">1135</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_225" model="hr.employee.entry.occupation">
+      <field name="name">Geognosta</field>
+      <field name="code">1104</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_226" model="hr.employee.entry.occupation">
+      <field name="name">Geografo</field>
+      <field name="code">1131</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_227" model="hr.employee.entry.occupation">
+      <field name="name">Geologo</field>
+      <field name="code">1134</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_228" model="hr.employee.entry.occupation">
+      <field name="name">Geometra</field>
+      <field name="code">1113</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_229" model="hr.employee.entry.occupation">
+      <field name="name">Gerente</field>
+      <field name="code">9362</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_230" model="hr.employee.entry.occupation">
+      <field name="name">Gerente Bienes Raices</field>
+      <field name="code">916</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_231" model="hr.employee.entry.occupation">
+      <field name="name">Gerente de Banco</field>
+      <field name="code">733</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_232" model="hr.employee.entry.occupation">
+      <field name="name">Gerente de Comercio</field>
+      <field name="code">1332</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_233" model="hr.employee.entry.occupation">
+      <field name="name">Gerente Petrolero</field>
+      <field name="code">5333</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_234" model="hr.employee.entry.occupation">
+      <field name="name">Gradador</field>
+      <field name="code">333</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_235" model="hr.employee.entry.occupation">
+      <field name="name">Gramitero</field>
+      <field name="code">1526</field>
+    </record>
+    
+    <record id="hr_employee_entry_occupation_236" model="hr.employee.entry.occupation">
+      <field name="name">Guarda Almacen</field>
+      <field name="code">8352</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_237" model="hr.employee.entry.occupation">
+      <field name="name">Guarda Bosque</field>
+      <field name="code">3905</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_238" model="hr.employee.entry.occupation">
+      <field name="name">Guardia Forestal</field>
+      <field name="code">8236</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_239" model="hr.employee.entry.occupation">
+      <field name="name">Guardia Nacional</field>
+      <field name="code">2522</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_240" model="hr.employee.entry.occupation">
+      <field name="name">Guardia o Vigilante</field>
+      <field name="code">8233</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_241" model="hr.employee.entry.occupation">
+      <field name="name">Guarmecedor</field>
+      <field name="code">3230</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_242" model="hr.employee.entry.occupation">
+      <field name="name">Heladero</field>
+      <field name="code">8237</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_243" model="hr.employee.entry.occupation">
+      <field name="name">Heliografista</field>
+      <field name="code">1140</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_244" model="hr.employee.entry.occupation">
+      <field name="name">Herrero</field>
+      <field name="code">8238</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_245" model="hr.employee.entry.occupation">
+      <field name="name">Hidrografo</field>
+      <field name="code">1119</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_246" model="hr.employee.entry.occupation">
+      <field name="name">Hidrologo</field>
+      <field name="code">1138</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_247" model="hr.employee.entry.occupation">
+      <field name="name">Higiene de Seguridad Social</field>
+      <field name="code">9381</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_248" model="hr.employee.entry.occupation">
+      <field name="name">Higienista</field>
+      <field name="code">1136</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_249" model="hr.employee.entry.occupation">
+      <field name="name">Hogar</field>
+      <field name="code">8223</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_250" model="hr.employee.entry.occupation">
+      <field name="name">Hormero</field>
+      <field name="code">8260</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_251" model="hr.employee.entry.occupation">
+      <field name="name">Hornero</field>
+      <field name="code">8306</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_252" model="hr.employee.entry.occupation">
+      <field name="name">Horticultor</field>
+      <field name="code">3827</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_253" model="hr.employee.entry.occupation">
+      <field name="name">Hotelero</field>
+      <field name="code">8239</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_254" model="hr.employee.entry.occupation">
+      <field name="name">Ictiologo</field>
+      <field name="code">1137</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_255" model="hr.employee.entry.occupation">
+      <field name="name">Importador</field>
+      <field name="code">1216</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_256" model="hr.employee.entry.occupation">
+      <field name="name">Impresor</field>
+      <field name="code">341</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_257" model="hr.employee.entry.occupation">
+      <field name="name">Industrial</field>
+      <field name="code">6641</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_258" model="hr.employee.entry.occupation">
+      <field name="name">Ingeniero</field>
+      <field name="code">1139</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_259" model="hr.employee.entry.occupation">
+      <field name="name">Ingeniero Civil</field>
+      <field name="code">1151</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_260" model="hr.employee.entry.occupation">
+      <field name="name">Ingeniero Electrico</field>
+      <field name="code">1146</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_261" model="hr.employee.entry.occupation">
+      <field name="name">Ingeniero en Minas</field>
+      <field name="code">1144</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_262" model="hr.employee.entry.occupation">
+      <field name="name">Ingeniero Hidraulico</field>
+      <field name="code">1148</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_263" model="hr.employee.entry.occupation">
+      <field name="name">Ingeniero Mecanico</field>
+      <field name="code">1142</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_264" model="hr.employee.entry.occupation">
+      <field name="name">Ingeniero Militar</field>
+      <field name="code">2503</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_265" model="hr.employee.entry.occupation">
+      <field name="name">Ingeniero Naval</field>
+      <field name="code">4302</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_266" model="hr.employee.entry.occupation">
+      <field name="name">Ingeniero Petrolero</field>
+      <field name="code">5337</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_267" model="hr.employee.entry.occupation">
+      <field name="name">Inspector</field>
+      <field name="code">8303</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_268" model="hr.employee.entry.occupation">
+      <field name="name">Inspector de Sanidad</field>
+      <field name="code">8241</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_269" model="hr.employee.entry.occupation">
+      <field name="name">Inspector de Transito</field>
+      <field name="code">8243</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_270" model="hr.employee.entry.occupation">
+      <field name="name">Instalador</field>
+      <field name="code">9388</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_271" model="hr.employee.entry.occupation">
+      <field name="name">Institutor</field>
+      <field name="code">1940</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_272" model="hr.employee.entry.occupation">
+      <field name="name">Instrumentista</field>
+      <field name="code">9394</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_273" model="hr.employee.entry.occupation">
+      <field name="name">Jabonero</field>
+      <field name="code">3239</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_274" model="hr.employee.entry.occupation">
+      <field name="name">Jardinero</field>
+      <field name="code">3945</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_275" model="hr.employee.entry.occupation">
+      <field name="name">Jefe</field>
+      <field name="code">9386</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_276" model="hr.employee.entry.occupation">
+      <field name="name">Jefe de Aeropuerto</field>
+      <field name="code">545</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_277" model="hr.employee.entry.occupation">
+      <field name="name">Jefe de Transporte</field>
+      <field name="code">8021</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_278" model="hr.employee.entry.occupation">
+      <field name="name">Jockey</field>
+      <field name="code">1745</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_279" model="hr.employee.entry.occupation">
+      <field name="name">Jornalero</field>
+      <field name="code">8245</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_280" model="hr.employee.entry.occupation">
+      <field name="name">Jornalista</field>
+      <field name="code">4045</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_281" model="hr.employee.entry.occupation">
+      <field name="name">Joyero</field>
+      <field name="code">8247</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_282" model="hr.employee.entry.occupation">
+      <field name="name">Jubilado</field>
+      <field name="code">8262</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_283" model="hr.employee.entry.occupation">
+      <field name="name">Laboratorista</field>
+      <field name="code">1141</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_284" model="hr.employee.entry.occupation">
+      <field name="name">Laboratorista Fotografico</field>
+      <field name="code">2349</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_285" model="hr.employee.entry.occupation">
+      <field name="name">Labrador</field>
+      <field name="code">3802</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_286" model="hr.employee.entry.occupation">
+      <field name="name">Laminador</field>
+      <field name="code">8246</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_287" model="hr.employee.entry.occupation">
+      <field name="name">Latonero</field>
+      <field name="code">8248</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_288" model="hr.employee.entry.occupation">
+      <field name="name">Lavandera</field>
+      <field name="code">8206</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_289" model="hr.employee.entry.occupation">
+      <field name="name">Licenciado</field>
+      <field name="code">1145</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_290" model="hr.employee.entry.occupation">
+      <field name="name">Licorero</field>
+      <field name="code">3249</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_291" model="hr.employee.entry.occupation">
+      <field name="name">Limpiabotas</field>
+      <field name="code">8250</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_292" model="hr.employee.entry.occupation">
+      <field name="name">Liniero</field>
+      <field name="code">1458</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_293" model="hr.employee.entry.occupation">
+      <field name="name">Linotipista</field>
+      <field name="code">1349</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_294" model="hr.employee.entry.occupation">
+      <field name="name">Litografo</field>
+      <field name="code">351</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_295" model="hr.employee.entry.occupation">
+      <field name="name">Locutor</field>
+      <field name="code">1454</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_296" model="hr.employee.entry.occupation">
+      <field name="name">Luchador</field>
+      <field name="code">1746</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_297" model="hr.employee.entry.occupation">
+      <field name="name">Lunchero</field>
+      <field name="code">4966</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_298" model="hr.employee.entry.occupation">
+      <field name="name">Maestro</field>
+      <field name="code">1952</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_299" model="hr.employee.entry.occupation">
+      <field name="name">Maestro de Escuela</field>
+      <field name="code">1953</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_300" model="hr.employee.entry.occupation">
+      <field name="name">Maestro de Obra</field>
+      <field name="code">1518</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_301" model="hr.employee.entry.occupation">
+      <field name="name">Malariologo</field>
+      <field name="code">1154</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_302" model="hr.employee.entry.occupation">
+      <field name="name">Manicurista</field>
+      <field name="code">8253</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_303" model="hr.employee.entry.occupation">
+      <field name="name">Manipulador de Alimentos</field>
+      <field name="code">9391</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_304" model="hr.employee.entry.occupation">
+      <field name="name">Mantenimiento</field>
+      <field name="code">9354</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_305" model="hr.employee.entry.occupation">
+      <field name="name">Manualista</field>
+      <field name="code">8249</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_306" model="hr.employee.entry.occupation">
+      <field name="name">Maquinista</field>
+      <field name="code">8257</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_307" model="hr.employee.entry.occupation">
+      <field name="name">Maquinista Ferrocarriles</field>
+      <field name="code">8053</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_308" model="hr.employee.entry.occupation">
+      <field name="name">Maquinista Naval</field>
+      <field name="code">4353</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_309" model="hr.employee.entry.occupation">
+      <field name="name">Marino</field>
+      <field name="code">2555</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_310" model="hr.employee.entry.occupation">
+      <field name="name">Marino de Guerra</field>
+      <field name="code">2556</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_311" model="hr.employee.entry.occupation">
+      <field name="name">Marino Mercante</field>
+      <field name="code">4355</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_312" model="hr.employee.entry.occupation">
+      <field name="name">Marmolista</field>
+      <field name="code">3253</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_313" model="hr.employee.entry.occupation">
+      <field name="name">Masajista</field>
+      <field name="code">8255</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_314" model="hr.employee.entry.occupation">
+      <field name="name">Matarife</field>
+      <field name="code">8296</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_315" model="hr.employee.entry.occupation">
+      <field name="name">Mayordomo</field>
+      <field name="code">8258</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_316" model="hr.employee.entry.occupation">
+      <field name="name">Mayordomo de Barco</field>
+      <field name="code">4357</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_317" model="hr.employee.entry.occupation">
+      <field name="name">Mecanico Mercante o Naval</field>
+      <field name="code">4359</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_318" model="hr.employee.entry.occupation">
+      <field name="name">Mecanico</field>
+      <field name="code">8254</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_319" model="hr.employee.entry.occupation">
+      <field name="name">Mecanico de Automovil</field>
+      <field name="code">8057</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_320" model="hr.employee.entry.occupation">
+      <field name="name">Mecanico de Aviacion</field>
+      <field name="code">553</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_321" model="hr.employee.entry.occupation">
+      <field name="name">Mecanico Perforador</field>
+      <field name="code">1527</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_322" model="hr.employee.entry.occupation">
+      <field name="name">Mecanografo</field>
+      <field name="code">4953</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_323" model="hr.employee.entry.occupation">
+      <field name="name">Medico</field>
+      <field name="code">1153</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_324" model="hr.employee.entry.occupation">
+      <field name="name">Medico Cirujano</field>
+      <field name="code">1157</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_325" model="hr.employee.entry.occupation">
+      <field name="name">Medico Veterinario</field>
+      <field name="code">1155</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_326" model="hr.employee.entry.occupation">
+      <field name="name">Mensajero</field>
+      <field name="code">1453</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_327" model="hr.employee.entry.occupation">
+      <field name="name">Mesonero</field>
+      <field name="code">8256</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_328" model="hr.employee.entry.occupation">
+      <field name="name">Metalurgico</field>
+      <field name="code">3255</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_329" model="hr.employee.entry.occupation">
+      <field name="name">Militar</field>
+      <field name="code">2552</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_330" model="hr.employee.entry.occupation">
+      <field name="name">Minero</field>
+      <field name="code">3256</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_331" model="hr.employee.entry.occupation">
+      <field name="name">Modelista</field>
+      <field name="code">123</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_332" model="hr.employee.entry.occupation">
+      <field name="name">Modelo</field>
+      <field name="code">124</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_333" model="hr.employee.entry.occupation">
+      <field name="name">Modista</field>
+      <field name="code">3257</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_334" model="hr.employee.entry.occupation">
+      <field name="name">Molinero</field>
+      <field name="code">9253</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_335" model="hr.employee.entry.occupation">
+      <field name="name">Montador</field>
+      <field name="code">9392</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_336" model="hr.employee.entry.occupation">
+      <field name="name">Mosaiquero</field>
+      <field name="code">3258</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_337" model="hr.employee.entry.occupation">
+      <field name="name">Motociclista</field>
+      <field name="code">9022</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_338" model="hr.employee.entry.occupation">
+      <field name="name">Motorista</field>
+      <field name="code">9056</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_339" model="hr.employee.entry.occupation">
+      <field name="name">Motorizado</field>
+      <field name="code">9375</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_340" model="hr.employee.entry.occupation">
+      <field name="name">Musico</field>
+      <field name="code">152</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_341" model="hr.employee.entry.occupation">
+      <field name="name">Niquelador</field>
+      <field name="code">3259</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_342" model="hr.employee.entry.occupation">
+      <field name="name">No Calificado</field>
+      <field name="code">0</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_343" model="hr.employee.entry.occupation">
+      <field name="name">No Especificado</field>
+      <field name="code">200</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_344" model="hr.employee.entry.occupation">
+      <field name="name">Normalista</field>
+      <field name="code">1959</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_345" model="hr.employee.entry.occupation">
+      <field name="name">Obrero</field>
+      <field name="code">8259</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_346" model="hr.employee.entry.occupation">
+      <field name="name">Obrero Agricola</field>
+      <field name="code">1960</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_347" model="hr.employee.entry.occupation">
+      <field name="name">Obrero Avicola</field>
+      <field name="code">1961</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_348" model="hr.employee.entry.occupation">
+      <field name="name">Observador de Aeropuerto</field>
+      <field name="code">563</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_349" model="hr.employee.entry.occupation">
+      <field name="name">Oculista</field>
+      <field name="code">1165</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_350" model="hr.employee.entry.occupation">
+      <field name="name">Odontologo</field>
+      <field name="code">1167</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_351" model="hr.employee.entry.occupation">
+      <field name="name">Oficial de Policia</field>
+      <field name="code">9379</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_352" model="hr.employee.entry.occupation">
+      <field name="name">Oficial de Seguridad</field>
+      <field name="code">981</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_353" model="hr.employee.entry.occupation">
+      <field name="name">Oficinista</field>
+      <field name="code">4965</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_354" model="hr.employee.entry.occupation">
+      <field name="name">Oper. Torre Aeropuerto</field>
+      <field name="code">567</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_355" model="hr.employee.entry.occupation">
+      <field name="name">Operador</field>
+      <field name="code">8261</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_356" model="hr.employee.entry.occupation">
+      <field name="name">Operador de Cine</field>
+      <field name="code">2365</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_357" model="hr.employee.entry.occupation">
+      <field name="name">Operador de Maq. Contab.</field>
+      <field name="code">4967</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_358" model="hr.employee.entry.occupation">
+      <field name="name">Operador Petrolero</field>
+      <field name="code">5339</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_359" model="hr.employee.entry.occupation">
+      <field name="name">Opiometrista</field>
+      <field name="code">1169</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_360" model="hr.employee.entry.occupation">
+      <field name="name">Optometrista</field>
+      <field name="code">9357</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_361" model="hr.employee.entry.occupation">
+      <field name="name">Ornamentista</field>
+      <field name="code">154</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_362" model="hr.employee.entry.occupation">
+      <field name="name">Ortopedista</field>
+      <field name="code">1170</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_363" model="hr.employee.entry.occupation">
+      <field name="name">Ostricultor</field>
+      <field name="code">3803</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_364" model="hr.employee.entry.occupation">
+      <field name="name">Palafrenero</field>
+      <field name="code">8234</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_365" model="hr.employee.entry.occupation">
+      <field name="name">Paleografo</field>
+      <field name="code">1171</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_366" model="hr.employee.entry.occupation">
+      <field name="name">Paleontologo</field>
+      <field name="code">1181</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_367" model="hr.employee.entry.occupation">
+      <field name="name">Panadero</field>
+      <field name="code">3271</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_368" model="hr.employee.entry.occupation">
+      <field name="name">Paramedico</field>
+      <field name="code">9366</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_369" model="hr.employee.entry.occupation">
+      <field name="name">Pasante</field>
+      <field name="code">9377</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_370" model="hr.employee.entry.occupation">
+      <field name="name">Pasante - INCE</field>
+      <field name="code">9374</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_371" model="hr.employee.entry.occupation">
+      <field name="name">Pastelero</field>
+      <field name="code">3272</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_372" model="hr.employee.entry.occupation">
+      <field name="name">Patologo</field>
+      <field name="code">1158</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_373" model="hr.employee.entry.occupation">
+      <field name="name">Pedagogo</field>
+      <field name="code">1906</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_374" model="hr.employee.entry.occupation">
+      <field name="name">Peletero</field>
+      <field name="code">3273</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_375" model="hr.employee.entry.occupation">
+      <field name="name">Pelotero</field>
+      <field name="code">1771</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_376" model="hr.employee.entry.occupation">
+      <field name="name">Peluquero</field>
+      <field name="code">272</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_377" model="hr.employee.entry.occupation">
+      <field name="name">Perforador</field>
+      <field name="code">1572</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_378" model="hr.employee.entry.occupation">
+      <field name="name">Perforador de Pozos</field>
+      <field name="code">1571</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_379" model="hr.employee.entry.occupation">
+      <field name="name">Perforador IBM</field>
+      <field name="code">4968</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_380" model="hr.employee.entry.occupation">
+      <field name="name">Perforador Pozo Petrolero</field>
+      <field name="code">5324</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_381" model="hr.employee.entry.occupation">
+      <field name="name">Perfumista</field>
+      <field name="code">3277</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_382" model="hr.employee.entry.occupation">
+      <field name="name">Perito</field>
+      <field name="code">4071</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_383" model="hr.employee.entry.occupation">
+      <field name="name">Perito Agronomo</field>
+      <field name="code">3807</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_384" model="hr.employee.entry.occupation">
+      <field name="name">Perito Agropecuario</field>
+      <field name="code">3806</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_385" model="hr.employee.entry.occupation">
+      <field name="name">Perito Mercantil</field>
+      <field name="code">1333</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_386" model="hr.employee.entry.occupation">
+      <field name="name">Pescador</field>
+      <field name="code">3274</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_387" model="hr.employee.entry.occupation">
+      <field name="name">Petrolero</field>
+      <field name="code">5336</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_388" model="hr.employee.entry.occupation">
+      <field name="name">Picador</field>
+      <field name="code">1786</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_389" model="hr.employee.entry.occupation">
+      <field name="name">Piloto Aviador</field>
+      <field name="code">502</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_390" model="hr.employee.entry.occupation">
+      <field name="name">Pintor</field>
+      <field name="code">171</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_391" model="hr.employee.entry.occupation">
+      <field name="name">Pirotecnico</field>
+      <field name="code">3276</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_392" model="hr.employee.entry.occupation">
+      <field name="name">Pizzero</field>
+      <field name="code">9395</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_393" model="hr.employee.entry.occupation">
+      <field name="name">Plomero</field>
+      <field name="code">8273</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_394" model="hr.employee.entry.occupation">
+      <field name="name">Portero</field>
+      <field name="code">8271</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_395" model="hr.employee.entry.occupation">
+      <field name="name">Practicante</field>
+      <field name="code">8276</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_396" model="hr.employee.entry.occupation">
+      <field name="name">Prensista</field>
+      <field name="code">371</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_397" model="hr.employee.entry.occupation">
+      <field name="name">Presidente</field>
+      <field name="code">9365</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_398" model="hr.employee.entry.occupation">
+      <field name="name">Productor de Cine</field>
+      <field name="code">2366</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_399" model="hr.employee.entry.occupation">
+      <field name="name">Prof. Educ. Fisica</field>
+      <field name="code">1712</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_400" model="hr.employee.entry.occupation">
+      <field name="name">Prof. de Educacion</field>
+      <field name="code">1925</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_401" model="hr.employee.entry.occupation">
+      <field name="name">Prof. de Matematica</field>
+      <field name="code">1954</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_402" model="hr.employee.entry.occupation">
+      <field name="name">Prof. de Sordomudos</field>
+      <field name="code">1981</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_403" model="hr.employee.entry.occupation">
+      <field name="name">Prof. Manualidades</field>
+      <field name="code">1947</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_404" model="hr.employee.entry.occupation">
+      <field name="name">Prof. Tecn. Policial</field>
+      <field name="code">1985</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_405" model="hr.employee.entry.occupation">
+      <field name="name">Profesor</field>
+      <field name="code">1907</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_406" model="hr.employee.entry.occupation">
+      <field name="name">Profesor de Baile</field>
+      <field name="code">1909</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_407" model="hr.employee.entry.occupation">
+      <field name="name">Profesor de Canto</field>
+      <field name="code">1915</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_408" model="hr.employee.entry.occupation">
+      <field name="name">Profesor de Ciencias</field>
+      <field name="code">1908</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_409" model="hr.employee.entry.occupation">
+      <field name="name">Profesor de Corte</field>
+      <field name="code">1917</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_410" model="hr.employee.entry.occupation">
+      <field name="name">Profesor de Idiomas</field>
+      <field name="code">1942</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_411" model="hr.employee.entry.occupation">
+      <field name="name">Profesor de Musica</field>
+      <field name="code">1955</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_412" model="hr.employee.entry.occupation">
+      <field name="name">Programador</field>
+      <field name="code">8214</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_413" model="hr.employee.entry.occupation">
+      <field name="name">Promotora</field>
+      <field name="code">9363</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_414" model="hr.employee.entry.occupation">
+      <field name="name">Proyectista</field>
+      <field name="code">1149</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_415" model="hr.employee.entry.occupation">
+      <field name="name">Psicologo</field>
+      <field name="code">1152</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_416" model="hr.employee.entry.occupation">
+      <field name="name">Publicista</field>
+      <field name="code">372</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_417" model="hr.employee.entry.occupation">
+      <field name="name">Puericultor</field>
+      <field name="code">1172</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_418" model="hr.employee.entry.occupation">
+      <field name="name">Pulidor</field>
+      <field name="code">8274</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_419" model="hr.employee.entry.occupation">
+      <field name="name">Quimico</field>
+      <field name="code">1176</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_420" model="hr.employee.entry.occupation">
+      <field name="name">Quimico Industrial</field>
+      <field name="code">1173</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_421" model="hr.employee.entry.occupation">
+      <field name="name">Quiropedista</field>
+      <field name="code">1175</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_422" model="hr.employee.entry.occupation">
+      <field name="name">Radio Operador</field>
+      <field name="code">1479</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_423" model="hr.employee.entry.occupation">
+      <field name="name">Radioestesista</field>
+      <field name="code">5370</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_424" model="hr.employee.entry.occupation">
+      <field name="name">Radiologo</field>
+      <field name="code">1178</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_425" model="hr.employee.entry.occupation">
+      <field name="name">Radiotelefrafista</field>
+      <field name="code">1490</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_426" model="hr.employee.entry.occupation">
+      <field name="name">Recepcionista</field>
+      <field name="code">9359</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_427" model="hr.employee.entry.occupation">
+      <field name="name">Reencauchador</field>
+      <field name="code">3278</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_428" model="hr.employee.entry.occupation">
+      <field name="name">Refinador</field>
+      <field name="code">6637</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_429" model="hr.employee.entry.occupation">
+      <field name="name">Refinador de Petroleo</field>
+      <field name="code">5340</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_430" model="hr.employee.entry.occupation">
+      <field name="name">Religioso</field>
+      <field name="code">5578</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_431" model="hr.employee.entry.occupation">
+      <field name="name">Relojero</field>
+      <field name="code">8279</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_432" model="hr.employee.entry.occupation">
+      <field name="name">Rentista</field>
+      <field name="code">978</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_433" model="hr.employee.entry.occupation">
+      <field name="name">Repartidor</field>
+      <field name="code">9280</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_434" model="hr.employee.entry.occupation">
+      <field name="name">Reportero</field>
+      <field name="code">4072</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_435" model="hr.employee.entry.occupation">
+      <field name="name">Reposiero</field>
+      <field name="code">8281</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_436" model="hr.employee.entry.occupation">
+      <field name="name">Representante Comercial</field>
+      <field name="code">1377</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_437" model="hr.employee.entry.occupation">
+      <field name="name">Representantes de Ventas</field>
+      <field name="code">9390</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_438" model="hr.employee.entry.occupation">
+      <field name="name">Retocador</field>
+      <field name="code">2379</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_439" model="hr.employee.entry.occupation">
+      <field name="name">Retocador de Fotografia</field>
+      <field name="code">2378</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_440" model="hr.employee.entry.occupation">
+      <field name="name">Revisor</field>
+      <field name="code">8353</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_441" model="hr.employee.entry.occupation">
+      <field name="name">Sacerdote</field>
+      <field name="code">5581</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_442" model="hr.employee.entry.occupation">
+      <field name="name">Sastre</field>
+      <field name="code">3281</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_443" model="hr.employee.entry.occupation">
+      <field name="name">Secretario</field>
+      <field name="code">4981</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_444" model="hr.employee.entry.occupation">
+      <field name="name">Seguridad</field>
+      <field name="code">9378</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_445" model="hr.employee.entry.occupation">
+      <field name="name">Sericurtor</field>
+      <field name="code">8181</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_446" model="hr.employee.entry.occupation">
+      <field name="name">Sin Oficio</field>
+      <field name="code">8200</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_447" model="hr.employee.entry.occupation">
+      <field name="name">Sin Profesion</field>
+      <field name="code">901</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_448" model="hr.employee.entry.occupation">
+      <field name="name">Sismografo</field>
+      <field name="code">5335</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_449" model="hr.employee.entry.occupation">
+      <field name="name">Sismologo</field>
+      <field name="code">1179</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_450" model="hr.employee.entry.occupation">
+      <field name="name">Sociologo</field>
+      <field name="code">1185</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_451" model="hr.employee.entry.occupation">
+      <field name="name">Soldador</field>
+      <field name="code">8284</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_452" model="hr.employee.entry.occupation">
+      <field name="name">Sombrerero</field>
+      <field name="code">3283</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_453" model="hr.employee.entry.occupation">
+      <field name="name">Soplador de Vidrio</field>
+      <field name="code">8284</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_454" model="hr.employee.entry.occupation">
+      <field name="name">Sub-Director</field>
+      <field name="code">982</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_455" model="hr.employee.entry.occupation">
+      <field name="name">Superint. Comercial</field>
+      <field name="code">1378</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_456" model="hr.employee.entry.occupation">
+      <field name="name">Superint. Construccion</field>
+      <field name="code">1511</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_457" model="hr.employee.entry.occupation">
+      <field name="name">Superint. de Aviacion</field>
+      <field name="code">506</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_458" model="hr.employee.entry.occupation">
+      <field name="name">Superint. de la Marina</field>
+      <field name="code">4303</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_459" model="hr.employee.entry.occupation">
+      <field name="name">Supervisor</field>
+      <field name="code">9360</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_460" model="hr.employee.entry.occupation">
+      <field name="name">Tabaquero</field>
+      <field name="code">3294</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_461" model="hr.employee.entry.occupation">
+      <field name="name">Talabartero</field>
+      <field name="code">3285</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_462" model="hr.employee.entry.occupation">
+      <field name="name">Tallador de Gemas</field>
+      <field name="code">196</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_463" model="hr.employee.entry.occupation">
+      <field name="name">Tallista</field>
+      <field name="code">185</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_464" model="hr.employee.entry.occupation">
+      <field name="name">Tapicero</field>
+      <field name="code">9285</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_465" model="hr.employee.entry.occupation">
+      <field name="name">Taquigrafo</field>
+      <field name="code">4983</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_466" model="hr.employee.entry.occupation">
+      <field name="name">Taquimecanografo</field>
+      <field name="code">4985</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_467" model="hr.employee.entry.occupation">
+      <field name="name">Taxidermista</field>
+      <field name="code">9294</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_468" model="hr.employee.entry.occupation">
+      <field name="name">Taxista</field>
+      <field name="code">2</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_469" model="hr.employee.entry.occupation">
+      <field name="name">Tec. Aire Acondicionado</field>
+      <field name="code">6602</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_470" model="hr.employee.entry.occupation">
+      <field name="name">Tec. Confeccion de Moda</field>
+      <field name="code">6612</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_471" model="hr.employee.entry.occupation">
+      <field name="name">Tec. Pastas Alimenticias</field>
+      <field name="code">6651</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_472" model="hr.employee.entry.occupation">
+      <field name="name">Tec. Product. Aliment</field>
+      <field name="code">6664</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_473" model="hr.employee.entry.occupation">
+      <field name="name">Tec. Reparac. Maq.</field>
+      <field name="code">6609</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_474" model="hr.employee.entry.occupation">
+      <field name="name">Tec. Repujador</field>
+      <field name="code">6667</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_475" model="hr.employee.entry.occupation">
+      <field name="name">Tecn. en Television</field>
+      <field name="code">6657</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_476" model="hr.employee.entry.occupation">
+      <field name="name">Tecn. Cinematografia</field>
+      <field name="code">6615</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_477" model="hr.employee.entry.occupation">
+      <field name="name">Tecn. Contraenchapado</field>
+      <field name="code">6663</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_478" model="hr.employee.entry.occupation">
+      <field name="name">Tecn. Contrometrista</field>
+      <field name="code">6607</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_479" model="hr.employee.entry.occupation">
+      <field name="name">Tecn. Drenaje</field>
+      <field name="code">6662</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_480" model="hr.employee.entry.occupation">
+      <field name="name">Tecn. Electricista</field>
+      <field name="code">6610</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_481" model="hr.employee.entry.occupation">
+      <field name="name">Tecn. En Textiles</field>
+      <field name="code">6697</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_482" model="hr.employee.entry.occupation">
+      <field name="name">Tecn. En Tintas</field>
+      <field name="code">6688</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_483" model="hr.employee.entry.occupation">
+      <field name="name">Tecn. En Transporte</field>
+      <field name="code">8020</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_484" model="hr.employee.entry.occupation">
+      <field name="name">Tecn. En Turbinas</field>
+      <field name="code">6691</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_485" model="hr.employee.entry.occupation">
+      <field name="name">Tecn. En Vibradores</field>
+      <field name="code">6658</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_486" model="hr.employee.entry.occupation">
+      <field name="name">Tecn. Ensamblador</field>
+      <field name="code">6614</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_487" model="hr.employee.entry.occupation">
+      <field name="name">Tecn. Telecomunicaciones</field>
+      <field name="code">6649</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_488" model="hr.employee.entry.occupation">
+      <field name="name">Tecn. Concreto Pritensado</field>
+      <field name="code">6619</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_489" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico</field>
+      <field name="code">6600</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_490" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico Asesor</field>
+      <field name="code">6611</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_491" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico Audio Visual</field>
+      <field name="code">6621</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_492" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico Azucarero</field>
+      <field name="code">6601</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_493" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico Cafetero</field>
+      <field name="code">6605</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_494" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico Electronico</field>
+      <field name="code">6604</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_495" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico En Embutidos</field>
+      <field name="code">6652</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_496" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico En Aeronautica</field>
+      <field name="code">503</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_497" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico En Agricultura</field>
+      <field name="code">6639</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_498" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico En Computadoras</field>
+      <field name="code">6668</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_499" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico En Fumigacion</field>
+      <field name="code">6616</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_500" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico En Hornos</field>
+      <field name="code">6620</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_501" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico En Maquinaria</field>
+      <field name="code">6640</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_502" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico En Mercadeo</field>
+      <field name="code">1379</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_503" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico En Motores</field>
+      <field name="code">6646</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_504" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico En Navegacion</field>
+      <field name="code">504</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_505" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico En Neumaticos</field>
+      <field name="code">6650</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_506" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico En Pinturas</field>
+      <field name="code">6689</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_507" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico En Plastico</field>
+      <field name="code">6666</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_508" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico En Radio</field>
+      <field name="code">6655</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_509" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico En Rayos X</field>
+      <field name="code">1196</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_510" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico En Refrigeracion</field>
+      <field name="code">6656</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_511" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico En Sanitario</field>
+      <field name="code">1183</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_512" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico En Sistemas</field>
+      <field name="code">6661</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_513" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico En Sonido</field>
+      <field name="code">6660</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_514" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico En Tejidos</field>
+      <field name="code">6685</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_515" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico Fabricacion Papel</field>
+      <field name="code">6608</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_516" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico Fabricante</field>
+      <field name="code">6606</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_517" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico Forestal</field>
+      <field name="code">6629</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_518" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico Galvanoplastia</field>
+      <field name="code">6635</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_519" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico Gasometro</field>
+      <field name="code">6618</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_520" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico Hidraulico</field>
+      <field name="code">6613</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_521" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico Hilandero</field>
+      <field name="code">3250</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_522" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico IBM</field>
+      <field name="code">6648</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_523" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico Industrial</field>
+      <field name="code">6638</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_524" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico Inst. Musical</field>
+      <field name="code">6603</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_525" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico Instalaciones</field>
+      <field name="code">6659</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_526" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico Lacteo</field>
+      <field name="code">6642</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_527" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico Maq. Contables</field>
+      <field name="code">6643</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_528" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico Matricero</field>
+      <field name="code">6665</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_529" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico Mec. Dental</field>
+      <field name="code">6644</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_530" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico Mecanico</field>
+      <field name="code">6645</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_531" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico mereologia</field>
+      <field name="code">6653</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_532" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico montador</field>
+      <field name="code">6636</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_533" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico nuclear</field>
+      <field name="code">6647</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_534" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico repostero</field>
+      <field name="code">6654</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_535" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico terapista</field>
+      <field name="code">8282</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_536" model="hr.employee.entry.occupation">
+      <field name="name">Tecnico vidriero</field>
+      <field name="code">6690</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_537" model="hr.employee.entry.occupation">
+      <field name="name">Tecnologo</field>
+      <field name="code">1164</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_538" model="hr.employee.entry.occupation">
+      <field name="name">Tejedor</field>
+      <field name="code">3287</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_539" model="hr.employee.entry.occupation">
+      <field name="name">Telefonista</field>
+      <field name="code">1485</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_540" model="hr.employee.entry.occupation">
+      <field name="name">Telegrafista</field>
+      <field name="code">1487</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_541" model="hr.employee.entry.occupation">
+      <field name="name">Tenedor de libros</field>
+      <field name="code">4916</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_542" model="hr.employee.entry.occupation">
+      <field name="name">Teologo</field>
+      <field name="code">1177</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_543" model="hr.employee.entry.occupation">
+      <field name="name">Terapeutica</field>
+      <field name="code">8297</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_544" model="hr.employee.entry.occupation">
+      <field name="name">Tesorero</field>
+      <field name="code">9361</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_545" model="hr.employee.entry.occupation">
+      <field name="name">Tintoriro</field>
+      <field name="code">8288</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_546" model="hr.employee.entry.occupation">
+      <field name="name">Tipografo</field>
+      <field name="code">385</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_547" model="hr.employee.entry.occupation">
+      <field name="name">Tonelero</field>
+      <field name="code">8289</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_548" model="hr.employee.entry.occupation">
+      <field name="name">Topografo</field>
+      <field name="code">1180</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_549" model="hr.employee.entry.occupation">
+      <field name="name">Torero</field>
+      <field name="code">1785</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_550" model="hr.employee.entry.occupation">
+      <field name="name">Tornero</field>
+      <field name="code">8290</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_551" model="hr.employee.entry.occupation">
+      <field name="name">Trabajador social</field>
+      <field name="code">8240</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_552" model="hr.employee.entry.occupation">
+      <field name="name">Tractorista</field>
+      <field name="code">9297</field>
+    </record>
+
+    <!--
+    4085 TRADUCTOR INTERPRETE
+    8291 TRAMOYISTA
+    9370 TRANSCRIPTOR
+    9382 TRANSPORTISTA
+    8095 TRANVIARIO
+    979 TRAZADOR
+    8293 TROQUILADOR
+    8292 TUBERO
+    8182 VAQUERO
+    1393 VENDEDOR AMBULANTE
+    1391 VENDEDOR COMERCIAL
+    9400 VICEPRESIDENTE
+    3291 VIDRIERO
+    3290 VIGILANTE
+    3890 VINICULTOR
+    9376 VISITADOR MEDICO
+    3891 VITICULTOR
+    3292 VULCANIZADOR
+    9387 WINCHERO
+    3298 ZAPATERO
+    1198 ZOOLOGO
+    8197 ZOOTECNICO
+    9385 ZURCIDOR -->
+
+    <record id="hr_employee_entry_occupation_553" model="hr.employee.entry.occupation">
+      <field name="name">Traductor interprete</field>
+      <field name="code">4085</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_554" model="hr.employee.entry.occupation">
+      <field name="name">Tramoyista</field>
+      <field name="code">8291</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_555" model="hr.employee.entry.occupation">
+      <field name="name">Transcriptor</field>
+      <field name="code">9370</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_556" model="hr.employee.entry.occupation">
+      <field name="name">Transportista</field>
+      <field name="code">9382</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_557" model="hr.employee.entry.occupation">
+      <field name="name">Traviario</field>
+      <field name="code">8095</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_558" model="hr.employee.entry.occupation">
+      <field name="name">Trazador</field>
+      <field name="code">979</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_559" model="hr.employee.entry.occupation">
+      <field name="name">Troquilador</field>
+      <field name="code">8293</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_560" model="hr.employee.entry.occupation">
+      <field name="name">Tubero</field>
+      <field name="code">8292</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_561" model="hr.employee.entry.occupation">
+      <field name="name">Vaquero</field>
+      <field name="code">8182</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_562" model="hr.employee.entry.occupation">
+      <field name="name">Vendedor ambulante</field>
+      <field name="code">1393</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_563" model="hr.employee.entry.occupation">
+      <field name="name">Vendedor comercial</field>
+      <field name="code">1391</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_564" model="hr.employee.entry.occupation">
+      <field name="name">Vicepresidente</field>
+      <field name="code">9400</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_565" model="hr.employee.entry.occupation">
+      <field name="name">Vidriero</field>
+      <field name="code">3291</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_566" model="hr.employee.entry.occupation">
+      <field name="name">Vigilante</field>
+      <field name="code">3290</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_567" model="hr.employee.entry.occupation">
+      <field name="name">Viticultor</field>
+      <field name="code">3890</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_568" model="hr.employee.entry.occupation">
+      <field name="name">Visitador medico</field>
+      <field name="code">9376</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_569" model="hr.employee.entry.occupation">
+      <field name="name">Viticultor</field>
+      <field name="code">3891</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_570" model="hr.employee.entry.occupation">
+      <field name="name">Vulcanizador</field>
+      <field name="code">3292</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_571" model="hr.employee.entry.occupation">
+      <field name="name">Winchero</field>
+      <field name="code">9387</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_572" model="hr.employee.entry.occupation">
+      <field name="name">Zapatero</field>
+      <field name="code">3298</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_573" model="hr.employee.entry.occupation">
+      <field name="name">Zoologo</field>
+      <field name="code">1198</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_574" model="hr.employee.entry.occupation">
+      <field name="name">Zootecnico</field>
+      <field name="code">8197</field>
+    </record>
+
+    <record id="hr_employee_entry_occupation_575" model="hr.employee.entry.occupation">
+      <field name="name">Zurcidor</field>
+      <field name="code">9385</field>
+    </record>
+
+  </data>
+</odoo>

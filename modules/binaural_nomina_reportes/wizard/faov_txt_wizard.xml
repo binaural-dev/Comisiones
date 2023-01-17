@@ -1,0 +1,36 @@
+<odoo>
+    <record id="faov_txt_wizard_form" model="ir.ui.view">
+        <field name="name">Generar Comprobante</field>
+        <field name="model">faov.txt.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Generate txt">
+                <sheet>
+                    <group>
+                        <field name='date_from'/>
+                    </group>
+                    <group>
+                        <field name='date_to'/>
+                    </group>
+                </sheet>
+
+                <footer>
+                    <button
+                    string="Generate txt"
+                        type="object"
+                        name="download_faov_txt"
+                    class="btn-primary"
+                    />
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_faov_txt_wizard" model="ir.actions.act_window">
+        <field name="name">Generate txt FAOV</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">faov.txt.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

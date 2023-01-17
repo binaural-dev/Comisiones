@@ -1,0 +1,6 @@
+#. module: binaural_facturacion
+#: model:ir.model.fields,field_description:binaural_facturacion.field_account_move_line__brand_id
+msgid "Brand to product"
+msgstr "Marca"
+
+

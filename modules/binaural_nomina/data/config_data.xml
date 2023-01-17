@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="config_default_dia_cron_provisiones" model="ir.config_parameter">
+            <field name="key">dia_cron_provisiones</field>
+            <field name="value">1</field>
+        </record>
+
+        <record id="config_default_calculo_prestaciones" model="ir.config_parameter">
+            <field name="key">calculo_prestaciones</field>
+            <field name="value">mensual</field>
+        </record>
+
+        <record id="config_default_dia_adicional_posterior" model="ir.config_parameter">
+            <field name="key">dia_adicional_posterior</field>
+            <field name="value">1</field>
+        </record>
+
+        <record id="config_default_sueldo_base_ley" model="ir.config_parameter">
+            <field name="key">sueldo_base_ley</field>
+            <field name="value">130</field>
+        </record>
+
+        <record id="config_default_porcentaje_deduccion_faov" model="ir.config_parameter">
+            <field name="key">porcentaje_deduccion_faov</field>
+            <field name="value">1</field>
+        </record>
+
+        <record id="config_default_porcentaje_deduccion_ince" model="ir.config_parameter">
+            <field name="key">porcentaje_deduccion_ince</field>
+            <field name="value">0.5</field>
+        </record>
+
+        <record id="config_default_porcentaje_deduccion_ivss" model="ir.config_parameter">
+            <field name="key">porcentaje_deduccion_ivss</field>
+            <field name="value">4</field>
+        </record>
+
+        <record id="config_default_tope_salario_ivss" model="ir.config_parameter">
+            <field name="key">tope_salario_ivss</field>
+            <field name="value">5</field>
+        </record>
+
+        <record id="config_default_porcentaje_deduccion_pf" model="ir.config_parameter">
+            <field name="key">porcentaje_deduccion_pf</field>
+            <field name="value">0.5</field>
+        </record>
+
+        <record id="tope_salario_pf" model="ir.config_parameter">
+            <field name="key">tope_salario_pf</field>
+            <field name="value">10</field>
+        </record>
+
+        <record id="config_default_porcentaje_recargo_nocturno" model="ir.config_parameter">
+            <field name="key">porcentaje_recargo_nocturno</field>
+            <field name="value">50</field>
+        </record>
+
+        <record id="config_default_dia_vacaciones_anno" model="ir.config_parameter">
+            <field name="key">dia_vacaciones_anno</field>
+            <field name="value">16</field>
+        </record>
+
+        <record id="config_default_tipo_utilidades" model="ir.config_parameter">
+            <field name="key">tipo_utilidades</field>
+            <field name="value">last_wage</field>
+        </record>
+
+        <record id="config_default_dias_utilidades" model="ir.config_parameter">
+            <field name="key">dias_utilidades</field>
+            <field name="value">60</field>
+        </record>
+
+        <record id="config_default_dias_prestaciones_mes" model="ir.config_parameter">
+            <field name="key">dias_prestaciones_mes</field>
+            <field name="value">5</field>
+        </record>
+
+        <record id="config_default_dias_prestaciones_anno" model="ir.config_parameter">
+            <field name="key">dias_prestaciones_anno</field>
+            <field name="value">2</field>
+        </record>
+
+        <record id="config_default_maximo_dias_prestaciones_anno" model="ir.config_parameter">
+            <field name="key">maximo_dias_prestaciones_anno</field>
+            <field name="value">30</field>
+        </record>
+
+        <record id="config_default_tipo_calculo_intereses_prestaciones" model="ir.config_parameter">
+            <field name="key">tipo_calculo_intereses_prestaciones</field>
+            <field name="value">fideicomiso</field>
+        </record>
+
+    </data>
+</odoo>

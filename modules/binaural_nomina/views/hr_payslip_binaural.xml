@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="payslip_work_days_inherit_binaural_nomina" model="ir.ui.view">
+        <field name="name">hr.payslip.binaural.view.form.inherit</field>
+        <field name="model">hr.payslip</field>
+        <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+        <field name="arch" type="xml">
+          <field name="number" position="after">
+            <field name="benefits_advance"
+                   attrs="{'invisible': [('is_benefits','=',False)]}"/>
+            <field name="benefits_advance_percentage"
+                   attrs="{'invisible': [('is_benefits','=',False)]}"/>
+            <field name="is_benefits" invisible="1"/>
+          </field>
+          <field name="contract_id" position="after">
+            <label
+                for="date_from_vacation"
+                string="Vacation Period"
+                attrs="{'invisible': [('struct_category', '!=', 'vacation')]}"
+            />
+            <div attrs="{'invisible': [('struct_category', '!=', 'vacation')]}">
+                <field name="date_from_vacation" class="oe_inline"/>
+                - <field name="date_to_vacation" class="oe_inline"/>
+            </div>
+            <label for="schedule_payment" attrs="{'invisible' : [('struct_category', '!=' , 'salary')]}"/>
+            <div>
+              <field name="schedule_payment" readonly="False" attrs="{'invisible' : [('struct_category', '!=' , 'salary')]}"/>
+            </div>
+          </field>
+          <xpath expr="//group[@col='4']" position="inside">
+              <field name="struct_category" invisible="1"/>
+          </xpath>
+
+          <xpath expr="//field[@name='worked_days_line_ids']//field[@name='amount']" position="replace">      
+              <field name="amount" readonly="1" force_save="1" invisible="True"/>      
+          </xpath>
+
+          <xpath expr="//field[@name='name']" position="after">
+            <field name="default_accounting_analytical" invisible="1"/>
+            <field name="account_analytic_id" attrs="{'invisible': [('default_accounting_analytical', '=', False)]}"/>
+            <field name="bank_employee_id"/>
+          </xpath>
+
+          <xpath expr="//field[@name='worked_days_line_ids']//form//field[@name='amount']" position="attributes">
+              <attribute name="attrs">{'invisible':1}</attribute>
+          </xpath>
+        </field>
+      </record>
+
+      <record id="action_view_hr_payslip_provision" model="ir.actions.act_window">
+        <field name="name">Recibos de provisiones</field>
+        <field name="res_model">hr.payslip</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="search_view_id" ref="hr_payroll.view_hr_payslip_filter"/>
+        <field name="context">{"search_default_group_by_batch":1}</field>
+        <field name="domain">[('struct_category','=','provision')]</field>
+      </record>
+
+      <record id="hr_payroll.action_view_hr_payslip_month_form" model="ir.actions.act_window">
+        <field name="name">Recibos de nómina</field>
+        <field name="res_model">hr.payslip</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="search_view_id" ref="hr_payroll.view_hr_payslip_filter"/>
+        <field name="context">{"search_default_group_by_batch":1}</field>
+        <field name="domain">[('struct_category','!=','provision')]</field>
+      </record>
+</odoo>
