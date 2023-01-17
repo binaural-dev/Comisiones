@@ -184,7 +184,7 @@ class AccountExpenseWizard(TransientModel):
                 if per_commission:
                     move = AccountMove.create([json])
                     move.line_ids[-1].name = move.name
-                    self.move_ids[index].commission_invoice = move
+                    json.commission_invoice = move
                     index += 1
                     
                     
