@@ -9,7 +9,7 @@ _logger = logging.getLogger(__name__)
 class RetentionIslrReport(models.TransientModel):
 	_inherit = 'wizard.retention.islr'
 
-	def _retention_islr_excel(self):
+	def _retention_islr_excel(self, current_company = False):
 		foreign_currency_id = int(self.env['ir.config_parameter'].sudo().get_param('curreny_foreign_id'))
 		search_domain = self._get_domain()
 		search_domain += [
@@ -17,6 +17,10 @@ class RetentionIslrReport(models.TransientModel):
             ('type_retention', 'in', ['islr']),
 			('state', 'in', ['emitted']),
 		]
+
+		if current_company:
+			search_domain += [('company_id', '=', current_company.id)]
+
 		docs = self.env['account.retention'].search(search_domain, order='id asc')
 		dic = OrderedDict([
 			('ID Sec', 0),
@@ -69,11 +73,11 @@ class RetentionIslrReport(models.TransientModel):
 		tabla = pd.DataFrame(lista)
 		return tabla
 
-	def _table_retention_islr(self, wizard=False):
+	def _table_retention_islr(self, wizard=False, current_company = False):
 		if wizard:
 			wiz = self.search([('id', '=', wizard)])
 		else:
 			wiz = self
-		tabla1 = wiz._retention_islr_excel()
+		tabla1 = wiz._retention_islr_excel(current_company)
 		union = pd.concat([tabla1])
 		return union

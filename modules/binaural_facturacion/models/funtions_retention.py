@@ -142,7 +142,7 @@ def load_line_retention(self, data, move_id=False):
                                             "invoice_id": facture_line_retention.id,
                                             "is_retention_client": True,
                                             "name": "Retención IVA Proveedor",
-                                            "tax_line": tax_id.amount,
+                                            "tax_line":facture_line_retention.partner_id.withholding_type.value,
                                             "facture_amount": tax[2],
                                             "facture_total": facture_line_retention.amount_total,
                                             "iva_amount": tax[1],
@@ -155,16 +155,15 @@ def load_line_retention(self, data, move_id=False):
                                             ),
                                             "foreign_facture_amount": tax[2]
                                             * facture_line_retention.foreign_currency_rate,
-                                            "foreign_facture_total": facture_line_retention.amount_total
-                                            * facture_line_retention.foreign_currency_rate,
-                                            "foreign_iva_amount": tax[1]
-                                            * facture_line_retention.foreign_currency_rate,
-                                            "foreign_retention_amount": tax[1]
-                                            * (
-                                                facture_line_retention.partner_id.withholding_type.value
-                                                / 100
-                                            )
-                                            * value_rate,
+                                            "foreign_facture_total": sum(
+                                                    group[2] for group in facture_line_retention.foreign_amount_by_group_base
+                                                ) + facture_line_retention.foreign_amount_untaxed,
+                                            "foreign_iva_amount": sum(
+                                                    group[2] for group in facture_line_retention.foreign_amount_by_group_base
+                                                ) ,
+                                            "foreign_retention_amount": sum(
+                                                ( group[2] for group in facture_line_retention.foreign_amount_by_group_base)
+                                            ) * (int(facture_line_retention.partner_id.withholding_type.value) * 1/100),
                                             "foreign_currency_rate": facture_line_retention.foreign_currency_rate,
                                         },
                                     )
@@ -200,6 +199,7 @@ def search_account(self, ret_line):
 def create_move_invoice_retention(
     self, line_ret, ret_line, account, journal, amount_edit, decimal_places, new_move, move_id
 ):
+
     if self.type in ["out_invoice"]:
         _logger.warning(f"aaaa {self.number}")
         tax_name = " - IVA(" + str(ret_line.tax_line) + "%)"
@@ -259,13 +259,11 @@ def create_move_invoice_retention(
             move.write({"line_ids": line_ret})
     else:
         if self.type_retention in ["iva"]:
-            cta_conf_supplier = int(
-                self.env["ir.config_parameter"].sudo().get_param("account_retention_iva")
-            )
+            cta_conf_supplier = self.company_id.account_retention_iva.id
+
         else:
-            cta_conf_supplier = int(
-                self.env["ir.config_parameter"].sudo().get_param("account_retention_islr")
-            )
+            cta_conf_supplier = self.company_id.account_retention_islr.id
+
         cta_conf_supplier_id = self.env["account.account"].search(
             [("id", "=", cta_conf_supplier)], limit=1
         )
@@ -393,13 +391,9 @@ def create_move_refund_retention(
             self.env["account.move.line"].create(line_ret)
     else:
         if self.type_retention in ["iva"]:
-            cta_conf_supplier = int(
-                self.env["ir.config_parameter"].sudo().get_param("account_retention_iva")
-            )
+            cta_conf_supplier = self.company_id.account_retention_iva.id
         else:
-            cta_conf_supplier = int(
-                self.env["ir.config_parameter"].sudo().get_param("account_retention_islr")
-            )
+            cta_conf_supplier = self.company_id.account_retention_islr.id
 
         cta_conf_supplier_id = self.env["account.account"].search(
             [("id", "=", cta_conf_supplier)], limit=1

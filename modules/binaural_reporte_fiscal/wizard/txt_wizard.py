@@ -8,7 +8,9 @@ from collections import OrderedDict
 import pandas as pd
 import math
 from datetime import date
+import logging
 
+_logger = logging.getLogger(__name__)
 
 class TxtWizard(models.TransientModel):
     _name = 'txt.wizard'
@@ -18,19 +20,22 @@ class TxtWizard(models.TransientModel):
     date_end = fields.Date('Fecha de termino', default=date.today().replace(day=1) + relativedelta(months=1, days=-1))
 
     def generte_txt(self):
+        current_company_id = self.env.company.id
         if self.date_start and self.date_end:
             retention_count = len(
                 self.env['account.retention'].search([('date', '>=', self.date_start),
                                                       ('date', '<=', self.date_end),
                                                       ('state', '=', 'emitted'),
                                                       ('type_retention', '=', 'iva'),
-                                                      ('type', '=', 'in_invoice')]).ids)
+                                                      ('type', '=', 'in_invoice'),
+                                                      ('company_id','=',current_company_id)]).ids)
+            
             if retention_count == 0:
                 raise UserError("Facturas a pagar obligatorias")
         else:
             raise UserError("Facturas a pagar obligatorias")
 
-        url = '/web/binary/download_txt?&date_start=%s&date_end=%s' % (self.date_start, self.date_end)
+        url = '/web/binary/download_txt?&date_start=%s&date_end=%s&company_id=%s' % (self.date_start, self.date_end,str(current_company_id))  
         return {
             'type': 'ir.actions.act_url',
             'url': url,
@@ -81,7 +86,7 @@ class TxtWizard(models.TransientModel):
                 dict['Número de documento'] = li.invoice_id.name
                 dict['Número de control'] = li.invoice_id.correlative
                 dict['Número del documento afectado'] = li.invoice_id.reversed_entry_id.name or '0'
-                dict['Número de comprobante de retención'] = int(i.number) or 0
+                dict['Número de comprobante de retención'] = int(i.number) if i.number else 0
                 dict['Alícuota'] = li.tax_line
                 # exento
                 exento = 0.00

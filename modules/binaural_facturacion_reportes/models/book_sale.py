@@ -62,6 +62,7 @@ class BookSaleReport(models.TransientModel):
                 ("retention_id.date_accounting", "<=", self.date_end),
                 ("retention_id.type_retention", "=", "iva"),
             ]
+            search_domain_rt += [('retention_id.company_id', '=', company_id)]
             retention_lines = self.env["account.retention.line"].search(search_domain_rt)
             for x in retention_lines:
                 if x.retention_id.state in ["emitted"]:
@@ -234,6 +235,7 @@ class BookSaleReport(models.TransientModel):
             ("retention_id.type_retention", "=", "iva"),
             ("retention_id.state", "in", ["emitted"]),
         ]
+        search_domain_only_retention += [('retention_id.company_id', '=', company_id)]
         retention_lines_only = self.env["account.retention.line"].search(
             search_domain_only_retention
         )
@@ -303,9 +305,9 @@ class BookSaleReport(models.TransientModel):
         sum_tabla = tabla.sum(axis=0, skipna=True)
         return sum_tabla
 
-    def _sale_book_invoice_resumen_excel(self):
+    def _sale_book_invoice_resumen_excel(self, current_company = False):
         dic = self.det_columns_resumen()
-        tabla = self._sale_book_invoice()
+        tabla = self._sale_book_invoice(current_company)
         _logger.info(tabla)
         if len(tabla.columns) > 0:
             tabla.columns = tabla.columns.map(lambda x: x.replace(" ", "_"))
@@ -497,11 +499,11 @@ class BookSaleReport(models.TransientModel):
         union = pd.concat([tabla1])
         return union
 
-    def _table_resumen_sale_book(self, wizard=False):
+    def _table_resumen_sale_book(self, wizard=False, current_company = False):
         if wizard:
             wiz = self.search([("id", "=", wizard)])
         else:
             wiz = self
-        tabla1 = wiz._sale_book_invoice_resumen_excel()
+        tabla1 = wiz._sale_book_invoice_resumen_excel(current_company)
         union = pd.concat([tabla1])
         return union

@@ -9,13 +9,16 @@ _logger = logging.getLogger(__name__)
 class RetentionIvaReport(models.TransientModel):
     _inherit = 'wizard.retention.iva'
 
-    def _retention_iva_excel(self):
+    def _retention_iva_excel(self, current_company = False):
         search_domain = self._get_domain()
         search_domain += [
             ('type', 'in', ['in_invoice']),
             ('type_retention', 'in', ['iva']),
             ('state', 'in', ['emitted']),
         ]
+        if current_company:
+            search_domain += [('company_id', '=', current_company.id)]
+
         docs = self.env['account.retention'].search(search_domain, order='id asc')
         dic = OrderedDict([
             ('Nro', 0),
@@ -65,11 +68,11 @@ class RetentionIvaReport(models.TransientModel):
         tabla = pd.DataFrame(lista)
         return tabla
 
-    def _table_retention_iva(self, wizard=False):
+    def _table_retention_iva(self, wizard=False, current_company = False):
         if wizard:
             wiz = self.search([('id', '=', wizard)])
         else:
             wiz = self
-        tabla1 = wiz._retention_iva_excel()
+        tabla1 = wiz._retention_iva_excel(current_company)
         union = pd.concat([tabla1])
         return union

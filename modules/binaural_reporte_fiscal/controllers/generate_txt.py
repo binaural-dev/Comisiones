@@ -7,9 +7,11 @@ from io import BytesIO, StringIO
 class GenerateTxt(http.Controller):
 
     @http.route('/web/binary/download_txt', type='http', auth='user')
-    def download_txt(self, date_start, date_end, **kw):
+    def download_txt(self, date_start, date_end, company_id,**kw):
         retention = request.env['account.retention'].search([('date', '>=', date_start), ('date', '<=', date_end),
-                                                             ('state', '=', 'emitted'),('type_retention', '=', 'iva'), ('type', '=', 'in_invoice')])
+                                                             ('state', '=', 'emitted'),('type_retention', '=', 'iva'), ('type', '=', 'in_invoice'),
+                                                             ('company_id','=',int(company_id))])
+        
         data = request.env['txt.wizard']
         tabla, lista = data._retention_iva(retention)
         f = StringIO()

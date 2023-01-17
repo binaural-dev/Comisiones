@@ -259,7 +259,7 @@ class SaleOrderBinauralVentas(models.Model):
 
                 if line.currency_id and line.company_currency_id and line.currency_id != line.company_currency_id:
                     amount = line.company_currency_id._convert(
-                        line.price_tax, line.currency_id, line.company_id, line.date or fields.Date.context_today(self))
+                        line.price_tax, line.currency_id, line.company_id, fields.Date.context_today(self))
                 else:
                     amount = line.price_tax
                 res[line.tax_id.tax_group_id]['amount'] += amount

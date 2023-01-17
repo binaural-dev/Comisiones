@@ -10,8 +10,9 @@ _logger = logging.getLogger(__name__)
 class BookPurchaseReport(models.TransientModel):
     _inherit = 'wizard.accounting.reports'
 
-    def _shopping_book_invoice(self):
-        search_domain = self._get_domain()
+    def _shopping_book_invoice(self, current_company = False):
+        company_id = current_company.id if current_company else current_company
+        search_domain = self._get_domain(company_id)
         search_domain += [
             ('state', 'not in', ['draft']),
             ('move_type', 'in', ['in_invoice', 'in_refund', 'in_debit']),
@@ -54,6 +55,7 @@ class BookPurchaseReport(models.TransientModel):
                 ('retention_id.date_accounting', '<=', self.date_end),
                 ('retention_id.type_retention', '=', 'iva')
             ]
+            search_domain_rt += [('retention_id.company_id', '=', company_id)]
             retention_lines = self.env['account.retention.line'].search(search_domain_rt)
             for x in retention_lines:
                 if x.retention_id.state in ['emitted']:
@@ -203,9 +205,9 @@ class BookPurchaseReport(models.TransientModel):
         sum_tabla = tabla.sum(axis=0, skipna=True)
         return sum_tabla
 
-    def _shopping_book_invoice_resumen_excel(self):
+    def _shopping_book_invoice_resumen_excel(self, current_company = False):
         dic = self.det_columns_resumen()
-        tabla = self._shopping_book_invoice()
+        tabla = self._shopping_book_invoice(current_company)
         if len(tabla.columns) > 0:
             tabla.columns = tabla.columns.map(lambda x: x.replace(' ', '_'))
             is_fact = tabla['Tipo'] == 'FAC'
@@ -327,20 +329,20 @@ class BookPurchaseReport(models.TransientModel):
             tabla = pd.DataFrame(lista)
         return tabla
 
-    def _table_shopping_book(self, wizard=False):
+    def _table_shopping_book(self, wizard=False, current_company = False):
         if wizard:
             wiz = self.search([('id', '=', wizard)])
         else:
             wiz = self
-        tabla1 = wiz._shopping_book_invoice()
+        tabla1 = wiz._shopping_book_invoice(current_company)
         union = pd.concat([tabla1])
         return union
 
-    def _table_resumen_shopping_book(self, wizard=False):
+    def _table_resumen_shopping_book(self, wizard=False, current_company = False):
         if wizard:
             wiz = self.search([('id', '=', wizard)])
         else:
             wiz = self
-        tabla1 = wiz._shopping_book_invoice_resumen_excel()
+        tabla1 = wiz._shopping_book_invoice_resumen_excel(current_company)
         union = pd.concat([tabla1])
         return union

@@ -1,4 +1,5 @@
 from odoo import models, fields, api, http, exceptions, SUPERUSER_ID, _
+from odoo.exceptions import UserError
 from datetime import date
 from dateutil.relativedelta import relativedelta
 import xlsxwriter
@@ -115,19 +116,21 @@ class WizardAccountingReports(models.TransientModel):
             return 'EXCEL'
 
     def generate_report(self):
+        current_company = self.env.company
         if self.report == 'purchase':
             moves_without_date = self.env['account.move'].search(
-                    ['&',('state','=','cancel'),('invoice_date','=',False)]
+                    [('state','=','cancel'),('invoice_date','=',False), ('company_id', '=', current_company.id)]
             )
             if moves_without_date:
                 raise exceptions.ValidationError(
                         _("Tiene registrado en el sistema facturas de proveedor anuladas sin la fecha de la factura. Por favor corregir para poder descargar el libro."))
 
         type_report = self.download_report()
+        
         if type_report == 'PDF':
             return self.print_pdf()
         else:
-            return self.imprimir_excel()
+            return self.imprimir_excel(current_company)
 
     def _get_domain(self, current_company_id = False):
         search_domain = []
@@ -144,29 +147,30 @@ class WizardAccountingReports(models.TransientModel):
         return search_domain
 
     def print_pdf(self):
-        return
+        raise exceptions.ValidationError(
+            _("Cannot download as PDF, try Excel.")
+        )
 
-    def imprimir_excel(self):
-        current_company = self.env.company
+    def imprimir_excel(self, current_company):
         report = self.report
         filecontent = ''
         report_obj = request.env['wizard.accounting.reports']
 
         if report == 'purchase':
-            table = report_obj._table_shopping_book(self.id)
+            table = report_obj._table_shopping_book(self.id, current_company)
             name = 'Libro de Compras'
             start = str(self.date_start)
             end = str(self.date_end)
-            table_resumen = report_obj._table_resumen_shopping_book(self.id)
+            table_resumen = report_obj._table_resumen_shopping_book(self.id, current_company)
         if report == 'sale':
             table = report_obj._table_sale_book(self.id, current_company)
             name = 'Libro de Ventas'
             start = str(self.date_start)
             end = str(self.date_end)
-            table_resumen = report_obj._table_resumen_sale_book(self.id)
+            table_resumen = report_obj._table_resumen_sale_book(self.id, current_company)
         if not table.empty and name:
             if report == 'purchase':
-                filecontent = report_obj._excel_file_purchase(table, name, start, end, table_resumen)
+                filecontent = report_obj._excel_file_purchase(table, name, start, end, table_resumen, current_company)
             if report == 'sale':
                 filecontent = report_obj._excel_file_sale(table, name, start, end, table_resumen, current_company)
         if not filecontent:
@@ -178,8 +182,8 @@ class WizardAccountingReports(models.TransientModel):
             'target': 'self'
         }
 
-    def _excel_file_purchase(self, table, name, start, end, table_resumen):
-        company = self.env['res.company'].search([], limit=1)
+    def _excel_file_purchase(self, table, name, start, end, table_resumen, current_company = False):
+        company = current_company
         data2 = BytesIO()
         workbook = xlsxwriter.Workbook(data2, {'in_memory': True, 'nan_inf_to_errors': True})
         merge_format = workbook.add_format({
@@ -484,18 +488,25 @@ class WizardRetentionIslr(models.TransientModel):
             ext = '.xlsx'
         return ext
     
-    def _get_domain(self):
+    def _get_domain(self, current_company_id = False):
         search_domain = []
         search_domain += [('date_accounting', '>=', self.date_start)]
         search_domain += [('date_accounting', '<=', self.date_end)]
+
+        if current_company_id:
+            search_domain += [('company_id', '=', current_company_id)]
+
         return search_domain
     
     def imprimir_excel(self):
+        current_company_id = str(self.env.company.id)
         report = self.report
         filecontent = '5'
+        
         report_obj = request.env['wizard.retention.islr']
-        if report == 'islr':
-            table = report_obj._table_retention_islr(int(self.id))
+        
+        table = report_obj._table_retention_islr(int(self.id))
+        if report == 'islr':            
             name = 'XML Retencion de ISLR'
             start = str(self.date_start)
             end = str(self.date_end)
@@ -503,17 +514,16 @@ class WizardRetentionIslr(models.TransientModel):
             if report == 'islr':
                 filecontent = report_obj._excel_file_retention_islr(table, name, start, end)
         if not filecontent:
-            print("\nAAAAAAAAAAAAAA\n")
             raise exceptions.Warning('No hay datos para mostrar en reporte')
         return {
             'type': 'ir.actions.act_url',
-            'url': '/web/get_excel?report=%s&wizard=%s&start=%s&end=%s' % (
-                self.report, self.id, str(self.date_start), str(self.date_end)),
+            'url': '/web/get_excel?report=%s&wizard=%s&start=%s&end=%s&current_company_id=%s' % (
+                self.report, self.id, str(self.date_start), str(self.date_end),current_company_id),
             'target': 'self'
         }
     
-    def _excel_file_retention_islr(self, table, name, start, end):
-        company = self.env['res.company'].search([], limit=1)
+    def _excel_file_retention_islr(self, table, name, start, end, current_company):
+        company = current_company
         data2 = BytesIO()
         workbook = xlsxwriter.Workbook(data2, {'in_memory': True})
         merge_format = workbook.add_format({
@@ -594,36 +604,41 @@ class WizardRetentionIva(models.TransientModel):
             ext = '.xlsx'
         return ext
     
-    def _get_domain(self):
+    def _get_domain(self, current_company_id = False):
         search_domain = []
         search_domain += [('date_accounting', '>=', self.date_start)]
         search_domain += [('date_accounting', '<=', self.date_end)]
+
+        if current_company_id:
+            search_domain += [('company_id', '=', current_company_id)]
+        
         return search_domain
     
     def imprimir_excel(self):
+        current_company = self.env.company
         report = self.report
         filecontent = '5'
         report_obj = request.env['wizard.retention.iva']
         if report == 'iva':
-            table = report_obj._table_retention_iva(int(self.id))
+            table = report_obj._table_retention_iva(int(self.id), current_company)
             name = 'Retenciones IVA'
             start = str(self.date_start)
             end = str(self.date_end)
         if not table.empty and name:
             if report == 'iva':
-                filecontent = report_obj._excel_file_retention_iva(table, name, start, end)
+                filecontent = report_obj._excel_file_retention_iva(table, name, start, end, current_company)
         if not filecontent:
             print("\nAAAAAAAAAAAAAA\n")
             raise exceptions.Warning('No hay datos para mostrar en reporte')
         return {
             'type': 'ir.actions.act_url',
-            'url': '/web/get_excel?report=%s&wizard=%s&start=%s&end=%s' % (
-                self.report, self.id, str(self.date_start), str(self.date_end)),
+            'url': '/web/get_excel?report=%s&wizard=%s&start=%s&end=%s&current_company_id=%s' % (
+                self.report, self.id, str(self.date_start), str(self.date_end), str(current_company.id)),
             'target': 'self'
         }
     
-    def _excel_file_retention_iva(self, table, name, start, end):
-        company = self.env['res.company'].search([], limit=1)
+    def _excel_file_retention_iva(self, table, name, start, end, current_company):
+        company = current_company
         data2 = BytesIO()
         workbook = xlsxwriter.Workbook(data2, {'in_memory': True, 'nan_inf_to_errors': True})
         merge_format = workbook.add_format({
@@ -724,10 +739,10 @@ class AccountingReportsController(http.Controller):
     @serialize_exception
     def download_document(self, report, wizard, start, end, current_company_id):
         report = report
-
         current_company = request.env['res.company'].browse(int(current_company_id))
         filecontent = ''
-
+        table = ''
+        
         if report in ['purchase', 'sale', 'other']:
             report_obj = request.env['wizard.accounting.reports']
         if report in ['islr']:
@@ -735,15 +750,15 @@ class AccountingReportsController(http.Controller):
         if report in ['iva']:
             report_obj = request.env['wizard.retention.iva']
         if report == 'purchase':
-            table = report_obj._table_shopping_book(int(wizard))
+            table = report_obj._table_shopping_book(int(wizard), current_company)
             name = 'Libro de Compras'
             start = start
             end = end
-            table_resumen = report_obj._table_resumen_shopping_book(int(wizard))
+            table_resumen = report_obj._table_resumen_shopping_book(int(wizard), current_company)
         if report == 'sale':
             table = report_obj._table_sale_book(int(wizard), current_company)
             name = 'Libro de Ventas'
-            table_resumen = report_obj._table_resumen_sale_book(int(wizard))
+            table_resumen = report_obj._table_resumen_sale_book(int(wizard), current_company)
         if report == 'other':
             raise exceptions.Warning('Reporte no establecido')
         if report == 'islr':
@@ -752,23 +767,21 @@ class AccountingReportsController(http.Controller):
         if report == 'iva':
             table = report_obj._table_retention_iva(int(wizard))
             name = 'Retenciones de IVA'
+            
         if not table.empty and name:
             if report == 'purchase':
-                filecontent = report_obj._excel_file_purchase(table, name, start, end, table_resumen)
+                filecontent = report_obj._excel_file_purchase(table, name, start, end, table_resumen, current_company)
             if report == 'sale':
                 filecontent = report_obj._excel_file_sale(table, name, start, end, table_resumen, current_company)
             if report == 'islr':
                 filecontent = report_obj._excel_file_retention_islr(table, name, start, end)
             if report == 'iva':
                 filecontent = report_obj._excel_file_retention_iva(table, name, start, end)
-        if not filecontent:
-            print("noy filecontent")
-            report_obj.imprimir_excel(int(wizard))
-            return
+                      
         if report == 'islr':
             format = '.xlsm'
         else:
             format = '.xlsx'
         return request.make_response(filecontent,
-        [('Content-Type', 'application/pdf'), ('Content-Length', len(filecontent)),
+        [('Content-Type', 'application/%s'%(format)), ('Content-Length', len(filecontent)),
         ('Content-Disposition', content_disposition(name+format))])

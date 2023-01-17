@@ -135,7 +135,9 @@ class AccountMoveBinauralFacturacion(models.Model):
                 'foreign_amount_total': sum(
                     group[2] for group in order.foreign_amount_by_group_base
                 ) + foreign_amount_untaxed,
-                'foreign_amount_residual': foreign_amount_residual,
+                'foreign_amount_residual': sum(
+                    group[2] for group in order.foreign_amount_by_group_base
+                ) + foreign_amount_untaxed,
             })
 
     def default_currency_rate(self):

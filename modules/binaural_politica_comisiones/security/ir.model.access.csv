@@ -5,4 +5,3 @@ access_commission_policy_image,access.commission.policy.image,model_commission_p
 access_commission_policy_image_line,access.commission.policy.image.line,model_commission_policy_image_line,,1,1,1,1
 access_invoice_commission_summary_wizard,access.invoice.commission.summary.wizard,model_invoice_commission_summary_wizard,,1,1,1,1
 access_account_expense_wizard,access.account.expense.wizard,model_account_expense_wizard,,1,1,1,1
-access_res_config_settings,access.res.config.settings,model_res_config_settings,,1,1,1,1

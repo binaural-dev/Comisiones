@@ -19,7 +19,6 @@ class SaleAdvancePaymentInvBinaural(models.TransientModel):
             according to their invoicing policy (based on ordered or delivered quantity).")
 
     def create_invoices(self):
-        self.env['sale.order'].trigger_create_or_assign_commission_images_for_transfers()
         _logger.info('Creando factura')
         sale_orders = self.env['sale.order'].browse(
             self._context.get('active_ids', []))

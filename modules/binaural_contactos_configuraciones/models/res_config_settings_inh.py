@@ -6,12 +6,17 @@ from odoo import models, fields, api
 class ResConfigSettingBinauralContactos(models.TransientModel):
     _inherit = 'res.config.settings'
 
-    use_retention = fields.Boolean(string="Usa Retenciones", default=False)
+    use_retention = fields.Boolean(string="Uses retentions",
+    related='company_id.use_retention', readonly=False)
 
     account_retention_iva = fields.Many2one(
-        'account.account', 'Cuenta de Retención IVA')
+        'account.account', 'IVA Retention Account',
+        related='company_id.account_retention_iva', readonly=False
+    )
     account_retention_islr = fields.Many2one(
-        'account.account', 'Cuenta de Retención ISLR')
+        'account.account', 'ISLR Retention account',
+        related='company_id.account_retention_islr', readonly=False
+    )
 
     account_retention_receivable_client = fields.Many2one(
         'account.account', 'Cuenta P/cobrar clientes')
@@ -19,9 +24,13 @@ class ResConfigSettingBinauralContactos(models.TransientModel):
         'account.account', 'Cuenta P/pagar proveedor')
 
     journal_retention_client = fields.Many2one(
-        'account.journal', 'Diario de Retenciones de Clientes')
+        'account.journal', 'Customer Retentions Journal',
+        related='company_id.journal_retention_client', readonly=False
+    )
     journal_retention_supplier = fields.Many2one(
-        'account.journal', 'Diario de Retenciones de Proveedores')
+        'account.journal', 'Provider Retentions Journal',
+        related='company_id.journal_retention_supplier', readonly=False
+    )
 
     qty_max = fields.Integer(string='Cantidad Máxima',
                              required=True, default=25)
@@ -47,23 +56,14 @@ class ResConfigSettingBinauralContactos(models.TransientModel):
         res = super(ResConfigSettingBinauralContactos, self).get_values()
         params = self.env['ir.config_parameter'].sudo()
         res.update(
-            use_retention=params.get_param('use_retention'),
-            account_retention_iva=int(
-                params.get_param('account_retention_iva')),
-            account_retention_islr=int(
-                params.get_param('account_retention_islr')),
             use_municipal_retention=params.get_param(
                 'use_municipal_retention'),
             account_retention_receivable_client=int(
                 params.get_param('account_retention_receivable_client')),
             account_retention_to_pay_supplier=int(
                 params.get_param('account_retention_to_pay_supplier')),
-            journal_retention_client=int(
-                params.get_param('journal_retention_client')),
             account_municipal_retention=int(
                 params.get_param('account_municipal_retention')),
-            journal_retention_supplier=int(
-                params.get_param('journal_retention_supplier')),
             qty_max=int(params.get_param('qty_max')),
             curreny_foreign_id=int(params.get_param('curreny_foreign_id')),
             journal_municipal_retention=int(
@@ -78,21 +78,11 @@ class ResConfigSettingBinauralContactos(models.TransientModel):
     @api.model
     def set_values(self):
         self.env['ir.config_parameter'].sudo().set_param(
-            'use_retention', self.use_retention)
-        self.env['ir.config_parameter'].sudo().set_param(
-            'account_retention_iva', self.account_retention_iva.id)
-        self.env['ir.config_parameter'].sudo().set_param(
-            'account_retention_islr', self.account_retention_islr.id)
-        self.env['ir.config_parameter'].sudo().set_param(
             'use_municipal_retention', self.use_municipal_retention)
         self.env['ir.config_parameter'].sudo().set_param(
             'account_retention_receivable_client', self.account_retention_receivable_client.id)
         self.env['ir.config_parameter'].sudo().set_param(
             'account_retention_to_pay_supplier', self.account_retention_to_pay_supplier.id)
-        self.env['ir.config_parameter'].sudo().set_param(
-            'journal_retention_client', self.journal_retention_client.id)
-        self.env['ir.config_parameter'].sudo().set_param(
-            'journal_retention_supplier', self.journal_retention_supplier.id)
         self.env['ir.config_parameter'].sudo().set_param(
             'account_municipal_retention', self.account_municipal_retention.id)
         self.env['ir.config_parameter'].sudo(

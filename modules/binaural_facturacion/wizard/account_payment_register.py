@@ -52,15 +52,7 @@ class AccountPaymentRegisterBinauralFacturacion(models.TransientModel):
                                                      ('name', operator, foreign_currency_date)], limit=1,
                                                     order='name desc')
 
-        return rate
-    
-    # def action_create_payments(self):
-    #     super().action_create_payments()
-        
-    #     if self["line_ids"][0]['move_id'].amount_residual == 0.0:
-    #         self["line_ids"]["move_id"]["commission_invoice"].paid_seller = 'paid'
-
-        
+        return rate        
 
     def _create_payment_vals_from_wizard(self):
         payment_vals = {

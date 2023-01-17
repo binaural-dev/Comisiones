@@ -16,8 +16,8 @@ class ResPartnerBinauralContactos(models.Model):
     def default_get(self, fields):
         result = super(ResPartnerBinauralContactos, self).default_get(fields)
         param = self.env['ir.config_parameter']
-        islr_account_id = int(param.sudo().get_param('account_retention_islr'))
-        iva_account_id = int(param.sudo().get_param('account_retention_iva'))
+        islr_account_id = self.company_id.account_retention_islr.id
+        iva_account_id = self.company_id.account_retention_iva.id
         result['supplier_iva_retention'] = iva_account_id
         result['supplier_islr_retention'] = islr_account_id
         return result

@@ -9,5 +9,4 @@ from . import inherited_product_product
 from . import inherited_product_brand
 from . import inherited_account_move
 from . import inherited_account_move_line
-from . import inherited_account_payment_register
 from . import res_config

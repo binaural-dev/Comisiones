@@ -248,9 +248,9 @@ class AccountRetentionBinauralFacturacion(models.Model):
         move, facture, move_ids = [], [], []
         invoices = []
         decimal_places = self.company_id.currency_id.decimal_places
-        journal_sale_id = int(self.env['ir.config_parameter'].sudo().get_param('journal_retention_client'))
+        journal_sale_id = self.company_id.journal_retention_client.id
         journal_sale = self.env['account.journal'].search([('id', '=', journal_sale_id)], limit=1)
-        journal_purchase_id = int(self.env['ir.config_parameter'].sudo().get_param('journal_retention_supplier'))
+        journal_purchase_id = self.company_id.journal_retention_supplier.id
         journal_purchase = self.env['account.journal'].search([('id', '=', journal_purchase_id)], limit=1)
         if not journal_sale and self.type_retention in ['out_invoice']:
             raise UserError("Por favor configure los diarios de las renteciones")
@@ -344,7 +344,7 @@ class AccountRetentionBinauralFacturacion(models.Model):
                 sequence = self.sequence_islr_retention()
                 correlative = sequence.next_by_code('retention.islr.control.number')
             today = datetime.now()                               
-            number = str(self.date.year) + '{:02d}'.format(self.date.month) + str(correlative)
+            number = str(self.date.year) + '{:02d}'.format(self.date.month) + correlative if correlative else ''
             self.write({'correlative': correlative, 'number': number})
             for ret_line in self.retention_line:
                 line_ret = []

@@ -1,0 +1,57 @@
+version: "3"
+services:
+  web-integra14:
+    build:
+      context: .
+      args:
+        ODOO_RELEASE: ${ODOO_RELEASE}
+    container_name: ${PROJECT_NAME}
+    networks:
+      - network_integra14
+    ports:
+      - "${PORT_SERVICE_HOST_ODOO}:${PORT_SERVICE_CONTAINER_ODOO}"
+    volumes:
+      - odoo-web-integra14:/var/lib/odoo
+      - ./config:/etc/odoo
+      - ./enterprise:/mnt/extra-addons
+      - ./modules:/mnt/custom-addons
+      - ./custom:/mnt/another-addons
+    environment:
+      - PYTHONUNBUFFERED=0
+    #devices:
+    #  - "/dev/ttyACM0:/dev/ttyACM0"
+    restart: always
+  db-integra14:
+    image: postgres:${POSTGRES_IMG_VERSION}
+    container_name: ${PROJECT_NAME}_db
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=odoo
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - odoo-db-integra14:/var/lib/postgresql/data/pgdata
+    networks:
+      - network_integra14
+  pgadmin:
+    container_name: ${PROJECT_NAME}_pgadmin_container
+    image: dpage/pgadmin4
+    ports:
+      - "${PG_ADMIN_HOST_PORT}:${PG_ADMIN_SERVICE_CONTAINER_PORT}"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: binaural.ca@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: odoo
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - odoo-pgadmin:/root/.pgadmin
+    networks:
+      - network_integra14
+
+volumes:
+  odoo-web-integra14:
+  odoo-db-integra14:
+  odoo-pgadmin:
+
+
+networks:
+  network_integra14:

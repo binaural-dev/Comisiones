@@ -2,7 +2,9 @@
 
 from odoo import api, fields, models, _
 import datetime
+import logging
 
+_logger = logging.getLogger(__name__)
 
 class ArcvWizard(models.TransientModel):
     _name = 'arcv.wizard'
@@ -23,7 +25,7 @@ class ArcvWizard(models.TransientModel):
             })
         return sequence
 
-    def print_arcv(self):
+    def print_arcv(self):        
         foreign_currency_id = int(self.env['ir.config_parameter'].sudo().get_param('curreny_foreign_id'))
         decimal_function = self.env['decimal.precision'].search(
             [('name', '=', 'decimal_quantity')], limit=1)
@@ -37,9 +39,13 @@ class ArcvWizard(models.TransientModel):
         self.correlative = str(today.year) + sequence.next_by_code('sequence.arcv')
 
         all_tariffs = self.env['tarif.retention'].search([])
-        retentions = self.env['account.retention'].search([('type_retention', '=', 'islr'), ('type', '=', 'in_invoice'),
-                                                           ('partner_id', '=', self.partner_id.id),
-                                                           ('state', '=', 'emitted')])
+        search_retention_domain = [
+            ('type_retention', '=', 'islr'), ('type', '=', 'in_invoice'),
+            ('partner_id', '=', self.partner_id.id),
+            ('state', '=', 'emitted')
+        ]
+        search_retention_domain += [('company_id', '=', self.env.company.id)]
+        retentions = self.env['account.retention'].search(search_retention_domain)
         while period_fiscal_month_init <= 12:
             for tariffs in all_tariffs:
                 amount_obj_retention, amount_ret, amount_total = 0, 0, 0
